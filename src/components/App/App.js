@@ -11,9 +11,11 @@ import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
 
 const App = () => {
+  const text = 'header';
+
   return (
     <div className="App">
-      <Header />
+      <Header text={text} />
       <Navigation />
       <Routes>
         <Route path="/" element={<Main />} />
