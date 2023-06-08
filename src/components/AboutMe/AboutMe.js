@@ -10,7 +10,7 @@ const AboutMe = () => {
         <div className="AboutMe__column">
           <p className="AboutMe__name">Bender</p>
           <p className="AboutMe__short-description">
-            Front-end-developer, 99&nbsp;лет
+            Web-developer, 9&nbsp;лет
           </p>
           <p className="AboutMe__description">
             Строю свой парк с&nbsp;блэкджеком и&nbsp;шлюхами

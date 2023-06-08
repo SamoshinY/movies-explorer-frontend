@@ -11,6 +11,7 @@ import Register from '../Register/Register';
 import movies from '../../utils/movies';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import currentUser from '../../utils/user';
+import NotFound from '../NotFound/NotFound';
 
 const App = () => {
   // Для ревью: в коде присутствуют сущности и функции, предназначенные
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
