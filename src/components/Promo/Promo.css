@@ -1,0 +1,24 @@
+.Promo {
+  box-sizing: border-box;
+  background-color: #073042;
+  background-image: url('../../images/pic__COLOR_landing-logo.svg');
+  background-repeat: no-repeat;
+  background-size: 320px;
+  background-position: 50% 82px;
+  width: 100%;
+  padding: 0 70px;
+  margin: auto;
+  min-height: 524px;
+  display: flex;
+  color: #fff;
+}
+
+.Promo__title {
+  text-align: center;
+  margin: 184px auto 224px;
+  width: 730px;
+  height: 116px;
+  font-size: 50px;
+  line-height: 58px;
+  font-weight: 400;
+}

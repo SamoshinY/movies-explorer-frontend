@@ -1,2 +1,44 @@
 .Header {
+  background-color: #202020;
+  width: 100%;
+  padding: 0 70px;
+  margin: 0;
+  min-height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.Header__signup-link {
+  text-align: center;
+  margin: auto 0 auto auto;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.Header__signin-button {
+  width: 76px;
+  height: 32px;
+  margin-left: 30px;
+  border-radius: 3px;
+  background-color: #3ddc84;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #000;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header__wrap {
+  margin: 70px auto 40px;
+  width: 396px;
+  height: 38px;
 }

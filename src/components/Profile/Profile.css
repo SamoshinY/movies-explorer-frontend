@@ -1,0 +1,97 @@
+.Profile {
+  box-sizing: border-box;
+  background-color: #202020;
+  width: 100%;
+  padding: 0 70px;
+  margin: 0 auto;
+  min-height: 626px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.Profile__greeting {
+  margin: 74px auto 123px;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.Profile__form {
+  width: 410px;
+  margin: 0 auto;
+}
+
+.Profile__fieldset {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.Profile__wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Profile__input {
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: 500;
+  text-align: right;
+  color: #fff;
+}
+
+.Profile__caption {
+  width: 141px;
+  margin: 0;
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: 500;
+  text-align: left;
+  color: #fff;
+}
+
+.Profile__line {
+  width: 100%;
+  height: 1px;
+  background-color: #424242;
+}
+
+.Profile__edit-button {
+  width: 410px;
+  height: 16px;
+  margin: 220px auto 16px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+
+.Profile__logout-button {
+  width: 410px;
+  height: 16px;
+  margin: 0 auto 70px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  text-align: center;
+  color: #ee3465;
+  cursor: pointer;
+}
