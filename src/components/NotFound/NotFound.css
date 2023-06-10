@@ -1,7 +1,14 @@
 .NotFound {
   width: 100%;
+  min-height: 700px;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 830px) {
+  .NotFound {
+    min-height: 1024px;
+  }
 }
 
 .NotFound__404 {
@@ -10,6 +17,12 @@
   line-height: 169px;
   font-weight: 400;
   color: #fff;
+}
+
+@media screen and (max-width: 830px) {
+  .NotFound {
+    margin-top: 408px;
+  }
 }
 
 .NotFound__text {
@@ -27,4 +40,10 @@
   font-weight: 400;
   color: #4285f4;
   text-decoration: none;
+}
+
+@media screen and (max-width: 830px) {
+  .NotFound {
+    margin-bottom: 222px;
+  }
 }

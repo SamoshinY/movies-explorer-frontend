@@ -1,16 +1,14 @@
 .MoviesCard {
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
   border-radius: 10px;
   background-color: #222222;
-  /* position: relative; */
 }
 
 .MoviesCard__image {
   display: block;
   width: 100%;
   object-fit: cover;
-  border: none;
   transition: 0.3s opacity;
 }
 

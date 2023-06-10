@@ -9,6 +9,12 @@
   color: #fff;
 }
 
+@media screen and (max-width: 830px) {
+  .Auth {
+    height: 714px;
+  }
+}
+
 .Auth__greeting {
   width: 100%;
   margin: 0 0 40px;
@@ -46,8 +52,8 @@
   outline: none;
   background-color: #2f2f2f;
   font-family: inherit;
-  font-size: 11px;
-  line-height: 13px;
+  font-size: 13px;
+  line-height: 16px;
   font-weight: 500;
   color: #fff;
 }
@@ -66,9 +72,9 @@
 
 .Auth__input-error {
   padding-top: 10px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
-  line-height: 14px;
+  line-height: 12px;
   color: #ee3465;
   display: block;
   min-height: 10px;
@@ -99,6 +105,12 @@
   line-height: 17px;
   color: #8b8b8b;
   margin: 16px auto 70px;
+}
+
+@media screen and (max-width: 830px) {
+  .Auth__auth-text {
+    margin-bottom: 232px;
+  }
 }
 
 .Auth__link-text {

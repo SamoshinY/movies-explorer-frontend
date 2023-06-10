@@ -1,7 +1,7 @@
 .Movies {
   background-color: #202020;
   min-width: 100%;
-  padding: 0 70px;
+  padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;

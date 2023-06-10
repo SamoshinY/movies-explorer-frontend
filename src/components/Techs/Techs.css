@@ -10,6 +10,13 @@
   color: #fff;
 }
 
+@media screen and (max-width: 830px) {
+  .Techs {
+    padding: 0 50px;
+    min-height: 567px;
+  }
+}
+
 .Techs__title {
   width: 50%;
   min-height: auto;
@@ -20,11 +27,23 @@
   color: #fff;
 }
 
+@media screen and (max-width: 830px) {
+  .Techs__title {
+    margin-top: 90px;
+  }
+}
+
 .Techs__line {
   width: 100%;
   height: 1px;
   margin: 23px 0 90px;
   background-color: #dadada;
+}
+
+@media screen and (max-width: 830px) {
+  .Techs__line {
+    margin-bottom: 80px;
+  }
 }
 
 .Techs__subtitle {
@@ -33,6 +52,12 @@
   font-weight: 400;
   color: #fff;
   margin: 0 auto 26px;
+}
+
+@media screen and (max-width: 830px) {
+  .Techs__subtitle {
+    margin-bottom: 22px;
+  }
 }
 
 .Techs__text {
@@ -45,17 +70,34 @@
   margin: 0 auto;
 }
 
+@media screen and (max-width: 830px) {
+  .Techs__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
 .Techs__icons {
-  max-width: 690px;
+  width: 100%;
+  max-width: 689px;
   margin: 100px auto;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
   list-style-type: none;
 }
 
+@media screen and (max-width: 830px) {
+  .Techs__icons {
+    margin-top: 83px;
+    padding: 0 10px;
+    max-width: 648px;
+  }
+}
+
 .Techs__icon {
-  width: 90px;
+  width: 100%;
   height: 60px;
   background-color: #303030;
   border-radius: 10px;
@@ -67,4 +109,13 @@
   font-weight: 400;
   text-align: center;
   color: #fff;
+}
+
+@media screen and (max-width: 830px) {
+  .Techs__icon {
+    width: 100%;
+    height: 57px;
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

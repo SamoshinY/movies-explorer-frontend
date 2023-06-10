@@ -1,4 +1,3 @@
-// import currentUser from '../../utils/user';
 import './Auth.css';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';

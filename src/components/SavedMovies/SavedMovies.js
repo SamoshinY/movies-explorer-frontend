@@ -1,16 +1,16 @@
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-// import Preloader from '../Preloader/Preloader';
 import Footer from '../Footer/Footer';
+import HeaderWithNavigation from '../HeaderWithNavigation/HeaderWithNavigation';
 
-const SavedMovies = ({ cardList, buttonVisible }) => {
+const SavedMovies = ({ cardList }) => {
   return (
     <section className="SavedMovies">
+      <HeaderWithNavigation />
       <SearchForm />
-      <MoviesCardList cardList={cardList} buttonVisible={buttonVisible} />
+      <MoviesCardList cardList={cardList} />
       <Footer />
-      {/* <Preloader /> */}
     </section>
   );
 };

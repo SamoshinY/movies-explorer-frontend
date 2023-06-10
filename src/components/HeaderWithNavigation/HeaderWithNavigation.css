@@ -1,0 +1,16 @@
+.HeaderWithNavigation {
+  box-sizing: border-box;
+  background-color: #202020;
+  width: 100%;
+  padding: 0 70px;
+  min-height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 830px) {
+  .HeaderWithNavigation {
+    padding: 0 30px;
+  }
+}

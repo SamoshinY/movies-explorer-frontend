@@ -10,6 +10,12 @@
   color: #fff;
 }
 
+@media screen and (max-width: 830px) {
+  .Footer {
+    padding: 0 30px;
+  }
+}
+
 .Footer__caption {
   max-width: 320px;
   margin: 79px auto 20px;

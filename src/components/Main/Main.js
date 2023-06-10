@@ -6,10 +6,12 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
+import HeaderInLanding from '../HeaderInLanding/HeaderInLanding';
 
 const Main = () => {
   return (
     <main className="Main">
+      <HeaderInLanding />
       <Promo />
       <NavTab />
       <AboutProject />

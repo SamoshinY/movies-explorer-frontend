@@ -7,6 +7,18 @@
   align-items: center;
 }
 
+@media screen and (max-width: 1080px) {
+  .Navigation {
+    width: 520px;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .Navigation {
+    display: none;
+  }
+}
+
 .Navigation__wrap {
   display: grid;
   grid-template-columns: repeat(2, auto);

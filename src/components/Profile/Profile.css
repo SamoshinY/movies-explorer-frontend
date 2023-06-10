@@ -10,12 +10,24 @@
   color: #fff;
 }
 
+@media screen and (max-width: 830px) {
+  .Profile {
+    min-height: 950px;
+  }
+}
+
 .Profile__greeting {
-  margin: 74px auto 123px;
+  margin: 74px auto 108px;
   font-size: 24px;
   line-height: 29px;
   font-weight: 500;
   text-align: center;
+}
+
+@media screen and (max-width: 830px) {
+  .Profile__greeting {
+    margin: 236px auto 81px;
+  }
 }
 
 .Profile__form {
@@ -47,7 +59,7 @@
   font-family: inherit;
   font-size: 11px;
   line-height: 13px;
-  font-weight: 500;
+  font-weight: 400;
   text-align: right;
   color: #fff;
 }
@@ -71,7 +83,7 @@
 .Profile__edit-button {
   width: 410px;
   height: 16px;
-  margin: 220px auto 16px;
+  margin: 206px auto 16px;
   background: none;
   border: none;
   font-size: 13px;
@@ -82,16 +94,23 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 830px) {
+  .Profile__edit-button {
+    margin: 196px auto 16px;
+  }
+}
+
 .Profile__logout-button {
-  width: 410px;
-  height: 16px;
   margin: 0 auto 70px;
-  background: none;
-  border: none;
   font-size: 13px;
   line-height: 16px;
   font-weight: 400;
-  text-align: center;
   color: #ee3465;
-  cursor: pointer;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 830px) {
+  .Profile__logout-button {
+    margin-bottom: 269px;
+  }
 }

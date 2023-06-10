@@ -10,6 +10,13 @@
   color: #fff;
 }
 
+@media screen and (max-width: 830px) {
+  .AboutMe {
+    padding: 0 50px;
+    min-height: 524px;
+  }
+}
+
 .AboutMe__wrap {
   display: flex;
   justify-content: space-between;
@@ -20,6 +27,13 @@
   margin: 0;
 }
 
+@media screen and (max-width: 830px) {
+  .AboutMe__column {
+    max-width: 364px;
+    margin-right: 49px;
+  }
+}
+
 .AboutMe__title {
   width: 50%;
   min-height: auto;
@@ -28,6 +42,12 @@
   line-height: 27px;
   font-weight: 400;
   color: #fff;
+}
+
+@media screen and (max-width: 830px) {
+  .AboutMe__title {
+    margin-top: 90px;
+  }
 }
 
 .AboutMe__line {
@@ -45,6 +65,14 @@
   margin: 0 0 18px;
 }
 
+@media screen and (max-width: 830px) {
+  .AboutMe__name {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+}
+
 .AboutMe__short-description {
   max-width: 600px;
   font-size: 18px;
@@ -53,12 +81,28 @@
   color: #fff;
 }
 
+@media screen and (max-width: 830px) {
+  .AboutMe__short-description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
 .AboutMe__description {
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;
   color: #fff;
   margin: 26px 0 99px;
+}
+
+@media screen and (max-width: 830px) {
+  .AboutMe__description {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 20px;
+    margin-bottom: 87px;
+  }
 }
 
 .AboutMe__github-link {
@@ -75,4 +119,11 @@
   border-radius: 10px;
   object-fit: cover;
   overflow: hidden;
+}
+
+@media screen and (max-width: 830px) {
+  .AboutMe__photo {
+    width: 255px;
+    height: 307px;
+  }
 }

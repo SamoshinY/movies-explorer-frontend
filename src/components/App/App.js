@@ -1,7 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
-import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -40,18 +39,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route
-          path="/movies"
-          element={<Movies cardList={cardListMovies} buttonVisible={true} />}
-        />
+        <Route path="/movies" element={<Movies cardList={cardListMovies} />} />
         <Route
           path="/saved-movies"
-          element={
-            <SavedMovies cardList={cardListSavedMovies} buttonVisible={false} />
-          }
+          element={<SavedMovies cardList={cardListSavedMovies} />}
         />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signin" element={<Login />} />

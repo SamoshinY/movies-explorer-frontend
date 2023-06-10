@@ -13,6 +13,14 @@
   color: #fff;
 }
 
+@media screen and (max-width: 830px) {
+  .Promo {
+    padding: 0 19px;
+    min-height: 784px;
+    background-position: 50% 224px;
+  }
+}
+
 .Promo__title {
   text-align: center;
   margin: 184px auto 224px;
@@ -21,4 +29,10 @@
   font-size: 50px;
   line-height: 58px;
   font-weight: 400;
+}
+
+@media screen and (max-width: 830px) {
+  .Promo__title {
+    margin: 326px auto 342px;
+  }
 }

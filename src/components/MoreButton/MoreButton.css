@@ -1,0 +1,19 @@
+.MoreButton {
+  width: 320px;
+  height: 36px;
+  margin: 50px auto 80px;
+  padding: 0;
+  background-color: inherit;
+  border: 1px solid #424242;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500;
+  transition: 0.3s opacity;
+}
+
+.MoreButton:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
