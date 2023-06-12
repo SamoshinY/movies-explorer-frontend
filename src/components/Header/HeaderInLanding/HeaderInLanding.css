@@ -16,6 +16,12 @@
   }
 }
 
+@media screen and (max-width: 520px) {
+  .HeaderInLanding {
+    padding: 0 14px;
+  }
+}
+
 .HeaderInLanding__signup-link {
   text-align: center;
   margin: auto 0 auto auto;
@@ -24,6 +30,12 @@
   line-height: 16px;
   font-weight: 500;
   color: #fff;
+}
+
+@media screen and (max-width: 520px) {
+  .HeaderInLanding__signup-link {
+    font-size: 10px;
+  }
 }
 
 .HeaderInLanding__signin-button {
@@ -40,4 +52,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 520px) {
+  .HeaderInLanding__signin-button {
+    width: 54px;
+    height: 26px;
+    margin-left: 14px;
+    font-size: 10px;
+  }
 }

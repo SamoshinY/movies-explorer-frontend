@@ -1,5 +1,5 @@
 import './HeaderInLanding.css';
-import Logo from '../Logo/Logo';
+import Logo from '../../Logo/Logo';
 import { Link } from 'react-router-dom';
 
 const HeaderInLanding = () => {

@@ -12,7 +12,14 @@
 
 @media screen and (max-width: 830px) {
   .Profile {
+    padding: 0 30px;
     min-height: 950px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .Profile {
+    min-height: 706px;
   }
 }
 
@@ -30,9 +37,23 @@
   }
 }
 
+@media screen and (max-width: 520px) {
+  .Profile__greeting {
+    margin: 70px auto 66px;
+  }
+}
+
 .Profile__form {
   width: 410px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 520px) {
+  .Profile__form {
+    width: 100%;
+  }
 }
 
 .Profile__fieldset {
@@ -64,6 +85,12 @@
   color: #fff;
 }
 
+@media screen and (max-width: 520px) {
+  .Profile__input {
+    height: 44px;
+  }
+}
+
 .Profile__caption {
   width: 141px;
   margin: 0;
@@ -81,6 +108,7 @@
 }
 
 .Profile__edit-button {
+  align-self: center;
   width: 410px;
   height: 16px;
   margin: 206px auto 16px;
@@ -96,21 +124,39 @@
 
 @media screen and (max-width: 830px) {
   .Profile__edit-button {
-    margin: 196px auto 16px;
+    margin-top: 196px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .Profile__edit-button {
+    width: 100%;
+    margin-top: 365px;
   }
 }
 
 .Profile__logout-button {
+  width: 410px;
   margin: 0 auto 70px;
   font-size: 13px;
   line-height: 16px;
-  font-weight: 400;
+  font-weight: 500;
   color: #ee3465;
   text-decoration: none;
+  text-align: center;
 }
 
 @media screen and (max-width: 830px) {
   .Profile__logout-button {
     margin-bottom: 269px;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .Profile__logout-button {
+    width: 100%;
+    margin-bottom: 40px;
+    font-size: 12px;
+    line-height: 15px;
   }
 }

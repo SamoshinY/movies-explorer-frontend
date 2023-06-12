@@ -13,6 +13,12 @@
   transition: 0.3s opacity;
 }
 
+@media screen and (max-width: 520px) {
+  .MoreButton {
+    width: 240px;
+  }
+}
+
 .MoreButton:hover {
   opacity: 0.5;
   cursor: pointer;

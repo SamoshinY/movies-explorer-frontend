@@ -1,11 +1,9 @@
 import './Register.css';
 import Auth from '../Auth/Auth';
-import { useFormAndValidation } from '../../hooks/useFormAndValidation';
-import HeaderOnlyLogo from '../HeaderOnlyLogo/HeaderOnlyLogo';
+import HeaderOnlyLogo from '../Header/HeaderOnlyLogo/HeaderOnlyLogo';
+import InputInAuth from '../InputInAuth/InputInAuth';
 
 const Register = () => {
-  const { values, handleChange, errors } = useFormAndValidation();
-
   return (
     <>
       <HeaderOnlyLogo />
@@ -17,24 +15,13 @@ const Register = () => {
           textLink={'Войти'}
           link={'/signin'}
         >
-          <label className="Auth__label">Имя</label>
-          <input
-            id="name-input"
-            type="text"
-            name="name"
-            placeholder=""
-            className={`Auth__input Auth__input_text_name" ${
-              errors.name && 'Auth__input_type_error'
-            }`}
-            required
-            minLength="2"
-            maxLength="40"
-            onChange={handleChange}
-            value={values.name || ''}
+          <InputInAuth
+            inputName={'name'}
+            labelCaption={'Имя'}
+            minLength={2}
+            maxLength={40}
+            placeholder={''}
           />
-          <span className="name-input-error Auth__input-error">
-            {errors.name || ''}
-          </span>
         </Auth>
       </section>
     </>

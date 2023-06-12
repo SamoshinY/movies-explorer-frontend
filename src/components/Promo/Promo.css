@@ -21,6 +21,15 @@
   }
 }
 
+@media screen and (max-width: 520px) {
+  .Promo {
+    padding: 0 10px;
+    min-height: 570px;
+    background-size: 248px;
+    background-position: 50% 142px;
+  }
+}
+
 .Promo__title {
   text-align: center;
   margin: 184px auto 224px;
@@ -29,10 +38,20 @@
   font-size: 50px;
   line-height: 58px;
   font-weight: 400;
+  letter-spacing: -0.06em;
 }
 
 @media screen and (max-width: 830px) {
   .Promo__title {
     margin: 326px auto 342px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .Promo__title {
+    margin: 207px auto 246px;
+    height: 117px;
+    font-size: 31px;
+    line-height: 39px;
   }
 }

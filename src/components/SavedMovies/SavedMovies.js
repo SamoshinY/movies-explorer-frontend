@@ -2,7 +2,7 @@ import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import HeaderWithNavigation from '../HeaderWithNavigation/HeaderWithNavigation';
+import HeaderWithNavigation from '../Header/HeaderWithNavigation/HeaderWithNavigation';
 
 const SavedMovies = ({ cardList }) => {
   return (
@@ -10,6 +10,7 @@ const SavedMovies = ({ cardList }) => {
       <HeaderWithNavigation />
       <SearchForm />
       <MoviesCardList cardList={cardList} />
+      <div className="SavedMovies__empty-block"></div>
       <Footer />
     </section>
   );

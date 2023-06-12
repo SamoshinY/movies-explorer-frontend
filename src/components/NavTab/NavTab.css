@@ -2,7 +2,6 @@
   box-sizing: border-box;
   background-color: #272727;
   width: 100%;
-  padding: 0 70px;
   margin: 0 auto;
   min-height: 66px;
   display: flex;
@@ -25,4 +24,11 @@
   line-height: 16px;
   font-weight: 500;
   color: #fff;
+}
+
+@media screen and (max-width: 520px) {
+  .NavTab__link {
+    margin: 0 12px;
+    font-size: 11px;
+  }
 }

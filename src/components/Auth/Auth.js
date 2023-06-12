@@ -2,6 +2,7 @@ import './Auth.css';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import InputInAuth from '../InputInAuth/InputInAuth';
 
 const Auth = ({
   children,
@@ -12,8 +13,7 @@ const Auth = ({
   link,
   onAuthorize,
 }) => {
-  const { values, handleChange, errors, isValid, resetForm, setIsValid } =
-    useFormAndValidation();
+  const { values, isValid, resetForm, setIsValid } = useFormAndValidation();
 
   useEffect(() => {
     resetForm();
@@ -31,42 +31,20 @@ const Auth = ({
       <form className="Auth__form" onSubmit={handleSubmit}>
         <fieldset className="Auth__fieldset">
           {children}
-          <label className="Auth__label">E-mail</label>
-          <input
-            id="email-input"
-            type="email"
-            name="email"
-            placeholder=""
-            className={`Auth__input Auth__input_text_email" ${
-              errors.email && 'Auth__input_type_error'
-            }`}
-            required
-            minLength="2"
-            maxLength="40"
-            onChange={handleChange}
-            value={values.email || ''}
+          <InputInAuth
+            inputName={'email'}
+            labelCaption={'E-mail'}
+            minLength={4}
+            maxLength={40}
+            placeholder={''}
           />
-          <span className="email-input-error Auth__input-error">
-            {errors.email || ''}
-          </span>
-          <label className="Auth__label">Пароль</label>
-          <input
-            id="password-input"
-            type="password"
-            name="password"
-            placeholder=""
-            className={`Auth__input Auth__input_text_password" ${
-              errors.password && 'Auth__input_type_error'
-            }`}
-            required
-            minLength="4"
-            maxLength="200"
-            onChange={handleChange}
-            value={values.password || ''}
+          <InputInAuth
+            inputName={'password'}
+            labelCaption={'Пароль'}
+            minLength={4}
+            maxLength={40}
+            placeholder={''}
           />
-          <span className="password-input-error Auth__input-error">
-            {errors.password || ''}
-          </span>
         </fieldset>
         <button
           type="submit"

@@ -17,21 +17,34 @@
   }
 }
 
+@media screen and (max-width: 680px) {
+  .AboutMe {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .AboutMe {
+    padding: 0 14px;
+    min-height: 834px;
+  }
+}
+
 .AboutMe__wrap {
   display: flex;
   justify-content: space-between;
 }
 
-.AboutMe__column {
-  max-width: 600px;
-  margin: 0;
+@media screen and (max-width: 640px) {
+  .AboutMe__wrap {
+    flex-direction: column-reverse;
+  }
 }
 
-@media screen and (max-width: 830px) {
-  .AboutMe__column {
-    max-width: 364px;
-    margin-right: 49px;
-  }
+.AboutMe__column {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 49px 0 0;
 }
 
 .AboutMe__title {
@@ -42,11 +55,20 @@
   line-height: 27px;
   font-weight: 400;
   color: #fff;
+  letter-spacing: -0.04em;
 }
 
 @media screen and (max-width: 830px) {
   .AboutMe__title {
     margin-top: 90px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .AboutMe__title {
+    margin-top: 70px;
+    font-size: 18px;
+    line-height: 22px;
   }
 }
 
@@ -57,12 +79,20 @@
   background-color: #dadada;
 }
 
+@media screen and (max-width: 520px) {
+  .AboutMe__line {
+    margin-top: 28px;
+    margin-bottom: 60px;
+  }
+}
+
 .AboutMe__name {
   font-size: 50px;
   line-height: 58px;
   font-weight: 400;
   color: #fff;
   margin: 0 0 18px;
+  letter-spacing: -0.04em;
 }
 
 @media screen and (max-width: 830px) {
@@ -70,6 +100,15 @@
     font-size: 40px;
     line-height: 40px;
     margin-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .AboutMe__name {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    line-height: 36px;
   }
 }
 
@@ -85,6 +124,13 @@
   .AboutMe__short-description {
     font-size: 12px;
     line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .AboutMe__short-description {
+    font-size: 11px;
+    line-height: 16px;
   }
 }
 
@@ -105,6 +151,20 @@
   }
 }
 
+@media screen and (max-width: 640px) {
+  .AboutMe__description {
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .AboutMe__description {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 40px;
+  }
+}
+
 .AboutMe__github-link {
   text-decoration: none;
   font-size: 14px;
@@ -115,6 +175,7 @@
 
 .AboutMe__photo {
   width: 270px;
+  min-width: 270px;
   height: 327px;
   border-radius: 10px;
   object-fit: cover;
@@ -124,6 +185,15 @@
 @media screen and (max-width: 830px) {
   .AboutMe__photo {
     width: 255px;
+    min-width: 255px;
     height: 307px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .AboutMe__photo {
+    width: 100%;
+    height: 100%;
+    min-height: 352px;
   }
 }

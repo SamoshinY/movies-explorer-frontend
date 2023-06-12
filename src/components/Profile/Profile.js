@@ -1,7 +1,7 @@
 import './Profile.css';
 import { Link } from 'react-router-dom';
 import currentUser from '../../utils/user';
-import HeaderWithNavigation from '../HeaderWithNavigation/HeaderWithNavigation';
+import HeaderWithNavigation from '../Header/HeaderWithNavigation/HeaderWithNavigation';
 
 const Profile = () => {
   return (

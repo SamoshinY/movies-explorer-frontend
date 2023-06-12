@@ -6,7 +6,7 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
-import HeaderInLanding from '../HeaderInLanding/HeaderInLanding';
+import HeaderInLanding from '../Header/HeaderInLanding/HeaderInLanding';
 
 const Main = () => {
   return (

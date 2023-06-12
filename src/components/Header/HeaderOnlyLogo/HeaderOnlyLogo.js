@@ -1,5 +1,5 @@
 import './HeaderOnlyLogo.css';
-import Logo from '../Logo/Logo';
+import Logo from '../../Logo/Logo';
 
 const HeaderOnlyLogo = () => {
   return (

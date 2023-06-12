@@ -7,7 +7,7 @@
   grid-template-rows: minmax(min-content, max-content);
   grid-row-gap: 32px;
   grid-column-gap: 20px;
-  min-height: 40vh;
+  /* min-height: 40vh; */
   margin: 70px 0 30px;
 }
 
@@ -23,5 +23,14 @@
     padding: 0 30px;
     grid-template-columns: repeat(2, 1fr);
     gap: 36px 30px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .MoviesCardList {
+    margin-top: 40px;
+    padding: 0 10px;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }

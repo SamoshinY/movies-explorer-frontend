@@ -3,7 +3,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoreButton from '../MoreButton/MoreButton';
 import Footer from '../Footer/Footer';
-import HeaderWithNavigation from '../HeaderWithNavigation/HeaderWithNavigation';
+import HeaderWithNavigation from '../Header/HeaderWithNavigation/HeaderWithNavigation';
 
 const Movies = ({ cardList }) => {
   return (
