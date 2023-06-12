@@ -13,7 +13,8 @@ const Auth = ({
   link,
   onAuthorize,
 }) => {
-  const { values, isValid, resetForm, setIsValid } = useFormAndValidation();
+  const { values, isValid, resetForm, setIsValid, handleChange, errors } =
+    useFormAndValidation();
 
   useEffect(() => {
     resetForm();
@@ -34,6 +35,9 @@ const Auth = ({
           <InputInAuth
             inputName={'email'}
             labelCaption={'E-mail'}
+            handleChange={handleChange}
+            values={values}
+            errors={errors}
             minLength={4}
             maxLength={40}
             placeholder={''}
@@ -41,6 +45,9 @@ const Auth = ({
           <InputInAuth
             inputName={'password'}
             labelCaption={'Пароль'}
+            handleChange={handleChange}
+            values={values}
+            errors={errors}
             minLength={4}
             maxLength={40}
             placeholder={''}

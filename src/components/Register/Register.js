@@ -2,8 +2,10 @@ import './Register.css';
 import Auth from '../Auth/Auth';
 import HeaderOnlyLogo from '../Header/HeaderOnlyLogo/HeaderOnlyLogo';
 import InputInAuth from '../InputInAuth/InputInAuth';
+import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
 const Register = () => {
+  const { values, handleChange, errors } = useFormAndValidation();
   return (
     <>
       <HeaderOnlyLogo />
@@ -18,6 +20,9 @@ const Register = () => {
           <InputInAuth
             inputName={'name'}
             labelCaption={'Имя'}
+            handleChange={handleChange}
+            values={values}
+            errors={errors}
             minLength={2}
             maxLength={40}
             placeholder={''}

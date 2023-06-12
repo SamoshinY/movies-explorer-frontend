@@ -1,15 +1,15 @@
 import './InputInAuth.css';
-import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
 const InputInAuth = ({
   inputName,
   labelCaption,
+  handleChange,
+  values,
+  errors,
   minLength,
   maxLength,
   placeholder,
 }) => {
-  const { values, handleChange, errors } = useFormAndValidation();
-
   return (
     <>
       <label className="InputInAuth__label">{labelCaption}</label>

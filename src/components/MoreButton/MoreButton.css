@@ -3,7 +3,7 @@
   height: 36px;
   margin: 50px auto 80px;
   padding: 0;
-  background-color: inherit;
+  background-color: #202020;
   border: 1px solid #424242;
   border-radius: 5px;
   color: #fff;
@@ -20,6 +20,6 @@
 }
 
 .MoreButton:hover {
-  opacity: 0.5;
+  opacity: 0.8;
   cursor: pointer;
 }

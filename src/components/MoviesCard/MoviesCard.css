@@ -13,7 +13,7 @@
 }
 
 .MoviesCard__image:hover {
-  opacity: 0.5;
+  opacity: 0.8;
   cursor: pointer;
 }
 
@@ -59,6 +59,11 @@
   background-repeat: no-repeat;
   background-size: 16px 16px;
   margin: 14px 12px 0 0;
+  transition: 0.3s opacity;
+}
+
+.MoviesCard__save:hover {
+  opacity: 0.7;
 }
 
 .MoviesCard__save_active {
@@ -77,4 +82,9 @@
   background-repeat: no-repeat;
   background-size: 16px 16px;
   margin: 14px 12px 0 0;
+  transition: 0.3s opacity;
+}
+
+.MoviesCard__delete:hover {
+  opacity: 0.7;
 }

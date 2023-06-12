@@ -75,6 +75,11 @@
   font-weight: 400;
   color: #fff;
   letter-spacing: -0.04em;
+  transition: 0.3s opacity;
+}
+
+.Portfolio__link:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 830px) {

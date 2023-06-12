@@ -30,6 +30,11 @@
   line-height: 16px;
   font-weight: 500;
   color: #fff;
+  transition: 0.3s opacity;
+}
+
+.HeaderInLanding__signup-link:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 520px) {
@@ -52,6 +57,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.3s opacity;
+}
+
+.HeaderInLanding__signin-button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 520px) {
