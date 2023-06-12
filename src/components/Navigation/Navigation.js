@@ -1,23 +1,34 @@
 import './Navigation.css';
 import profile from '../../images/profile_icon.svg';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   return (
     <nav className="Navigation">
       <nav className="Navigation__wrap">
-        <Link to="/movies" className="Navigation__movies-link">
+        <NavLink
+          to="/movies"
+          className={({ isActive }) =>
+            `Navigation__movies-link ${
+              isActive ? 'Navigation__movies-link_active' : ''
+            }`
+          }
+        >
           Фильмы
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/saved-movies"
-          className="Navigation__movies-link Navigation__movies-link_saved"
+          className={({ isActive }) =>
+            `Navigation__movies-link ${
+              isActive ? 'Navigation__movies-link_active' : ''
+            }`
+          }
         >
           Сохраненные фильмы
-        </Link>
+        </NavLink>
       </nav>
 
-      <Link to="/profile" className="Navigation__profile-link">
+      <NavLink to="/profile" className="Navigation__profile-link">
         Аккаунт
         <div className="Navigation__profile-icon-wrap">
           <img
@@ -26,7 +37,7 @@ const Navigation = () => {
             alt="Войти в профиль"
           ></img>
         </div>
-      </Link>
+      </NavLink>
     </nav>
   );
 };

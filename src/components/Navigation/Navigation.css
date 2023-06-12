@@ -31,12 +31,12 @@
   text-decoration: none;
   font-size: 13px;
   line-height: 18px;
-  font-weight: 500;
+  font-weight: 400;
   color: #fff;
 }
 
-.Navigation__movies-link_saved {
-  font-weight: 400;
+.Navigation__movies-link_active {
+  font-weight: 500;
 }
 
 .Navigation__profile-link {
