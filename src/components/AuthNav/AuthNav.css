@@ -1,28 +1,8 @@
-.HeaderInLanding {
-  background-color: #202020;
-  padding: 0 70px;
-  width: 100%;
-  min-height: 74px;
+.AuthNav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
 }
 
-@media screen and (max-width: 830px) {
-  .HeaderInLanding {
-    padding: 0 30px;
-    background-color: #073042;
-  }
-}
-
-@media screen and (max-width: 520px) {
-  .HeaderInLanding {
-    padding: 0 14px;
-  }
-}
-
-.HeaderInLanding__signup-link {
+.AuthNav__signup-link {
   text-align: center;
   margin: auto 0 auto auto;
   text-decoration: none;
@@ -33,17 +13,17 @@
   transition: 0.3s opacity;
 }
 
-.HeaderInLanding__signup-link:hover {
+.AuthNav__signup-link:hover {
   opacity: 0.7;
 }
 
 @media screen and (max-width: 520px) {
-  .HeaderInLanding__signup-link {
+  .AuthNav__signup-link {
     font-size: 10px;
   }
 }
 
-.HeaderInLanding__signin-button {
+.AuthNav__signin-button {
   width: 76px;
   height: 32px;
   margin-left: 30px;
@@ -60,12 +40,12 @@
   transition: 0.3s opacity;
 }
 
-.HeaderInLanding__signin-button:hover {
+.AuthNav__signin-button:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 520px) {
-  .HeaderInLanding__signin-button {
+  .AuthNav__signin-button {
     width: 54px;
     height: 26px;
     margin-left: 14px;

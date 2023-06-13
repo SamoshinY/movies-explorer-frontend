@@ -1,0 +1,23 @@
+.Header {
+  background-color: #202020;
+  padding: 0 70px;
+  width: 100%;
+  min-height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 830px) {
+  .Header {
+    padding: 0 30px;
+    background-color: #073042;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .Header {
+    padding: 0 14px;
+  }
+}

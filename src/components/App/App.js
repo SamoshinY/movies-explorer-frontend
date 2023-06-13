@@ -1,6 +1,8 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
+import LevelOneForLayout from '../LevelOneForLayout/LevelOneForLayout';
+import LevelTwoForLayout from '../LevelTwoForLayout/LevelTwoForLayout';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -40,13 +42,20 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies cardList={cardListMovies} />} />
-        <Route
-          path="/saved-movies"
-          element={<SavedMovies cardList={cardListSavedMovies} />}
-        />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/" element={<LevelOneForLayout />}>
+          <Route path="/" element={<LevelTwoForLayout />}>
+            <Route path="" element={<Main />} />
+            <Route
+              path="movies"
+              element={<Movies cardList={cardListMovies} />}
+            />
+            <Route
+              path="saved-movies"
+              element={<SavedMovies cardList={cardListSavedMovies} />}
+            />
+          </Route>
+          <Route path="profile" element={<Profile />} />
+        </Route>
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route path="*" element={<NotFound />} />

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import InputInAuth from '../InputInAuth/InputInAuth';
+import Logo from '../Logo/Logo';
 
 const Auth = ({
   children,
@@ -27,49 +28,52 @@ const Auth = ({
   };
 
   return (
-    <section className="Auth">
-      <p className="Auth__greeting">{greeting}</p>
-      <form className="Auth__form" onSubmit={handleSubmit}>
-        <fieldset className="Auth__fieldset">
-          {children}
-          <InputInAuth
-            inputName={'email'}
-            labelCaption={'E-mail'}
-            handleChange={handleChange}
-            values={values}
-            errors={errors}
-            minLength={4}
-            maxLength={40}
-            placeholder={''}
-          />
-          <InputInAuth
-            inputName={'password'}
-            labelCaption={'Пароль'}
-            handleChange={handleChange}
-            values={values}
-            errors={errors}
-            minLength={4}
-            maxLength={40}
-            placeholder={''}
-          />
-        </fieldset>
-        <button
-          type="submit"
-          className={`Auth__submit-button ${
-            !isValid && 'Auth__submit-button_disabled'
-          }`}
-          disabled={!isValid}
-        >
-          {textButton}
-        </button>
-      </form>
-      <div className="Auth__auth-text">
-        {textAuth}
-        <Link to={link} className="Auth__link-text">
-          {textLink}
-        </Link>
-      </div>
-    </section>
+    <>
+      <section className="Auth">
+        <Logo />
+        <p className="Auth__greeting">{greeting}</p>
+        <form className="Auth__form" onSubmit={handleSubmit}>
+          <fieldset className="Auth__fieldset">
+            {children}
+            <InputInAuth
+              inputName={'email'}
+              labelCaption={'E-mail'}
+              handleChange={handleChange}
+              values={values}
+              errors={errors}
+              minLength={4}
+              maxLength={40}
+              placeholder={''}
+            />
+            <InputInAuth
+              inputName={'password'}
+              labelCaption={'Пароль'}
+              handleChange={handleChange}
+              values={values}
+              errors={errors}
+              minLength={4}
+              maxLength={40}
+              placeholder={''}
+            />
+          </fieldset>
+          <button
+            type="submit"
+            className={`Auth__submit-button ${
+              !isValid && 'Auth__submit-button_disabled'
+            }`}
+            disabled={!isValid}
+          >
+            {textButton}
+          </button>
+        </form>
+        <div className="Auth__auth-text">
+          {textAuth}
+          <Link to={link} className="Auth__link-text">
+            {textLink}
+          </Link>
+        </div>
+      </section>
+    </>
   );
 };
 
