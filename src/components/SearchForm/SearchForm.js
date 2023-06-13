@@ -1,4 +1,5 @@
 import './SearchForm.css';
+import Toggle from '../Toggle/Toggle';
 
 const SearchForm = () => {
   return (
@@ -14,10 +15,7 @@ const SearchForm = () => {
           ></input>
           <button className="SearchForm__find-button"></button>
         </div>
-        <div className="SearchForm__find-filter">
-          Короткометражки
-          <div className="SearchForm__tumbler"></div>
-        </div>
+        <Toggle />
       </form>
       <div className="SearchForm__line"></div>
     </div>

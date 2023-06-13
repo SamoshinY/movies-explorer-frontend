@@ -93,16 +93,6 @@
   opacity: 0.8;
 }
 
-.SearchForm__find-filter {
-  display: flex;
-  align-items: center;
-  margin-left: 41px;
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: 400;
-  color: #fff;
-}
-
 @media screen and (max-width: 1080px) {
   .SearchForm__find-filter {
     margin-top: 38px;
@@ -117,22 +107,6 @@
     font-size: 11px;
     line-height: 18px;
   }
-}
-
-.SearchForm__tumbler {
-  min-width: 36px;
-  height: 18px;
-  background: none;
-  border: none;
-  margin-left: 15px;
-  background-image: url(../../images/smalltumb.svg);
-  background-repeat: no-repeat;
-  cursor: pointer;
-  transition: 0.3s opacity;
-}
-
-.SearchForm__tumbler:hover {
-  opacity: 0.8;
 }
 
 .SearchForm__line {
