@@ -17,7 +17,7 @@
   }
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 520px) {
   .Profile {
     min-height: 706px;
   }
@@ -63,44 +63,6 @@
   border: none;
 }
 
-.Profile__wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.Profile__input {
-  width: 100%;
-  height: 45px;
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-  background-color: inherit;
-  font-family: inherit;
-  font-size: 11px;
-  line-height: 13px;
-  font-weight: 400;
-  text-align: right;
-  color: #fff;
-}
-
-@media screen and (max-width: 520px) {
-  .Profile__input {
-    height: 44px;
-  }
-}
-
-.Profile__caption {
-  width: 141px;
-  margin: 0;
-  font-size: 11px;
-  line-height: 13px;
-  font-weight: 500;
-  text-align: left;
-  color: #fff;
-}
-
 .Profile__line {
   width: 100%;
   height: 1px;
@@ -140,6 +102,15 @@
   }
 }
 
+.Profile__edit-button_disabled {
+  color: #2f2f2f;
+}
+
+.Profile__edit-button_disabled:hover {
+  opacity: 1;
+  cursor: default;
+}
+
 .Profile__logout-button {
   width: 410px;
   margin: 0 auto 70px;
@@ -169,4 +140,60 @@
     font-size: 12px;
     line-height: 15px;
   }
+}
+
+.Profile__save-button {
+  display: none;
+  align-self: center;
+  width: 410px;
+  height: 45px;
+  margin: 206px auto 16px;
+  background: #3456f3;
+  border: none;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #fff;
+  transition: 0.3s opacity;
+}
+
+.Profile__save-button_active {
+  display: block;
+}
+
+@media screen and (max-width: 830px) {
+  .Profile__save-button {
+    margin-top: 196px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .Profile__save-button {
+    width: 100%;
+    margin-top: 365px;
+  }
+}
+
+.Profile__save-button_disabled {
+  background: #f8f8f8;
+  color: #c2c2c2;
+}
+
+.Profile__save-button:hover {
+  opacity: 0.7;
+}
+
+.Profile__save-button_disabled:hover {
+  opacity: 1;
+  cursor: default;
+}
+
+.Profile__resultText {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  color: #ff004c;
 }

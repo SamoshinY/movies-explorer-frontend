@@ -1,5 +1,5 @@
 import './AboutMe.css';
-import me from '../../images/me.jpg';
+import Bender from '../../images/Bender.jpg';
 
 const AboutMe = () => {
   return (
@@ -27,7 +27,7 @@ const AboutMe = () => {
             Github
           </a>
         </div>
-        <img src={me} className="AboutMe__photo" alt="Фото студента"></img>
+        <img src={Bender} className="AboutMe__photo" alt="Фото студента"></img>
       </div>
     </section>
   );
