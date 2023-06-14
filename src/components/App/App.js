@@ -48,8 +48,9 @@ const App = () => {
             path="saved-movies"
             element={<SavedMovies cardList={cardListSavedMovies} />}
           />
+          <Route path="profile" element={<Profile />} />
         </Route>
-        <Route path="profile" element={<Profile />} />
+
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route path="*" element={<NotFound />} />

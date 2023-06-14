@@ -9,7 +9,7 @@ const LevelWrap = () => {
     <>
       <Header />
       <Outlet />
-      {location.pathname !== 'profile' && <Footer />}
+      {location.pathname !== '/profile' && <Footer />}
     </>
   );
 };
