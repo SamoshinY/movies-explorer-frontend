@@ -1,4 +1,4 @@
-.NavTab {
+.navTab {
   box-sizing: border-box;
   background-color: #272727;
   width: 100%;
@@ -10,7 +10,7 @@
   justify-content: center;
 }
 
-.NavTab__wrap {
+.navTab__wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@
   padding: 0;
 }
 
-.NavTab__link {
+.navTab__link {
   margin: 0 20px;
   font-size: 13px;
   line-height: 16px;
@@ -27,12 +27,12 @@
   transition: 0.3s opacity;
 }
 
-.NavTab__link:hover {
+.navTab__link:hover {
   opacity: 0.7;
 }
 
 @media screen and (max-width: 520px) {
-  .NavTab__link {
+  .navTab__link {
     margin: 0 12px;
     font-size: 11px;
   }

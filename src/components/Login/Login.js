@@ -3,7 +3,7 @@ import Auth from '../Auth/Auth';
 
 const Login = () => {
   return (
-    <section className="Login">
+    <section className="login">
       <Auth
         greeting={'Рады видеть!'}
         textButton={'Войти'}

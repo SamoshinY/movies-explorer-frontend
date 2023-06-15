@@ -1,4 +1,4 @@
-.SavedMovies {
+.savedMovies {
   background-color: #202020;
   min-width: 100%;
   padding: 0;
@@ -9,7 +9,7 @@
   color: #fff;
 }
 
-.SavedMovies__empty-block {
+.savedMovies__empty-block {
   width: 100%;
   height: 140px;
 }

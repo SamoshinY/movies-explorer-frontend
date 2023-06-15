@@ -1,9 +1,9 @@
-.Navigation {
+.navigation {
   width: 100%;
 }
 
 @media screen and (max-width: 830px) {
-  .Navigation {
+  .navigation {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -22,37 +22,42 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Navigation_active {
+  .navigation_active {
     visibility: visible;
     opacity: 1;
   }
 }
 
-.Navigation__container {
+.navigation__container {
   width: 676px;
   margin-left: auto;
   min-height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transform: translateX(100%);
-  transition: transform 0.5s;
 }
 
 @media screen and (max-width: 830px) {
-  .Navigation__container_active {
+  .navigation__container {
+    transform: translateX(100%);
+    transition: transform 0.5s;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .navigation__container_active {
     transform: translateX(0);
   }
 }
 
 @media screen and (max-width: 1080px) {
-  .Navigation__container {
+  .navigation__container {
     width: 520px;
   }
 }
 
 @media screen and (max-width: 830px) {
-  .Navigation__container {
+  .navigation__container {
     flex-direction: column;
     background-color: #202020;
     height: 100vh;
@@ -60,26 +65,26 @@
 }
 
 @media screen and (max-width: 640px) {
-  .Navigation__container {
+  .navigation__container {
     min-width: 100%;
   }
 }
 
-.Navigation__wrap {
+.navigation__wrap {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 16px;
 }
 
 @media screen and (max-width: 830px) {
-  .Navigation__wrap {
+  .navigation__wrap {
     display: flex;
     flex-direction: column;
     margin-top: 159px;
   }
 }
 
-.Navigation__main-link {
+.navigation__main-link {
   display: none;
   text-align: center;
   margin: auto;
@@ -92,16 +97,16 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Navigation__main-link {
+  .navigation__main-link {
     display: inline;
   }
 }
 
-.Navigation__main-link:hover {
+.navigation__main-link:hover {
   opacity: 0.7;
 }
 
-.Navigation__link {
+.navigation__link {
   text-align: center;
   margin: auto;
   text-decoration: none;
@@ -113,33 +118,33 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Navigation__link {
+  .navigation__link {
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
   }
 }
 
-.Navigation__link:hover {
+.navigation__link:hover {
   opacity: 0.7;
 }
 
-.Navigation__link_active {
+.navigation__link_active {
   font-weight: 500;
 }
 
 @media screen and (max-width: 830px) {
-  .Navigation__link_active {
+  .navigation__link_active {
     border-bottom: solid 2px #fff;
   }
 }
 
-.Navigation__link_active:hover {
+.navigation__link_active:hover {
   opacity: 1;
   cursor: default;
 }
 
-.Navigation__profile-link {
+.navigation__profile-link {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -151,16 +156,16 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Navigation__profile-link {
+  .navigation__profile-link {
     margin-bottom: 92px;
   }
 }
 
-.Navigation__profile-link:hover {
+.navigation__profile-link:hover {
   opacity: 0.7;
 }
 
-.Navigation__profile-icon-wrap {
+.navigation__profile-icon-wrap {
   width: 26px;
   height: 30px;
   border-radius: 4px;
@@ -169,13 +174,13 @@
   background-color: #313131;
 }
 
-.Navigation__profile-icon {
+.navigation__profile-icon {
   width: 11.5px;
   height: 14px;
   margin: auto;
 }
 
-.Navigation__profile-button {
+.navigation__profile-button {
   width: 76px;
   height: 32px;
   margin-top: auto;

@@ -29,11 +29,11 @@ const Auth = ({
 
   return (
     <>
-      <section className="Auth">
+      <section className="auth">
         <Logo />
-        <p className="Auth__greeting">{greeting}</p>
-        <form className="Auth__form" onSubmit={handleSubmit}>
-          <fieldset className="Auth__fieldset">
+        <p className="auth__greeting">{greeting}</p>
+        <form className="auth__form" onSubmit={handleSubmit}>
+          <fieldset className="auth__fieldset">
             {children}
             <InputInAuth
               inputName={'email'}
@@ -43,7 +43,8 @@ const Auth = ({
               errors={errors}
               minLength={4}
               maxLength={40}
-              placeholder={''}
+              placeholder={'Введите email'}
+              required
             />
             <InputInAuth
               inputName={'password'}
@@ -53,22 +54,23 @@ const Auth = ({
               errors={errors}
               minLength={4}
               maxLength={40}
-              placeholder={''}
+              placeholder={'Введите пароль'}
+              required
             />
           </fieldset>
           <button
             type="submit"
-            className={`Auth__submit-button ${
-              !isValid && 'Auth__submit-button_disabled'
+            className={`auth__submit-button ${
+              !isValid && 'auth__submit-button_disabled'
             }`}
             disabled={!isValid}
           >
             {textButton}
           </button>
         </form>
-        <div className="Auth__auth-text">
+        <div className="auth__auth-text">
           {textAuth}
-          <Link to={link} className="Auth__link-text">
+          <Link to={link} className="auth__link-text">
             {textLink}
           </Link>
         </div>

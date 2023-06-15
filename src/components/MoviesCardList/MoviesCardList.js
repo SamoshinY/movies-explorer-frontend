@@ -1,7 +1,7 @@
 import './MoviesCardList.css';
 
 const MoviesCardList = ({ cardList }) => {
-  return <section className="MoviesCardList">{cardList}</section>;
+  return <section className="moviesCardList">{cardList}</section>;
 };
 
 export default MoviesCardList;

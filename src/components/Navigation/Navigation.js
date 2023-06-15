@@ -4,18 +4,18 @@ import { NavLink } from 'react-router-dom';
 
 const Navigation = ({ isOpen, handleClick }) => {
   return (
-    <section className={`Navigation ${isOpen && 'Navigation_active'}`}>
+    <section className={`navigation ${isOpen && 'navigation_active'}`}>
       <nav
-        className={`Navigation__container ${
-          isOpen && 'Navigation__container_active'
+        className={`navigation__container ${
+          isOpen && 'navigation__container_active'
         }`}
       >
-        <div className="Navigation__wrap">
+        <div className="navigation__wrap">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `Navigation__main-link ${
-                isActive ? 'Navigation__main-link_active' : ''
+              `navigation__main-link ${
+                isActive ? 'navigation__main-link_active' : ''
               }`
             }
             onClick={handleClick}
@@ -25,7 +25,7 @@ const Navigation = ({ isOpen, handleClick }) => {
           <NavLink
             to="/movies"
             className={({ isActive }) =>
-              `Navigation__link ${isActive ? 'Navigation__link_active' : ''}`
+              `navigation__link ${isActive ? 'navigation__link_active' : ''}`
             }
             onClick={handleClick}
           >
@@ -34,7 +34,7 @@ const Navigation = ({ isOpen, handleClick }) => {
           <NavLink
             to="/saved-movies"
             className={({ isActive }) =>
-              `Navigation__link ${isActive ? 'Navigation__link_active' : ''}`
+              `navigation__link ${isActive ? 'navigation__link_active' : ''}`
             }
             onClick={handleClick}
           >
@@ -44,14 +44,14 @@ const Navigation = ({ isOpen, handleClick }) => {
 
         <NavLink
           to="/profile"
-          className="Navigation__profile-link"
+          className="navigation__profile-link"
           onClick={handleClick}
         >
           Аккаунт
-          <div className="Navigation__profile-icon-wrap">
+          <div className="navigation__profile-icon-wrap">
             <img
               src={profile}
-              className="Navigation__profile-icon"
+              className="navigation__profile-icon"
               alt="Войти в профиль"
             ></img>
           </div>

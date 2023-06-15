@@ -1,4 +1,4 @@
-.Toggle {
+.toggle {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -6,12 +6,12 @@
   transition: left 0.25s;
 }
 
-.Toggle:hover {
+.toggle:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 1080px) {
-  .Toggle {
+  .toggle {
     margin-top: 38px;
     margin-left: auto;
     margin-right: auto;
@@ -19,14 +19,14 @@
 }
 
 @media screen and (max-width: 520px) {
-  .Toggle {
+  .toggle {
     margin-top: 45px;
     font-size: 11px;
     line-height: 18px;
   }
 }
 
-.Toggle-switch {
+.toggle-switch {
   display: inline-block;
   background-color: #8b8b8b;
   border-radius: 7px;
@@ -36,11 +36,11 @@
   vertical-align: middle;
   transition: background 0.3s;
 }
-.Toggle-switch:before,
-.Toggle-switch:after {
+.toggle-switch:before,
+.toggle-switch:after {
   content: '';
 }
-.Toggle-switch:before {
+.toggle-switch:before {
   display: block;
   background-color: #272727;
   border-radius: 50%;
@@ -51,25 +51,26 @@
   left: 4px;
 }
 
-.Toggle-checkbox:checked + .Toggle-switch {
+.toggle-checkbox:checked + .toggle-switch {
   background: #3ddc84;
 }
-.Toggle-checkbox:checked + .Toggle-switch:before {
+.toggle-checkbox:checked + .toggle-switch:before {
   left: 20px;
   background: #fff;
 }
 
-.Toggle-checkbox {
+.toggle-checkbox {
   position: absolute;
   visibility: hidden;
   transition: 0.3s opacity;
 }
 
-.Toggle-label {
+.toggle-label {
   margin-top: 2px;
   margin-right: 15px;
   position: relative;
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
+  color: #fff;
 }

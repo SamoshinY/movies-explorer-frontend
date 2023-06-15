@@ -1,23 +1,23 @@
-.MoviesCard {
+.moviesCard {
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
   background-color: #222222;
 }
 
-.MoviesCard__image {
+.moviesCard__image {
   display: block;
   width: 100%;
   object-fit: cover;
   transition: 0.3s opacity;
 }
 
-.MoviesCard__image:hover {
+.moviesCard__image:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.MoviesCard__wrap {
+.moviesCard__wrap {
   width: 100%;
   display: grid;
   grid-template-columns: auto 28px;
@@ -25,7 +25,7 @@
   gap: 0 24px;
 }
 
-.MoviesCard__title {
+.moviesCard__title {
   color: #fff;
   font-size: 13px;
   line-height: 16px;
@@ -36,7 +36,7 @@
   margin: 14px 0 10px 12px;
 }
 
-.MoviesCard__duration {
+.moviesCard__duration {
   color: #8b8b8b;
   font-size: 11px;
   line-height: 13px;
@@ -47,7 +47,7 @@
   margin: 0 0 14px 12px;
 }
 
-.MoviesCard__save {
+.moviesCard__save {
   width: 16px;
   height: 16px;
   padding: 0;
@@ -62,15 +62,15 @@
   transition: 0.3s opacity;
 }
 
-.MoviesCard__save:hover {
+.moviesCard__save:hover {
   opacity: 0.7;
 }
 
-.MoviesCard__save_active {
+.moviesCard__save_active {
   background-image: url(../../images/saved-active.svg);
 }
 
-.MoviesCard__delete {
+.moviesCard__delete {
   width: 16px;
   height: 16px;
   padding: 0;
@@ -85,6 +85,6 @@
   transition: 0.3s opacity;
 }
 
-.MoviesCard__delete:hover {
+.moviesCard__delete:hover {
   opacity: 0.7;
 }

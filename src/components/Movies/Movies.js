@@ -5,7 +5,7 @@ import MoreButton from '../MoreButton/MoreButton';
 
 const Movies = ({ cardList }) => {
   return (
-    <section className="Movies">
+    <section className="movies">
       <SearchForm />
       <MoviesCardList cardList={cardList} />
       <MoreButton />

@@ -15,7 +15,8 @@ import NotFound from '../NotFound/NotFound';
 
 const App = () => {
   // Для ревью: в коде присутствуют сущности и функции, предназначенные
-  // только для рендера и на следующем этапе будут удалены или преобразованы
+  // для более удобной визуализации элементов и компонентов в различных состояниях,
+  // на следующем этапе они будут преобразованы
 
   const [moviesCards, setMoviesCards] = useState(movies);
 
@@ -48,7 +49,7 @@ const App = () => {
             path="saved-movies"
             element={<SavedMovies cardList={cardListSavedMovies} />}
           />
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile" element={<Profile errorMessage={''} />} />
         </Route>
 
         <Route path="/signin" element={<Login />} />

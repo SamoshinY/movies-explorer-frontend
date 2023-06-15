@@ -14,19 +14,19 @@ const MoviesCard = ({ movie, inSavedList, deleteMovie }) => {
   };
 
   const movieButtonClassName = !inSavedList
-    ? `MoviesCard__save ${isSaved && 'MoviesCard__save_active'}`
-    : 'MoviesCard__delete';
+    ? `moviesCard__save ${isSaved && 'moviesCard__save_active'}`
+    : 'moviesCard__delete';
 
   return (
     <article className="MoviesCard">
-      <img className="MoviesCard__image" src={movie.image} alt={movie.nameRU} />
-      <div className="MoviesCard__wrap">
-        <p className="MoviesCard__title">{movie.nameRU}</p>
+      <img className="moviesCard__image" src={movie.image} alt={movie.nameRU} />
+      <div className="moviesCard__wrap">
+        <p className="moviesCard__title">{movie.nameRU}</p>
         <button
           className={movieButtonClassName}
           onClick={!inSavedList ? toggleSaved : handleDeleteMovie}
         ></button>
-        <p className="MoviesCard__duration">{movie.duration}</p>
+        <p className="moviesCard__duration">{movie.duration}</p>
       </div>
     </article>
   );

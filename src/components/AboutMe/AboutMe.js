@@ -3,16 +3,16 @@ import Bender from '../../images/Bender.jpg';
 
 const AboutMe = () => {
   return (
-    <section id="about-me" className="AboutMe">
-      <h2 className="AboutMe__title">Студент</h2>
-      <div className="AboutMe__line"></div>
-      <div className="AboutMe__wrap">
-        <div className="AboutMe__column">
-          <p className="AboutMe__name">Bender</p>
-          <p className="AboutMe__short-description">
+    <section id="about-me" className="aboutMe">
+      <h2 className="aboutMe__title">Студент</h2>
+      <div className="aboutMe__line"></div>
+      <div className="aboutMe__wrap">
+        <div className="aboutMe__column">
+          <p className="aboutMe__name">Bender</p>
+          <p className="aboutMe__short-description">
             Web-developer, 9&nbsp;лет
           </p>
-          <p className="AboutMe__description">
+          <p className="aboutMe__description">
             Строю свой парк с&nbsp;блэкджеком и&nbsp;шлюхами. увайуапу5н3234к
             йууацуа цуука2цкацаа цуаацауацрео нголенке5 ГРРЩщушоващув шорощр
             нпанеанва6к кв каяс рмиг ыацутаоцуаро грш8нп п7епауевп злзщшошц
@@ -21,13 +21,13 @@ const AboutMe = () => {
           <a
             href="https://github.com/SamoshinY"
             target="_blank"
-            className="AboutMe__github-link"
+            className="aboutMe__github-link"
             rel="noreferrer"
           >
             Github
           </a>
         </div>
-        <img src={Bender} className="AboutMe__photo" alt="Фото студента"></img>
+        <img src={Bender} className="aboutMe__photo" alt="Фото студента"></img>
       </div>
     </section>
   );

@@ -2,10 +2,10 @@ import './Toggle.css';
 
 const Toggle = () => {
   return (
-    <label class="Toggle">
-      <span class="Toggle-label">Короткометражки</span>
-      <input class="Toggle-checkbox" type="checkbox"></input>
-      <div class="Toggle-switch"></div>
+    <label class="toggle">
+      <span class="toggle-label">Короткометражки</span>
+      <input class="toggle-checkbox" type="checkbox"></input>
+      <div class="toggle-switch"></div>
     </label>
   );
 };

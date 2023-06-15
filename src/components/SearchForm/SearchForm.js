@@ -3,21 +3,21 @@ import Toggle from '../Toggle/Toggle';
 
 const SearchForm = () => {
   return (
-    <div className="SearchForm">
-      <form className="SearchForm__form">
-        <div className="SearchForm__input-wrap">
+    <div className="searchForm">
+      <form className="searchForm__form">
+        <div className="searchForm__input-wrap">
           <input
-            className="SearchForm__input"
+            className="searchForm__input"
             type="text"
             name="search-movie"
             placeholder="Фильм"
             required
           ></input>
-          <button className="SearchForm__find-button"></button>
+          <button className="searchForm__find-button"></button>
         </div>
         <Toggle />
       </form>
-      <div className="SearchForm__line"></div>
+      <div className="searchForm__line"></div>
     </div>
   );
 };

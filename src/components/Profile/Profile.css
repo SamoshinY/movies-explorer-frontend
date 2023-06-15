@@ -1,4 +1,4 @@
-.Profile {
+.profile {
   box-sizing: border-box;
   background-color: #202020;
   width: 100%;
@@ -11,69 +11,79 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Profile {
+  .profile {
     padding: 0 30px;
     min-height: 950px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .Profile {
+  .profile {
     min-height: 706px;
   }
 }
 
-.Profile__greeting {
+.profile__greeting {
   margin: 74px auto 108px;
   font-size: 24px;
   line-height: 29px;
   font-weight: 500;
   text-align: center;
+  color: #fff;
 }
 
 @media screen and (max-width: 830px) {
-  .Profile__greeting {
+  .profile__greeting {
     margin: 236px auto 81px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .Profile__greeting {
+  .profile__greeting {
     margin: 70px auto 66px;
   }
 }
 
-.Profile__form {
+.profile__wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.profile__form {
   width: 410px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 520px) {
-  .Profile__form {
+  .profile__form {
     width: 100%;
   }
 }
 
-.Profile__fieldset {
+.profile__fieldset {
   width: 100%;
   margin: 0;
   padding: 0;
   border: none;
 }
 
-.Profile__line {
+.profile__line {
   width: 100%;
   height: 1px;
   background-color: #424242;
 }
 
-.Profile__edit-button {
+.profile__edit-button {
   align-self: center;
   width: 410px;
   height: 16px;
   margin: 206px auto 16px;
+  padding: 0;
   background: none;
   border: none;
   font-size: 13px;
@@ -84,34 +94,34 @@
   transition: 0.3s opacity;
 }
 
-.Profile__edit-button:hover {
+.profile__edit-button:hover {
   opacity: 0.7;
   cursor: pointer;
 }
 
 @media screen and (max-width: 830px) {
-  .Profile__edit-button {
+  .profile__edit-button {
     margin-top: 196px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .Profile__edit-button {
+  .profile__edit-button {
     width: 100%;
     margin-top: 365px;
   }
 }
 
-.Profile__edit-button_disabled {
+.profile__edit-button_disabled {
   color: #8b8b8b;
 }
 
-.Profile__edit-button_disabled:hover {
+.profile__edit-button_disabled:hover {
   opacity: 1;
   cursor: default;
 }
 
-.Profile__logout-button {
+.profile__logout-button {
   width: 410px;
   margin: 0 auto 70px;
   font-size: 13px;
@@ -123,18 +133,18 @@
   transition: 0.3s opacity;
 }
 
-.Profile__logout-button:hover {
+.profile__logout-button:hover {
   opacity: 0.7;
 }
 
 @media screen and (max-width: 830px) {
-  .Profile__logout-button {
+  .profile__logout-button {
     margin-bottom: 269px;
   }
 }
 
-@media screen and (max-width: 830px) {
-  .Profile__logout-button {
+@media screen and (max-width: 520px) {
+  .profile__logout-button {
     width: 100%;
     margin-bottom: 40px;
     font-size: 12px;
@@ -142,13 +152,13 @@
   }
 }
 
-.Profile__save-button {
-  display: none;
+.profile__save-button {
   align-self: center;
   width: 410px;
   height: 45px;
-  margin: 206px auto 16px;
-  background: #3456f3;
+  margin: 0 auto 70px;
+  padding: 0;
+  background: #4285f4;
   border: none;
   border-radius: 3px;
   font-weight: 500;
@@ -156,44 +166,55 @@
   line-height: 17px;
   text-align: center;
   color: #fff;
+  cursor: pointer;
   transition: 0.3s opacity;
 }
 
-.Profile__save-button_active {
-  display: block;
-}
-
 @media screen and (max-width: 830px) {
-  .Profile__save-button {
-    margin-top: 196px;
+  .profile__save-button {
+    margin-bottom: 269px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .Profile__save-button {
+  .profile__save-button {
     width: 100%;
-    margin-top: 365px;
+    margin-bottom: 40px;
   }
 }
 
-.Profile__save-button_disabled {
+.profile__save-button_disabled {
   background: #f8f8f8;
   color: #c2c2c2;
+  cursor: default;
 }
 
-.Profile__save-button:hover {
+.profile__save-button:hover {
   opacity: 0.7;
 }
 
-.Profile__save-button_disabled:hover {
+.profile__save-button_disabled:hover {
   opacity: 1;
   cursor: default;
 }
 
-.Profile__resultText {
+.profile__resultText {
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
   text-align: center;
-  color: #ff004c;
+  color: #ee3465;
+  margin: 175px auto 20px;
+}
+
+@media screen and (max-width: 830px) {
+  .profile__resultText {
+    margin-top: 165px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .profile__resultText {
+    margin-top: 334px;
+  }
 }

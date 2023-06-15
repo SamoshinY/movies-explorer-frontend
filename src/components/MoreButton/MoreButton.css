@@ -1,4 +1,4 @@
-.MoreButton {
+.moreButton {
   width: 320px;
   height: 36px;
   margin: 50px auto 80px;
@@ -14,12 +14,12 @@
 }
 
 @media screen and (max-width: 520px) {
-  .MoreButton {
+  .moreButton {
     width: 240px;
   }
 }
 
-.MoreButton:hover {
+.moreButton:hover {
   opacity: 0.8;
   cursor: pointer;
 }

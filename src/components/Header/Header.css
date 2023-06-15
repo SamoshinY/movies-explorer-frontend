@@ -1,4 +1,4 @@
-.Header {
+.header {
   background-color: #202020;
   padding: 0 70px;
   width: 100%;
@@ -10,19 +10,19 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Header {
+  .header {
     padding: 0 30px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .Header {
+  .header {
     padding: 0 14px;
   }
 }
 
 @media screen and (max-width: 830px) {
-  .Header_inLanding {
+  .header_inLanding {
     background-color: #073042;
   }
 }

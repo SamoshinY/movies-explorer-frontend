@@ -1,4 +1,4 @@
-.Promo {
+.promo {
   box-sizing: border-box;
   background-color: #073042;
   background-image: url('../../images/landing-logo.svg');
@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Promo {
+  .promo {
     padding: 0 19px;
     min-height: 784px;
     background-position: 50% 224px;
@@ -22,7 +22,7 @@
 }
 
 @media screen and (max-width: 520px) {
-  .Promo {
+  .promo {
     padding: 0 10px;
     min-height: 570px;
     background-size: 248px;
@@ -30,7 +30,7 @@
   }
 }
 
-.Promo__title {
+.promo__title {
   text-align: center;
   margin: 184px auto 224px;
   width: 730px;
@@ -42,13 +42,13 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Promo__title {
+  .promo__title {
     margin: 326px auto 342px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .Promo__title {
+  .promo__title {
     margin: 207px auto 246px;
     height: 117px;
     font-size: 31px;

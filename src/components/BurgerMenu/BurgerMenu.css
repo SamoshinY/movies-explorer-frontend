@@ -1,4 +1,4 @@
-.BurgerMenu {
+.burgerMenu {
   display: none;
   width: 44px;
   height: 44px;
@@ -7,16 +7,16 @@
 }
 
 @media screen and (max-width: 830px) {
-  .BurgerMenu {
+  .burgerMenu {
     display: block;
   }
 }
 
-.BurgerMenu:hover {
+.burgerMenu:hover {
   opacity: 0.7;
 }
 
-.BurgerMenu__open {
+.burgerMenu__open {
   width: 44px;
   height: 44px;
   padding: 0;
@@ -30,12 +30,12 @@
 }
 
 @media screen and (max-width: 830px) {
-  .BurgerMenu__open {
+  .burgerMenu__open {
     background-size: 40px 43px;
   }
 }
 
-.BurgerMenu__close {
+.burgerMenu__close {
   width: 44px;
   height: 44px;
   padding: 0;

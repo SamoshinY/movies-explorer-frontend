@@ -1,4 +1,4 @@
-.Footer {
+.footer {
   box-sizing: border-box;
   background-color: #202020;
   width: 100%;
@@ -11,19 +11,19 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Footer {
+  .footer {
     padding: 0 30px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .Footer {
+  .footer {
     padding: 0 10px;
     min-height: 253px;
   }
 }
 
-.Footer__caption {
+.footer__caption {
   max-width: 320px;
   margin: 79px auto 20px;
   font-size: 13px;
@@ -33,14 +33,14 @@
 }
 
 @media screen and (max-width: 520px) {
-  .Footer__caption {
+  .footer__caption {
     font-size: 12px;
     line-height: 15px;
     margin-bottom: 21px;
   }
 }
 
-.Footer__line {
+.footer__line {
   width: 100%;
   height: 1px;
   margin-bottom: 20px;
@@ -48,24 +48,24 @@
 }
 
 @media screen and (max-width: 520px) {
-  .Footer__line {
+  .footer__line {
     margin-bottom: 28px;
   }
 }
 
-.Footer__wrap {
+.footer__wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 @media screen and (max-width: 520px) {
-  .Footer__wrap {
+  .footer__wrap {
     flex-direction: column-reverse;
   }
 }
 
-.Footer__copyright {
+.footer__copyright {
   margin: 0;
   font-size: 13px;
   line-height: 16px;
@@ -74,7 +74,7 @@
 }
 
 @media screen and (max-width: 520px) {
-  .Footer__copyright {
+  .footer__copyright {
     margin-top: 18px;
     margin-bottom: 20px;
     font-size: 12px;
@@ -82,7 +82,7 @@
   }
 }
 
-.Footer__links {
+.footer__links {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
@@ -91,28 +91,28 @@
 }
 
 @media screen and (max-width: 520px) {
-  .Footer__links {
+  .footer__links {
     flex-direction: column;
     align-items: center;
   }
 }
 
-.Footer__item {
+.footer__item {
   margin-right: 20px;
 }
 
 @media screen and (max-width: 520px) {
-  .Footer__item {
+  .footer__item {
     margin-right: 0;
     margin-bottom: 10px;
   }
 }
 
-.Footer__item:last-of-type {
+.footer__item:last-of-type {
   margin-right: 0;
 }
 
-.Footer__link {
+.footer__link {
   text-decoration: none;
   font-size: 13px;
   line-height: 16px;
@@ -121,12 +121,12 @@
   transition: 0.3s opacity;
 }
 
-.Footer__link:hover {
+.footer__link:hover {
   opacity: 0.7;
 }
 
 @media screen and (max-width: 520px) {
-  .Footer__link {
+  .footer__link {
     font-size: 12px;
     line-height: 15px;
   }

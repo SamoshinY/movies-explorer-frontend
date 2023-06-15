@@ -2,20 +2,20 @@ import './NavTab.css';
 
 const NavTab = () => {
   return (
-    <nav className="NavTab">
-      <ul className="NavTab__wrap">
+    <nav className="navTab">
+      <ul className="navTab__wrap">
         <li>
-          <a className="NavTab__link" href="#about-project">
+          <a className="navTab__link" href="#about-project">
             О проекте
           </a>
         </li>
         <li>
-          <a className="NavTab__link" href="#techs">
+          <a className="navTab__link" href="#techs">
             Технологии
           </a>
         </li>
         <li>
-          <a className="NavTab__link" href="#about-me">
+          <a className="navTab__link" href="#about-me">
             Студент
           </a>
         </li>

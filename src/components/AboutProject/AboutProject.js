@@ -2,30 +2,30 @@ import './AboutProject.css';
 
 const AboutProject = () => {
   return (
-    <section id="about-project" className="AboutProject">
-      <h2 className="AboutProject__title">О проекте</h2>
-      <div className="AboutProject__line"></div>
-      <div className="AboutProject__wrap">
-        <p className="AboutProject__column-subtitle">
+    <section id="about-project" className="aboutProject">
+      <h2 className="aboutProject__title">О проекте</h2>
+      <div className="aboutProject__line"></div>
+      <div className="aboutProject__wrap">
+        <p className="aboutProject__column-subtitle">
           Дипломный проект включал 5&nbsp;этапов
         </p>
-        <p className="AboutProject__column-text">
+        <p className="aboutProject__column-text">
           Составление плана, работу над бэкендом, вёрстку, добавление
           функциональности и&nbsp;финальные доработки.
         </p>
-        <p className="AboutProject__column-subtitle">
+        <p className="aboutProject__column-subtitle">
           На&nbsp;выполнение диплома ушло 5&nbsp;недель
         </p>
-        <p className="AboutProject__column-text">
+        <p className="aboutProject__column-text">
           У&nbsp;каждого этапа был мягкий и&nbsp;жёсткий дедлайн, которые нужно
           было соблюдать, чтобы успешно защититься.
         </p>
       </div>
-      <div className="AboutProject__scale">
-        <div className="AboutProject__scale-backend">1 неделя</div>
-        <div className="AboutProject__scale-frontend">4 недели</div>
-        <p className="AboutProject__scale-caption">Back-end</p>
-        <p className="AboutProject__scale-caption">Front-end</p>
+      <div className="aboutProject__scale">
+        <div className="aboutProject__scale-backend">1 неделя</div>
+        <div className="aboutProject__scale-frontend">4 недели</div>
+        <p className="aboutProject__scale-caption">Back-end</p>
+        <p className="aboutProject__scale-caption">Front-end</p>
       </div>
     </section>
   );

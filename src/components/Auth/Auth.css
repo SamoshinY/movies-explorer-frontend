@@ -1,4 +1,4 @@
-.Auth {
+.auth {
   box-sizing: border-box;
   background-color: #202020;
   width: 396px;
@@ -10,14 +10,14 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Auth {
+  .auth {
     margin-top: 232px;
     height: 792px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .Auth {
+  .auth {
     margin-top: 56px;
     padding: 0 30px;
     width: 100%;
@@ -26,7 +26,7 @@
   }
 }
 
-.Auth__greeting {
+.auth__greeting {
   width: 100%;
   margin: 40px 0;
   font-size: 24px;
@@ -36,14 +36,14 @@
 }
 
 @media screen and (max-width: 520px) {
-  .Auth__greeting {
+  .auth__greeting {
     margin-top: 50px;
     margin-bottom: 80px;
     text-align: center;
   }
 }
 
-.Auth__form {
+.auth__form {
   width: 100%;
   height: 380px;
   margin: 0;
@@ -53,12 +53,12 @@
 }
 
 @media screen and (max-width: 520px) {
-  .Auth__form {
+  .auth__form {
     height: 468px;
   }
 }
 
-.Auth__fieldset {
+.auth__fieldset {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -67,7 +67,7 @@
   border: none;
 }
 
-.Auth__submit-button {
+.auth__submit-button {
   width: 100%;
   height: 45px;
   margin: 0;
@@ -82,28 +82,28 @@
   transition: 0.3s opacity;
 }
 
-.Auth__submit-button:hover {
+.auth__submit-button:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
 @media screen and (max-width: 520px) {
-  .Auth__submit-button {
+  .auth__submit-button {
     font-size: 12px;
     line-height: 15px;
   }
 }
 
-.Auth__submit-button_disabled {
+.auth__submit-button_disabled {
   background-color: #2f2f2f;
 }
 
-.Auth__submit-button_disabled:hover {
+.auth__submit-button_disabled:hover {
   opacity: 1;
   cursor: default;
 }
 
-.Auth__auth-text {
+.auth__auth-text {
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -112,13 +112,13 @@
 }
 
 @media screen and (max-width: 830px) {
-  .Auth__auth-text {
+  .auth__auth-text {
     margin-bottom: 232px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .Auth__auth-text {
+  .auth__auth-text {
     margin-top: 14px;
     margin-bottom: 30px;
     font-size: 12px;
@@ -126,7 +126,7 @@
   }
 }
 
-.Auth__link-text {
+.auth__link-text {
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -136,12 +136,12 @@
   transition: 0.3s opacity;
 }
 
-.Auth__link-text:hover {
+.auth__link-text:hover {
   opacity: 0.7;
 }
 
 @media screen and (max-width: 520px) {
-  .Auth__link-text {
+  .auth__link-text {
     font-size: 12px;
     line-height: 15px;
   }

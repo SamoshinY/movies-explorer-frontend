@@ -1,4 +1,4 @@
-.AboutProject {
+.aboutProject {
   box-sizing: border-box;
   background-color: #202020;
   width: 100%;
@@ -11,20 +11,20 @@
 }
 
 @media screen and (max-width: 830px) {
-  .AboutProject {
+  .aboutProject {
     min-height: 585px;
     padding: 0 50px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject {
+  .aboutProject {
     min-height: 641px;
     padding: 0 18px;
   }
 }
 
-.AboutProject__title {
+.aboutProject__title {
   width: 50%;
   min-height: auto;
   margin: 110px 0 0 0;
@@ -35,20 +35,20 @@
 }
 
 @media screen and (max-width: 830px) {
-  .AboutProject__title {
+  .aboutProject__title {
     margin-top: 90px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject__title {
+  .aboutProject__title {
     margin-top: 70px;
     font-size: 18px;
     line-height: 22px;
   }
 }
 
-.AboutProject__line {
+.aboutProject__line {
   width: 100%;
   height: 1px;
   margin: 23px 0 70px;
@@ -56,12 +56,12 @@
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject__line {
+  .aboutProject__line {
     margin: 28px 0 60px;
   }
 }
 
-.AboutProject__wrap {
+.aboutProject__wrap {
   width: 100%;
   margin: 0;
   column-count: 2;
@@ -69,19 +69,19 @@
 }
 
 @media screen and (max-width: 830px) {
-  .AboutProject__wrap {
+  .aboutProject__wrap {
     column-gap: 30px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject__wrap {
+  .aboutProject__wrap {
     min-height: 328px;
     column-count: 1;
   }
 }
 
-.AboutProject__column-subtitle {
+.aboutProject__column-subtitle {
   margin: 0;
   font-size: 20px;
   line-height: 24px;
@@ -91,13 +91,13 @@
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject__column-subtitle {
+  .aboutProject__column-subtitle {
     font-size: 18px;
     line-height: 22px;
   }
 }
 
-.AboutProject__column-text {
+.aboutProject__column-text {
   margin: 26px 0 0;
   font-size: 14px;
   line-height: 20px;
@@ -106,7 +106,7 @@
 }
 
 @media screen and (max-width: 830px) {
-  .AboutProject__column-text {
+  .aboutProject__column-text {
     margin-top: 22px;
     font-size: 12px;
     line-height: 18px;
@@ -114,7 +114,7 @@
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject__column-text {
+  .aboutProject__column-text {
     margin-top: 16px;
     font-size: 11px;
     line-height: 16px;
@@ -122,7 +122,7 @@
   }
 }
 
-.AboutProject__scale {
+.aboutProject__scale {
   width: 100%;
   display: grid;
   grid-template-rows: repeat(2, 36px);
@@ -131,20 +131,20 @@
 }
 
 @media screen and (max-width: 830px) {
-  .AboutProject__scale {
+  .aboutProject__scale {
     margin-top: 93px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject__scale {
+  .aboutProject__scale {
     margin-top: 4px;
     grid-template-rows: repeat(2, 35px);
     grid-template-columns: 100px auto;
   }
 }
 
-.AboutProject__scale-backend {
+.aboutProject__scale-backend {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,13 +156,13 @@
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject__scale-backend {
+  .aboutProject__scale-backend {
     font-size: 11px;
     line-height: 13px;
   }
 }
 
-.AboutProject__scale-frontend {
+.aboutProject__scale-frontend {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,13 +174,13 @@
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject__scale-frontend {
+  .aboutProject__scale-frontend {
     font-size: 11px;
     line-height: 13px;
   }
 }
 
-.AboutProject__scale-caption {
+.aboutProject__scale-caption {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,13 +192,13 @@
 }
 
 @media screen and (max-width: 830px) {
-  .AboutProject__scale-caption {
+  .aboutProject__scale-caption {
     color: #a0a0a0;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .AboutProject__scale-caption {
+  .aboutProject__scale-caption {
     font-size: 11px;
     line-height: 13px;
   }

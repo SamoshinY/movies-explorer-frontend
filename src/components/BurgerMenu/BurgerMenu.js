@@ -2,11 +2,11 @@ import './BurgerMenu.css';
 
 const BurgerMenu = ({ isOpen, handleClick }) => {
   return (
-    <div className="BurgerMenu">
+    <div className="burgerMenu">
       {!isOpen && (
         <button
           type="button"
-          className="BurgerMenu__open"
+          className="burgerMenu__open"
           onClick={handleClick}
         ></button>
       )}
@@ -14,7 +14,7 @@ const BurgerMenu = ({ isOpen, handleClick }) => {
         <button
           onClick={handleClick}
           type="button"
-          className="BurgerMenu__close"
+          className="burgerMenu__close"
         ></button>
       )}
     </div>

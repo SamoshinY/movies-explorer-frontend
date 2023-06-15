@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header
-      className={`Header ${location.pathname === '/' && 'Header_inLanding'} `}
+      className={`header ${location.pathname === '/' && 'header_inLanding'} `}
     >
       <Logo />
       <Routes>
