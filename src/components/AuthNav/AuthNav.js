@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 const AuthNav = () => {
   return (
-    <nav className="authNav">
-      <Link to="/signup" className="authNav__signup-link">
+    <nav className="auth-nav">
+      <Link to="/signup" className="auth-nav__signup-link">
         Регистрация
       </Link>
-      <Link to="/signin" className="authNav__signin-button">
+      <Link to="/signin" className="auth-nav__signin-button">
         Войти
       </Link>
     </nav>

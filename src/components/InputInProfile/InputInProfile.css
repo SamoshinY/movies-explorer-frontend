@@ -1,10 +1,10 @@
-.inputInProfile {
+.input-profile {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.inputInProfile__input {
+.input-profile__input {
   width: 100%;
   height: 45px;
   margin: 0;
@@ -20,17 +20,17 @@
   color: #fff;
 }
 
-.inputInProfile__input:focus {
+.input-profile__input:focus {
   outline: 2px solid #3ddc84;
 }
 
 @media screen and (max-width: 520px) {
-  .inputInProfile__input {
+  .input-profile__input {
     height: 44px;
   }
 }
 
-.inputInProfile__label {
+.input-profile__label {
   width: 141px;
   margin: 0;
   font-size: 11px;
@@ -42,11 +42,11 @@
 
 /**/
 
-.inputInProfile__input_type_error {
+.input-profile__input_type_error {
   color: #ee3465;
 }
 
-.inputInProfile__input-error {
+.input-profile__input-error {
   padding-top: 10px;
   font-size: 10px;
   font-weight: 400;

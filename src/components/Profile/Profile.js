@@ -31,7 +31,7 @@ const Profile = ({ errorMessage }) => {
   };
 
   return (
-    <section className="Profile">
+    <section className="profile">
       <p className="profile__greeting">Привет, {currentUser.name}!</p>
       <div className="profile__wrap">
         <form className="profile__form" onSubmit={handleSubmit}>

@@ -1,4 +1,4 @@
-.inputInAuth__label {
+.input-auth__label {
   margin: 0 0 10px;
   font-size: 10px;
   line-height: 12px;
@@ -6,7 +6,7 @@
   color: #8b8b8b;
 }
 
-.inputInAuth__input {
+.input-auth__input {
   width: calc(100% - 30px);
   height: 46px;
   margin: 0;
@@ -22,15 +22,15 @@
   color: #fff;
 }
 
-.inputInAuth__input:focus {
+.input-auth__input:focus {
   outline: 2px solid #3ddc84;
 }
 
-.inputInAuth__input_type_error {
+.input-auth__input_type_error {
   color: #ee3465;
 }
 
-.inputInAuth__auth-text {
+.input-auth__auth-text {
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -38,7 +38,7 @@
   margin: 16px auto 70px;
 }
 
-.inputInAuth__input-error {
+.input-auth__input-error {
   padding-top: 10px;
   font-size: 10px;
   font-weight: 400;

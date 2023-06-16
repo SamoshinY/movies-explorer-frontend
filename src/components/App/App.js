@@ -14,10 +14,6 @@ import currentUser from '../../utils/user';
 import NotFound from '../NotFound/NotFound';
 
 const App = () => {
-  // Для ревью: в коде присутствуют сущности и функции, предназначенные
-  // для более удобной визуализации элементов и компонентов в различных состояниях,
-  // на следующем этапе они будут преобразованы
-
   const [moviesCards, setMoviesCards] = useState(movies);
 
   const deleteMovie = (movie) => {

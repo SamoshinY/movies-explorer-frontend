@@ -1,7 +1,7 @@
 import './MoreButton.css';
 
 const MoreButton = () => {
-  return <button className="moreButton">Ещё</button>;
+  return <button className="more-button">Ещё</button>;
 };
 
 export default MoreButton;

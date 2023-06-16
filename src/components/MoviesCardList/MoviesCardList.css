@@ -1,4 +1,4 @@
-.moviesCardList {
+.movies-card-list {
   box-sizing: border-box;
   padding: 0 70px;
   width: 100%;
@@ -11,14 +11,14 @@
 }
 
 @media screen and (max-width: 1080px) {
-  .moviesCardList {
+  .movies-card-list {
     grid-template-columns: repeat(3, 1fr);
     gap: 34px 24px;
   }
 }
 
 @media screen and (max-width: 830px) {
-  .moviesCardList {
+  .movies-card-list {
     padding: 0 30px;
     grid-template-columns: repeat(2, 1fr);
     gap: 36px 30px;
@@ -26,7 +26,7 @@
 }
 
 @media screen and (max-width: 520px) {
-  .moviesCardList {
+  .movies-card-list {
     margin-top: 40px;
     padding: 0 10px;
     grid-template-columns: 1fr;

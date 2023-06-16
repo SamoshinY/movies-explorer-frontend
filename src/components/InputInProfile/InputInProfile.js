@@ -11,9 +11,9 @@ const InputInProfile = ({
   placeholder,
 }) => {
   return (
-    <div className="inputInProfile">
-      <label className="inputInProfile__label">{labelCaption}</label>
-      <span className={`${inputName}-input-error inputInProfile__input-error`}>
+    <div className="input-profile">
+      <label className="input-profile__label">{labelCaption}</label>
+      <span className={`${inputName}-input-error input-profile__input-error`}>
         {errors[inputName] || ''}
       </span>
       <input
@@ -21,8 +21,8 @@ const InputInProfile = ({
         type={`${inputName}`}
         name={`${inputName}`}
         placeholder={placeholder}
-        className={`inputInProfile__input inputInProfile__input_text_${inputName}" ${
-          errors[inputName] && 'inputInProfile__input_type_error'
+        className={`input-profile__input input-profile__input_text_${inputName}" ${
+          errors[inputName] && 'input-profile__input_type_error'
         }`}
         required
         minLength={minLength}

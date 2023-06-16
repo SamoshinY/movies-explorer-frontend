@@ -21,8 +21,6 @@
 @media screen and (max-width: 520px) {
   .toggle {
     margin-top: 45px;
-    font-size: 11px;
-    line-height: 18px;
   }
 }
 
@@ -73,4 +71,11 @@
   font-size: 13px;
   line-height: 18px;
   color: #fff;
+}
+
+@media screen and (max-width: 520px) {
+  .toggle-label {
+    font-size: 11px;
+    line-height: 18px;
+  }
 }

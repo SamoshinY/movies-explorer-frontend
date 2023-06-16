@@ -12,14 +12,14 @@ const InputInAuth = ({
 }) => {
   return (
     <>
-      <label className="inputInAuth__label">{labelCaption}</label>
+      <label className="input-auth__label">{labelCaption}</label>
       <input
         id={`${inputName}-input`}
         type={`${inputName}`}
         name={`${inputName}`}
         placeholder={placeholder}
-        className={`inputInAuth__input inputInAuth__input_text_${inputName}" ${
-          errors[inputName] && 'inputInAuth__input_type_error'
+        className={`input-auth__input input-auth__input_text_${inputName}" ${
+          errors[inputName] && 'input-auth__input_type_error'
         }`}
         required
         minLength={minLength}
@@ -27,7 +27,7 @@ const InputInAuth = ({
         onChange={handleChange}
         value={values[inputName] || ''}
       />
-      <span className={`${inputName}-input-error inputInAuth__input-error`}>
+      <span className={`${inputName}-input-error input-auth__input-error`}>
         {errors[inputName] || ''}
       </span>
     </>

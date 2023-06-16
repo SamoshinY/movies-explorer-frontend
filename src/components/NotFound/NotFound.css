@@ -1,4 +1,4 @@
-.notFound {
+.not-found {
   width: 100%;
   height: 700px;
   display: flex;
@@ -6,18 +6,18 @@
 }
 
 @media screen and (max-width: 830px) {
-  .notFound {
+  .not-found {
     height: 1024px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .notFound {
+  .not-found {
     height: 780px;
   }
 }
 
-.notFound__404 {
+.not-found__404 {
   margin: 246px auto 5px;
   font-size: 140px;
   line-height: 169px;
@@ -26,13 +26,13 @@
 }
 
 @media screen and (max-width: 830px) {
-  .notFound__404 {
+  .not-found__404 {
     margin-top: 408px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .notFound__404 {
+  .not-found__404 {
     margin-top: 329px;
     margin-bottom: 10px;
     font-size: 80px;
@@ -40,7 +40,7 @@
   }
 }
 
-.notFound__text {
+.not-found__text {
   margin: 0 auto;
   font-size: 16px;
   line-height: 19px;
@@ -49,13 +49,13 @@
 }
 
 @media screen and (max-width: 520px) {
-  .notFound__text {
+  .not-found__text {
     font-size: 12px;
     line-height: 15px;
   }
 }
 
-.notFound__back-link {
+.not-found__back-link {
   margin: 184px auto 60px;
   font-size: 14px;
   line-height: 17px;
@@ -64,8 +64,8 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 830px) {
-  .notFound__back-link {
+@media screen and (max-width: 520px) {
+  .not-found__back-link {
     margin-top: 284px;
     margin-bottom: 30px;
   }
