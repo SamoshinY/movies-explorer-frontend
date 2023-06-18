@@ -6,6 +6,7 @@ import MoreButton from '../MoreButton/MoreButton';
 const Movies = ({ cardList }) => {
   return (
     <main className="movies" aria-label='Страница "Фильмы"'>
+      <div className="movies__empty-block"></div>
       <SearchForm />
       <MoviesCardList cardList={cardList} />
       <MoreButton />

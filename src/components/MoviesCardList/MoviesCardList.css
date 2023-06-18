@@ -7,11 +7,12 @@
   grid-template-rows: minmax(min-content, max-content);
   grid-row-gap: 32px;
   grid-column-gap: 20px;
-  margin: 70px 0 30px;
+  margin: 45px 0 30px;
 }
 
 @media screen and (max-width: 1080px) {
   .movies-card-list {
+    margin-top: 70px;
     grid-template-columns: repeat(3, 1fr);
     gap: 34px 24px;
   }
