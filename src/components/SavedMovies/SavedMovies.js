@@ -4,11 +4,11 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 const SavedMovies = ({ cardList }) => {
   return (
-    <section className="saved-movies">
+    <main className="saved-movies" aria-label='Страница "Сохраненные фильмы"'>
       <SearchForm />
       <MoviesCardList cardList={cardList} />
       <div className="saved-movies__empty-block"></div>
-    </section>
+    </main>
   );
 };
 

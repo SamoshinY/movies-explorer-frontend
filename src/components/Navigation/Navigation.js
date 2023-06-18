@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 
 const Navigation = ({ isOpen, handleClick }) => {
   return (
-    <section className={`navigation ${isOpen && 'navigation_active'}`}>
+    <section
+      className={isOpen ? 'navigation navigation_active' : 'navigation'}
+      aria-label="Блок навигации по странице"
+    >
       <nav
         className={`navigation__container ${
           isOpen && 'navigation__container_active'

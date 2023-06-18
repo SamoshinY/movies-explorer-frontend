@@ -3,12 +3,15 @@
   overflow: hidden;
   border-radius: 10px;
   background-color: #222222;
+  box-sizing: border-box;
 }
 
 .movies-card__image {
   display: block;
   width: 100%;
-  object-fit: cover;
+  overflow: hidden;
+  object-fit: contain;
+  aspect-ratio: 270/151;
   transition: 0.3s opacity;
 }
 
@@ -18,11 +21,9 @@
 }
 
 .movies-card__wrap {
-  width: 100%;
-  display: grid;
-  grid-template-columns: auto 28px;
-  grid-template-rows: auto;
-  gap: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 10px 14px;
 }
 
 .movies-card__title {
@@ -33,7 +34,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 14px 0 10px 12px;
+  margin: 2px 0 0 2px;
 }
 
 .movies-card__duration {
@@ -44,21 +45,21 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 0 0 14px 12px;
+  margin: 10px 0 0;
 }
 
 .movies-card__save {
   width: 16px;
-  height: 16px;
-  padding: 0;
+  height: 22px;
   border: none;
+  margin: 2px 0 0 5px;
+  padding: 0;
   cursor: pointer;
   background-color: transparent;
   background-image: url(../../images/saved.svg);
-  background-size: 100%;
   background-repeat: no-repeat;
-  background-size: 16px 16px;
-  margin: 14px 12px 0 0;
+  background-position: center;
+  background-size: auto;
   transition: 0.3s opacity;
 }
 
@@ -78,10 +79,9 @@
   cursor: pointer;
   background-color: transparent;
   background-image: url(../../images/delete.svg);
-  background-size: 100%;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
-  margin: 14px 12px 0 0;
   transition: 0.3s opacity;
 }
 

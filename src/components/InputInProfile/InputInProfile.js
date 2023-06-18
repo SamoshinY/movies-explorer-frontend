@@ -18,7 +18,7 @@ const InputInProfile = ({
       </span>
       <input
         id={`${inputName}-input`}
-        type={`${inputName}`}
+        type={`${inputName === 'name' ? 'text' : 'email'}`}
         name={`${inputName}`}
         placeholder={placeholder}
         className={`input-profile__input input-profile__input_text_${inputName}" ${

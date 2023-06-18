@@ -31,7 +31,7 @@ const Profile = ({ errorMessage }) => {
   };
 
   return (
-    <section className="profile">
+    <main className="profile" aria-label="Страница редактирования профиля">
       <p className="profile__greeting">Привет, {currentUser.name}!</p>
       <div className="profile__wrap">
         <form className="profile__form" onSubmit={handleSubmit}>
@@ -58,7 +58,7 @@ const Profile = ({ errorMessage }) => {
               placeholder={currentUser.email || ''}
             />
           </fieldset>
-          <div className="profile__wrap">
+          <div className="profile__wrapper">
             {resultText && (
               <span className="profile__resultText">{resultText}</span>
             )}
@@ -92,7 +92,7 @@ const Profile = ({ errorMessage }) => {
           </Link>
         )}
       </div>
-    </section>
+    </main>
   );
 };
 

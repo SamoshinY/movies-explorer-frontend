@@ -29,7 +29,10 @@ const Auth = ({
 
   return (
     <>
-      <section className="auth">
+      <section
+        className="auth"
+        aria-label="шаблон для регистрации и авторизации"
+      >
         <Logo />
         <p className="auth__greeting">{greeting}</p>
         <form className="auth__form" onSubmit={handleSubmit}>

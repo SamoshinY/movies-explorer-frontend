@@ -5,7 +5,7 @@ const Toggle = () => {
     <label class="toggle">
       <span class="toggle-label">Короткометражки</span>
       <input class="toggle-checkbox" type="checkbox"></input>
-      <div class="toggle-switch"></div>
+      <span class="toggle-switch"></span>
     </label>
   );
 };

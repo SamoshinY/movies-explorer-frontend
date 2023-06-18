@@ -18,19 +18,21 @@ const MoviesCard = ({ movie, inSavedList, deleteMovie }) => {
     : 'movies-card__delete';
 
   return (
-    <article className="movies-card">
+    <article className="movies-card" aria-label="Карточка фильма">
       <img
         className="movies-card__image"
         src={movie.image}
         alt={movie.nameRU}
       />
       <div className="movies-card__wrap">
-        <p className="movies-card__title">{movie.nameRU}</p>
+        <div className="movies-card__wrapper">
+          <p className="movies-card__title">{movie.nameRU}</p>
+          <p className="movies-card__duration">{movie.duration}</p>
+        </div>
         <button
           className={movieButtonClassName}
           onClick={!inSavedList ? toggleSaved : handleDeleteMovie}
         ></button>
-        <p className="movies-card__duration">{movie.duration}</p>
       </div>
     </article>
   );

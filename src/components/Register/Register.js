@@ -6,7 +6,7 @@ import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 const Register = () => {
   const { values, handleChange, errors } = useFormAndValidation();
   return (
-    <section className="register">
+    <main className="register">
       <Auth
         greeting={'Добро пожаловать!'}
         textButton={'Зарегистрироваться'}
@@ -26,7 +26,7 @@ const Register = () => {
           required
         />
       </Auth>
-    </section>
+    </main>
   );
 };
 

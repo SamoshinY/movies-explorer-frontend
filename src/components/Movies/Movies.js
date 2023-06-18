@@ -5,11 +5,11 @@ import MoreButton from '../MoreButton/MoreButton';
 
 const Movies = ({ cardList }) => {
   return (
-    <section className="movies">
+    <main className="movies" aria-label='Страница "Фильмы"'>
       <SearchForm />
       <MoviesCardList cardList={cardList} />
       <MoreButton />
-    </section>
+    </main>
   );
 };
 

@@ -36,7 +36,7 @@ const App = () => {
     ));
 
   return (
-    <div className="App">
+    <div className="app">
       <Routes>
         <Route path="/" element={<LevelWrap />}>
           <Route path="" element={<Main />} />

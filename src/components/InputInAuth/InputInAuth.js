@@ -11,11 +11,11 @@ const InputInAuth = ({
   placeholder,
 }) => {
   return (
-    <>
+    <div className="input-auth">
       <label className="input-auth__label">{labelCaption}</label>
       <input
         id={`${inputName}-input`}
-        type={`${inputName}`}
+        type={`${inputName === 'name' ? 'text' : inputName}`}
         name={`${inputName}`}
         placeholder={placeholder}
         className={`input-auth__input input-auth__input_text_${inputName}" ${
@@ -30,7 +30,7 @@ const InputInAuth = ({
       <span className={`${inputName}-input-error input-auth__input-error`}>
         {errors[inputName] || ''}
       </span>
-    </>
+    </div>
   );
 };
 

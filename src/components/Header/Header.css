@@ -21,8 +21,6 @@
   }
 }
 
-@media screen and (max-width: 830px) {
-  .header_inLanding {
-    background-color: #073042;
-  }
+.header_inLanding {
+  background-color: #073042;
 }
