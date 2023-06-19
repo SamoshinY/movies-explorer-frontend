@@ -1,0 +1,136 @@
+.search-form {
+  min-height: 222px;
+  padding: 0 70px;
+}
+
+@media screen and (max-width: 830px) {
+  .search-form {
+    min-height: 232px;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .search-form {
+    min-height: 226px;
+    padding: 0 10px;
+  }
+}
+
+.search-form__form {
+  margin: 80px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1080px) {
+  .search-form__form {
+    margin: 60px 0 0;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.search-form__input-wrap {
+  max-width: 932px;
+  min-height: 48px;
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (max-width: 1080px) {
+  .search-form__input-wrap {
+    max-width: 100%;
+  }
+}
+
+.search-form__input {
+  box-sizing: border-box;
+  font-family: inherit;
+  background-color: inherit;
+  margin: 0;
+  padding: 0 0 0 22px;
+  width: 100%;
+  max-width: 932px;
+  min-height: 48px;
+  border: 1.5px solid #aaa;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.search-form__input:focus {
+  outline: 2px solid #3ddc84;
+}
+
+@media screen and (max-width: 1080px) {
+  .search-form__input {
+    padding-left: 18px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__input {
+    padding-left: 16px;
+    font-size: 11px;
+    line-height: 18px;
+  }
+}
+
+.search-form__find-button {
+  min-width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 0 46px;
+  background-image: url(../../images/find.svg);
+  cursor: pointer;
+  transition: 0.3s opacity;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+
+.search-form__find-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1080px) {
+  .search-form__find-filter {
+    margin-top: 38px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__find-filter {
+    margin-top: 45px;
+    font-size: 11px;
+    line-height: 18px;
+  }
+}
+
+.search-form__line {
+  width: 100%;
+  height: 1px;
+  margin: 83px 0 10px;
+  background-color: #aaaaaa;
+  opacity: 0.2;
+}
+
+@media screen and (max-width: 1080px) {
+  .search-form__line {
+    margin-top: 57px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__line {
+    margin-top: 44px;
+  }
+}

@@ -1,0 +1,26 @@
+.saved-movies {
+  background-color: #202020;
+  min-width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.saved-movies__empty-block {
+  width: 100%;
+  height: 140px;
+}
+
+.saved-movies__empty-block-upper {
+  width: 100%;
+  height: 25px;
+}
+
+@media screen and (max-width: 830px) {
+  .saved-movies__empty-block-upper {
+    display: none;
+  }
+}

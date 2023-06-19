@@ -1,0 +1,25 @@
+.more-button {
+  width: 320px;
+  height: 36px;
+  margin: 50px auto 80px;
+  padding: 0;
+  background-color: #202020;
+  border: 1px solid #424242;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500;
+  transition: 0.3s opacity;
+}
+
+@media screen and (max-width: 520px) {
+  .more-button {
+    width: 240px;
+  }
+}
+
+.more-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

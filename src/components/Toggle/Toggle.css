@@ -1,0 +1,81 @@
+.toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 41px;
+  transition: left 0.25s;
+}
+
+.toggle:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1080px) {
+  .toggle {
+    margin-top: 38px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .toggle {
+    margin-top: 45px;
+  }
+}
+
+.toggle-switch {
+  display: inline-block;
+  background-color: #8b8b8b;
+  border-radius: 7px;
+  width: 34px;
+  height: 14px;
+  position: relative;
+  vertical-align: middle;
+  transition: background 0.3s;
+}
+.toggle-switch:before,
+.toggle-switch:after {
+  content: '';
+}
+.toggle-switch:before {
+  display: block;
+  background-color: #272727;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 2px;
+  left: 4px;
+}
+
+.toggle-checkbox:checked + .toggle-switch {
+  background: #3ddc84;
+}
+.toggle-checkbox:checked + .toggle-switch:before {
+  left: 20px;
+  background: #fff;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  visibility: hidden;
+  transition: 0.3s opacity;
+}
+
+.toggle-label {
+  margin-top: 2px;
+  margin-right: 15px;
+  position: relative;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #fff;
+}
+
+@media screen and (max-width: 520px) {
+  .toggle-label {
+    font-size: 11px;
+    line-height: 18px;
+  }
+}

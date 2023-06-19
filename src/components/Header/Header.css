@@ -1,0 +1,26 @@
+.header {
+  background-color: #202020;
+  padding: 0 70px;
+  width: 100%;
+  min-height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 830px) {
+  .header {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .header {
+    padding: 0 14px;
+  }
+}
+
+.header_inLanding {
+  background-color: #073042;
+}

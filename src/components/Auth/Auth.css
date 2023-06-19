@@ -1,0 +1,148 @@
+.auth {
+  box-sizing: border-box;
+  background-color: #202020;
+  width: 396px;
+  height: 630px;
+  margin: 70px auto 0;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+@media screen and (max-width: 830px) {
+  .auth {
+    margin-top: 232px;
+    height: 792px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .auth {
+    margin-top: 56px;
+    padding: 0 30px;
+    width: 100%;
+    height: 724px;
+    align-items: center;
+  }
+}
+
+.auth__greeting {
+  width: 100%;
+  margin: 40px 0;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+  color: #fff;
+}
+
+@media screen and (max-width: 520px) {
+  .auth__greeting {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    text-align: center;
+  }
+}
+
+.auth__form {
+  width: 100%;
+  height: 380px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 520px) {
+  .auth__form {
+    height: 468px;
+  }
+}
+
+.auth__fieldset {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.auth__submit-button {
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background-color: #4285f4;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  transition: 0.3s opacity;
+}
+
+.auth__submit-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 520px) {
+  .auth__submit-button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.auth__submit-button_disabled {
+  background-color: #2f2f2f;
+}
+
+.auth__submit-button_disabled:hover {
+  opacity: 1;
+  cursor: default;
+}
+
+.auth__auth-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #8b8b8b;
+  margin: 16px auto 70px;
+}
+
+@media screen and (max-width: 830px) {
+  .auth__auth-text {
+    margin-bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .auth__auth-text {
+    margin-top: 14px;
+    margin-bottom: 30px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.auth__link-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #4285f4;
+  padding-left: 6px;
+  text-decoration: none;
+  transition: 0.3s opacity;
+}
+
+.auth__link-text:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 520px) {
+  .auth__link-text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
