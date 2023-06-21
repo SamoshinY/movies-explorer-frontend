@@ -1,12 +1,14 @@
 import './Profile.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import currentUser from '../../utils/user';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import InputInProfile from '../InputInProfile/InputInProfile';
 
 const Profile = ({ errorMessage }) => {
+  const currentUser = useContext(CurrentUserContext);
   const { values, isValid, resetForm, setIsValid, handleChange, errors } =
     useFormAndValidation();
 

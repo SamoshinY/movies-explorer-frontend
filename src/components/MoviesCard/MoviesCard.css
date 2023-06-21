@@ -21,9 +21,13 @@
 }
 
 .movies-card__wrap {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 10px 14px;
+  display: grid;
+  grid-template-columns: auto 16px;
+  grid-column-gap: 20px;
+  grid-row-gap: 5px;
+  padding: 14px 12px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .movies-card__title {
@@ -34,7 +38,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 2px 0 0 2px;
+  margin: 0;
 }
 
 .movies-card__duration {
@@ -45,7 +49,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 10px 0 0;
+  margin: 0;
 }
 
 .movies-card__save {

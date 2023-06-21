@@ -46,14 +46,14 @@
   height: 10px;
   position: absolute;
   top: 2px;
-  left: 4px;
+  left: 2px;
 }
 
 .toggle-checkbox:checked + .toggle-switch {
   background: #3ddc84;
 }
 .toggle-checkbox:checked + .toggle-switch:before {
-  left: 20px;
+  left: 22px;
   background: #fff;
 }
 

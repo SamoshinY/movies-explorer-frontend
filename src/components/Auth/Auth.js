@@ -12,6 +12,7 @@ const Auth = ({
   textAuth,
   textLink,
   link,
+  name,
   onAuthorize,
 }) => {
   const { values, isValid, resetForm, setIsValid, handleChange, errors } =
@@ -23,6 +24,10 @@ const Auth = ({
   }, [resetForm, setIsValid]);
 
   const handleSubmit = (evt) => {
+    if (name) {
+      values.name = name.name;
+    }
+    console.log(values, name);
     evt.preventDefault();
     onAuthorize(values);
   };

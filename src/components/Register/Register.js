@@ -3,7 +3,7 @@ import Auth from '../Auth/Auth';
 import InputInAuth from '../InputInAuth/InputInAuth';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
-const Register = () => {
+const Register = ({ onRegister }) => {
   const { values, handleChange, errors } = useFormAndValidation();
   return (
     <main className="register">
@@ -13,6 +13,8 @@ const Register = () => {
         textAuth={'Уже зарегистрированы?'}
         textLink={'Войти'}
         link={'/signin'}
+        name={values}
+        onAuthorize={onRegister}
       >
         <InputInAuth
           inputName={'name'}

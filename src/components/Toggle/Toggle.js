@@ -1,11 +1,16 @@
 import './Toggle.css';
 
-const Toggle = () => {
+const Toggle = ({ isChecked, toogleClick }) => {
   return (
-    <label class="toggle">
-      <span class="toggle-label">Короткометражки</span>
-      <input class="toggle-checkbox" type="checkbox"></input>
-      <span class="toggle-switch"></span>
+    <label className="toggle">
+      <span className="toggle-label">Короткометражки</span>
+      <input
+        className="toggle-checkbox"
+        type="checkbox"
+        checked={isChecked}
+        onChange={toogleClick}
+      ></input>
+      <span className="toggle-switch"></span>
     </label>
   );
 };
