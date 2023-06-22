@@ -1,7 +1,7 @@
 import './Login.css';
 import Auth from '../Auth/Auth';
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, errorText, setErrorText }) => {
   return (
     <main className="login">
       <Auth
@@ -11,6 +11,8 @@ const Login = ({ onLogin }) => {
         textLink={'Регистрация'}
         link={'/signup'}
         onAuthorize={onLogin}
+        errorText={errorText}
+        setErrorText={setErrorText}
       />
     </main>
   );

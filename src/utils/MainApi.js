@@ -1,4 +1,5 @@
-const BASE_URL = 'https://samoshin-back.nomoredomains.monster/api';
+// const BASE_URL = 'https://samoshin-back.nomoredomains.monster/api';
+const BASE_URL = 'http://localhost:3000/api';
 const headers = { 'Content-Type': 'application/json' };
 
 export { BASE_URL, headers };
@@ -19,14 +20,18 @@ export const register = ({ name, email, password }) => {
   return makeRequest('/signup', 'POST', { name, email, password });
 };
 
-export const login = ({ password, email }) => {
-  return makeRequest('/signin', 'POST', { password, email });
+export const login = ({ email, password }) => {
+  return makeRequest('/signin', 'POST', { email, password });
 };
 
-export const getInfoMe = () => {
+export const getCurrentUser = () => {
   return makeRequest('/users/me', 'GET');
 };
 
+export const updateProfile = ({ name, email }) => {
+  return makeRequest('/users/me', 'PATCH', { name, email });
+};
+
 export const logOut = () => {
-  return makeRequest('/signin', 'DELETE');
+  return makeRequest('/signout', 'POST');
 };

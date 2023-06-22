@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import LevelWrap from '../LevelWrap/LevelWrap';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -15,20 +16,27 @@ import * as MoviesApi from '../../utils/MoviesApi';
 import { useAuthorize } from '../../hooks/useAuthorize';
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState({});
-
   // регистрация авторизация
+
   const {
-    checkToken,
+    // getCurrentUser,
     handleLogin,
     handleRegister,
+    handleEdit,
     handleLogOut,
+    currentUser,
     loggedIn,
-    loading,
-    userData,
-    authResult,
+    // loading,
+    // authResult,
     errorText,
+    setErrorText,
   } = useAuthorize();
+
+  useEffect(() => {
+    console.log(loggedIn);
+    console.log(currentUser);
+  }, [loggedIn, currentUser]);
+
   // блок поиска по фильмам
 
   const initialChecked = JSON.parse(localStorage.getItem('isChecked')) || false;
@@ -122,12 +130,14 @@ const App = () => {
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path="/" element={<LevelWrap />}>
-            <Route path="" element={<Main />} />
+          <Route path="/" element={<LevelWrap loggedIn={loggedIn} />}>
+            <Route path="/" element={<Main />} />
             <Route
               path="movies"
               element={
-                <Movies
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  element={Movies}
                   cardList={cardListMovies}
                   onSearch={onSearch}
                   handleChange={handleChange}
@@ -140,15 +150,47 @@ const App = () => {
             />
             <Route
               path="saved-movies"
-              element={<SavedMovies cardList={cardListSavedMovies} />}
+              element={
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  element={SavedMovies}
+                  cardList={cardListSavedMovies}
+                />
+              }
             />
-            <Route path="profile" element={<Profile errorMessage={''} />} />
+            <Route
+              path="profile"
+              element={
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  element={Profile}
+                  onEdit={handleEdit}
+                  onLogOut={handleLogOut}
+                  errorMessage={''}
+                />
+              }
+            />
           </Route>
 
-          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route
+            path="/signin"
+            element={
+              <Login
+                onLogin={handleLogin}
+                errorText={errorText}
+                setErrorText={setErrorText}
+              />
+            }
+          />
           <Route
             path="/signup"
-            element={<Register onRegister={handleRegister} />}
+            element={
+              <Register
+                onRegister={handleRegister}
+                errorText={errorText}
+                setErrorText={setErrorText}
+              />
+            }
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

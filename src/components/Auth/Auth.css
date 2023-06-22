@@ -146,3 +146,17 @@
     line-height: 15px;
   }
 }
+
+.auth__wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth__error-text {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  color: #ee3465;
+  margin: 0 auto 10px;
+}

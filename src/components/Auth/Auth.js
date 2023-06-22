@@ -14,9 +14,19 @@ const Auth = ({
   link,
   name,
   onAuthorize,
+  errorText,
+  setErrorText,
 }) => {
   const { values, isValid, resetForm, setIsValid, handleChange, errors } =
     useFormAndValidation();
+
+  if (name) {
+    values.name = name.name;
+  }
+
+  useEffect(() => {
+    setErrorText('');
+  }, [setErrorText, values]);
 
   useEffect(() => {
     resetForm();
@@ -24,10 +34,6 @@ const Auth = ({
   }, [resetForm, setIsValid]);
 
   const handleSubmit = (evt) => {
-    if (name) {
-      values.name = name.name;
-    }
-    console.log(values, name);
     evt.preventDefault();
     onAuthorize(values);
   };
@@ -66,15 +72,18 @@ const Auth = ({
               required
             />
           </fieldset>
-          <button
-            type="submit"
-            className={`auth__submit-button ${
-              !isValid && 'auth__submit-button_disabled'
-            }`}
-            disabled={!isValid}
-          >
-            {textButton}
-          </button>
+          <div className="auth__wrap">
+            <span className="auth__error-text">{errorText}</span>
+            <button
+              type="submit"
+              className={`auth__submit-button ${
+                !isValid && 'auth__submit-button_disabled'
+              }`}
+              disabled={!isValid}
+            >
+              {textButton}
+            </button>
+          </div>
         </form>
         <div className="auth__auth-text">
           {textAuth}

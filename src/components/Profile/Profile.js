@@ -7,7 +7,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import InputInProfile from '../InputInProfile/InputInProfile';
 
-const Profile = ({ errorMessage }) => {
+const Profile = ({ onEdit, onLogOut, errorMessage }) => {
   const currentUser = useContext(CurrentUserContext);
   const { values, isValid, resetForm, setIsValid, handleChange, errors } =
     useFormAndValidation();
@@ -30,6 +30,7 @@ const Profile = ({ errorMessage }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setResultText(errorMessage ? errorMessage : '');
+    onEdit(values);
   };
 
   return (
@@ -69,6 +70,7 @@ const Profile = ({ errorMessage }) => {
                 className={`profile__save-button 
           ${errorMessage && 'profile__save-button_disabled'}
           `}
+                type="submit"
                 disabled={errorMessage || !isDifferent}
               >
                 Сохранить
@@ -89,7 +91,7 @@ const Profile = ({ errorMessage }) => {
           </button>
         )}
         {!resultText && (
-          <Link to="/" className="profile__logout-button">
+          <Link to="/" className="profile__logout-button" onClick={onLogOut}>
             Выйти из аккаунта
           </Link>
         )}
