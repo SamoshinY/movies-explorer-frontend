@@ -1,5 +1,4 @@
 import './Profile.css';
-import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -7,20 +6,23 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import InputInProfile from '../InputInProfile/InputInProfile';
 
-const Profile = ({ onEdit, onLogOut, errorMessage }) => {
+const Profile = ({ onEdit, onLogOut, messageText, setMessageText }) => {
   const currentUser = useContext(CurrentUserContext);
   const { values, isValid, resetForm, setIsValid, handleChange, errors } =
     useFormAndValidation();
 
-  const [resultText, setResultText] = useState('');
-
-  const isDifferent = values !== currentUser;
+  const isDifferent =
+    values.name !== currentUser.name || values.email !== currentUser.email;
 
   const handleEditClick = () => {
     isDifferent
-      ? setResultText('Сохранить изменения?')
-      : setResultText('Вы не внесли изменения!');
+      ? setMessageText('Сохранить изменения?')
+      : setMessageText('Вы не внесли изменения!');
   };
+
+  useEffect(() => {
+    setMessageText('');
+  }, [setMessageText, values]);
 
   useEffect(() => {
     resetForm();
@@ -29,7 +31,6 @@ const Profile = ({ onEdit, onLogOut, errorMessage }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setResultText(errorMessage ? errorMessage : '');
     onEdit(values);
   };
 
@@ -62,23 +63,35 @@ const Profile = ({ onEdit, onLogOut, errorMessage }) => {
             />
           </fieldset>
           <div className="profile__wrapper">
-            {resultText && (
-              <span className="profile__resultText">{resultText}</span>
+            {messageText && (
+              <span
+                className={`profile__resultText ${
+                  messageText === 'Данные успешно изменены!' &&
+                  'profile__resultText_successful'
+                }`}
+              >
+                {messageText}
+              </span>
             )}
-            {resultText && (
+            {messageText && (
               <button
                 className={`profile__save-button 
-          ${errorMessage && 'profile__save-button_disabled'}
+          ${
+            messageText !== 'Сохранить изменения?' &&
+            'profile__save-button_disabled'
+          }
           `}
                 type="submit"
-                disabled={errorMessage || !isDifferent}
+                disabled={
+                  messageText !== 'Сохранить изменения?' || !isDifferent
+                }
               >
                 Сохранить
               </button>
             )}
           </div>
         </form>
-        {!resultText && (
+        {!messageText && (
           <button
             className={`profile__edit-button ${
               !isValid && 'profile__edit-button_disabled'
@@ -90,7 +103,7 @@ const Profile = ({ onEdit, onLogOut, errorMessage }) => {
             Редактировать
           </button>
         )}
-        {!resultText && (
+        {!messageText && (
           <Link to="/" className="profile__logout-button" onClick={onLogOut}>
             Выйти из аккаунта
           </Link>

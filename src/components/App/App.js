@@ -1,6 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import LevelWrap from '../LevelWrap/LevelWrap';
@@ -19,7 +20,7 @@ const App = () => {
   // регистрация авторизация
 
   const {
-    // getCurrentUser,
+    getCurrentUser,
     handleLogin,
     handleRegister,
     handleEdit,
@@ -27,10 +28,13 @@ const App = () => {
     currentUser,
     loggedIn,
     // loading,
-    // authResult,
-    errorText,
-    setErrorText,
+    messageText,
+    setMessageText,
   } = useAuthorize();
+
+  useEffect(() => {
+    getCurrentUser();
+  }, [getCurrentUser, loggedIn]);
 
   useEffect(() => {
     console.log(loggedIn);
@@ -71,19 +75,23 @@ const App = () => {
     setIsChecked(!isChecked);
   };
 
-  useEffect(() => {
+  const filterMoviesByDuration = useCallback(() => {
     const initialMovies = JSON.parse(localStorage.getItem('movies')) || [];
     const shortMovies = initialMovies.filter((movie) => movie.duration <= 40);
     isChecked ? setMoviesCards(shortMovies) : setMoviesCards(initialMovies);
-    localStorage.setItem('isChecked', JSON.stringify(isChecked));
   }, [isChecked]);
 
-  // Отправка формы
+  useEffect(() => {
+    filterMoviesByDuration();
+    localStorage.setItem('isChecked', JSON.stringify(isChecked));
+  }, [filterMoviesByDuration, isChecked]);
 
   useEffect(() => {
     const initialKeyWord = JSON.parse(localStorage.getItem('keyWord')) || '';
     setSearchInputValue(initialKeyWord);
   }, []);
+
+  // Отправка формы
 
   const onSearch = (inputText) => {
     if (!searchInputValue) {
@@ -97,10 +105,12 @@ const App = () => {
           .then((movies) => {
             localStorage.setItem('allMovies', JSON.stringify(movies));
             filterMoviesByKeyWord(inputText, movies);
+            filterMoviesByDuration();
           })
           .catch((err) => console.error(err));
       } else {
         filterMoviesByKeyWord(inputText, allMovies);
+        filterMoviesByDuration();
       }
     }
   };
@@ -166,7 +176,8 @@ const App = () => {
                   element={Profile}
                   onEdit={handleEdit}
                   onLogOut={handleLogOut}
-                  errorMessage={''}
+                  messageText={messageText}
+                  setMessageText={setMessageText}
                 />
               }
             />
@@ -177,8 +188,8 @@ const App = () => {
             element={
               <Login
                 onLogin={handleLogin}
-                errorText={errorText}
-                setErrorText={setErrorText}
+                messageText={messageText}
+                setMessageText={setMessageText}
               />
             }
           />
@@ -187,8 +198,8 @@ const App = () => {
             element={
               <Register
                 onRegister={handleRegister}
-                errorText={errorText}
-                setErrorText={setErrorText}
+                messageText={messageText}
+                setMessageText={setMessageText}
               />
             }
           />

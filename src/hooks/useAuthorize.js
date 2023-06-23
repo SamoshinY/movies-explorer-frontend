@@ -8,28 +8,24 @@ export const useAuthorize = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const [authResult, setAuthResult] = useState(false);
-  const [errorText, setErrorText] = useState('');
+  const [messageText, setMessageText] = useState('');
 
   const handleRegister = async ({ name, email, password }) => {
     try {
-      setErrorText('');
-      const user = await MainApi.register({ name, email, password });
-      console.log(user);
+      setMessageText('');
+      const data = await MainApi.register({ name, email, password });
+      // console.log(data);
 
-      if (user.error || user.message) {
-        setErrorText(user.message);
-        console.log(errorText);
-        setAuthResult(false);
-        throw new Error(user.message);
+      if (data.message) {
+        setMessageText(data.message);
+        // console.log(messageText);
+        throw new Error(data.message);
       }
-      if (user._id) {
+      if (data._id) {
         handleLogin({ email, password });
-        setAuthResult(true);
       }
     } catch (err) {
       console.error(err);
-      setAuthResult(false);
     } finally {
       setLoading(false);
     }
@@ -37,22 +33,17 @@ export const useAuthorize = () => {
 
   const handleLogin = async (values) => {
     try {
-      setErrorText('');
+      setMessageText('');
       const data = await MainApi.login(values);
-      console.log(data);
 
-      if (data.error || data.message !== 'Вы успешно прошли авторизацию!') {
-        setErrorText(data.error || data.message);
-        setAuthResult(false);
-        throw new Error('Ошибка аутентификации');
+      if (data.message !== 'Вы успешно прошли авторизацию!') {
+        setMessageText(data.message);
+        throw new Error(data.message);
       }
-
-      getCurrentUser();
       setLoggedIn(true);
       navigate('/movies', { replace: true });
     } catch (err) {
       console.error(err);
-      setAuthResult(false);
     } finally {
       setLoading(false);
     }
@@ -60,22 +51,18 @@ export const useAuthorize = () => {
 
   const handleEdit = async (values) => {
     try {
-      setErrorText('');
-      const user = await MainApi.updateProfile(values);
-      console.log(user);
+      setMessageText('');
+      const data = await MainApi.updateProfile(values);
+      // console.log(data);
 
-      if (user.error || user.message) {
-        setErrorText(user.error || user.message);
-        setAuthResult(false);
-        throw new Error(user.error || user.message);
+      if (data.message) {
+        setMessageText(data.message);
+        throw new Error(data.message);
       }
-      setCurrentUser(user);
-      setLoggedIn(true);
-      setAuthResult(true);
-      navigate('/movies', { replace: true });
+      setCurrentUser(data);
+      setMessageText('Данные успешно изменены!');
     } catch (err) {
       console.error(err);
-      setAuthResult(false);
     } finally {
       setLoading(false);
     }
@@ -83,20 +70,19 @@ export const useAuthorize = () => {
 
   const getCurrentUser = useCallback(async () => {
     try {
-      const user = await MainApi.getCurrentUser();
+      const data = await MainApi.getCurrentUser();
 
-      if (!user._id) {
-        navigate('/', { replace: true });
-        throw new Error('Нет данных');
+      if (!data._id) {
+        throw new Error(data.message);
       }
       setLoggedIn(true);
-      setCurrentUser(user);
+      setCurrentUser(data);
     } catch (err) {
       console.error(err);
     } finally {
       setLoading(false);
     }
-  }, [navigate]);
+  }, []);
 
   const handleLogOut = async () => {
     try {
@@ -118,8 +104,7 @@ export const useAuthorize = () => {
     currentUser,
     loggedIn,
     loading,
-    authResult,
-    errorText,
-    setErrorText,
+    messageText,
+    setMessageText,
   };
 };

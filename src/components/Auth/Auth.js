@@ -14,8 +14,8 @@ const Auth = ({
   link,
   name,
   onAuthorize,
-  errorText,
-  setErrorText,
+  messageText,
+  setMessageText,
 }) => {
   const { values, isValid, resetForm, setIsValid, handleChange, errors } =
     useFormAndValidation();
@@ -25,8 +25,8 @@ const Auth = ({
   }
 
   useEffect(() => {
-    setErrorText('');
-  }, [setErrorText, values]);
+    setMessageText('');
+  }, [setMessageText, values]);
 
   useEffect(() => {
     resetForm();
@@ -73,7 +73,7 @@ const Auth = ({
             />
           </fieldset>
           <div className="auth__wrap">
-            <span className="auth__error-text">{errorText}</span>
+            <span className="auth__error-text">{messageText}</span>
             <button
               type="submit"
               className={`auth__submit-button ${

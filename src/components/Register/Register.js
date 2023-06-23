@@ -3,7 +3,7 @@ import Auth from '../Auth/Auth';
 import InputInAuth from '../InputInAuth/InputInAuth';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
-const Register = ({ onRegister, errorText, setErrorText }) => {
+const Register = ({ onRegister, messageText, setMessageText }) => {
   const { values, handleChange, errors } = useFormAndValidation();
   return (
     <main className="register">
@@ -15,8 +15,8 @@ const Register = ({ onRegister, errorText, setErrorText }) => {
         link={'/signin'}
         name={values}
         onAuthorize={onRegister}
-        errorText={errorText}
-        setErrorText={setErrorText}
+        messageText={messageText}
+        setMessageText={setMessageText}
       >
         <InputInAuth
           inputName={'name'}
