@@ -1,36 +1,40 @@
 import './MoviesCard.css';
-import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-const MoviesCard = ({ movie, inSavedList, deleteMovie }) => {
-  const [isSaved, setIsSaved] = useState(false);
+const MoviesCard = ({
+  card,
+  onCardLike,
+  isLiked,
+  // onCardClick,
+}) => {
+  const location = useLocation();
+  // const handleCardClick = () => {
+  //   onCardClick(card);
+  // };
 
-  const toggleSaved = () => {
-    setIsSaved(!isSaved);
+  const handleCardLike = () => {
+    onCardLike(card, isLiked);
   };
-
-  const handleDeleteMovie = () => {
-    deleteMovie(movie);
-    console.log(movie.id);
-  };
-
-  const movieButtonClassName = !inSavedList
-    ? `movies-card__save ${isSaved && 'movies-card__save_active'}`
-    : 'movies-card__delete';
-
-  const BASE_URL = 'https://api.nomoreparties.co';
-
-  const imageUrl = `${BASE_URL}${movie.image.url}`;
 
   return (
     <article className="movies-card" aria-label="Карточка фильма">
-      <img className="movies-card__image" src={imageUrl} alt={movie.nameRU} />
+      <img
+        className="movies-card__image"
+        src={card.image}
+        alt={card.nameRU}
+        // onClick={handleCardClick}
+      />
       <div className="movies-card__wrap">
-        <p className="movies-card__title">{movie.nameRU}</p>
+        <p className="movies-card__title">{card.nameRU}</p>
         <button
-          className={movieButtonClassName}
-          onClick={!inSavedList ? toggleSaved : handleDeleteMovie}
+          className={
+            location.pathname !== '/saved-movies'
+              ? `movies-card__save ${isLiked && 'movies-card__save_active'}`
+              : 'movies-card__delete'
+          }
+          onClick={handleCardLike}
         ></button>
-        <p className="movies-card__duration">{movie.duration}</p>
+        <p className="movies-card__duration">{card.duration}</p>
       </div>
     </article>
   );

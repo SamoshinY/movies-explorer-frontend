@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useCallback } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -15,10 +15,12 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import NotFound from '../NotFound/NotFound';
 import * as MoviesApi from '../../utils/MoviesApi';
 import { useAuthorize } from '../../hooks/useAuthorize';
+import { useCardHandlers } from '../../hooks/useCardHandlers';
+import * as MainApi from '../../utils/MainApi';
 
 const App = () => {
+  const location = useLocation();
   // регистрация авторизация
-
   const {
     getCurrentUser,
     handleLogin,
@@ -36,15 +38,9 @@ const App = () => {
     getCurrentUser();
   }, [getCurrentUser, loggedIn]);
 
-  useEffect(() => {
-    console.log(loggedIn);
-    console.log(currentUser);
-  }, [loggedIn, currentUser]);
-
   // блок поиска по фильмам
 
   const initialChecked = JSON.parse(localStorage.getItem('isChecked')) || false;
-
   const [searchInputValue, setSearchInputValue] = useState('');
   const [isChecked, setIsChecked] = useState(initialChecked);
   const [moviesCards, setMoviesCards] = useState([]);
@@ -61,12 +57,15 @@ const App = () => {
     }
   };
 
-  const filterMoviesByKeyWord = (keyWord, allMovies) => {
-    const filteredByKeyWordMovies = allMovies.filter((movie) =>
-      movie.nameRU.toLowerCase().includes(keyWord.toLowerCase())
+  const filterMoviesCardByKeyWord = (keyWord, allMovies) => {
+    const filteredMoviesCardsByKeyWord = allMovies.filter((card) =>
+      card.nameRU.toLowerCase().includes(keyWord.toLowerCase())
     );
-    setMoviesCards(filteredByKeyWordMovies);
-    localStorage.setItem('movies', JSON.stringify(filteredByKeyWordMovies));
+    setMoviesCards(filteredMoviesCardsByKeyWord);
+    localStorage.setItem(
+      'moviesCards',
+      JSON.stringify(filteredMoviesCardsByKeyWord)
+    );
   };
 
   //Переключатель
@@ -75,16 +74,33 @@ const App = () => {
     setIsChecked(!isChecked);
   };
 
-  const filterMoviesByDuration = useCallback(() => {
-    const initialMovies = JSON.parse(localStorage.getItem('movies')) || [];
-    const shortMovies = initialMovies.filter((movie) => movie.duration <= 40);
+  const filterMoviesCardsByDuration = useCallback(() => {
+    const initialMovies = JSON.parse(localStorage.getItem('moviesCards')) || [];
+
+    MainApi.getMoviesByOwnerId()
+      .then((savedMovies) => {
+        if (!savedMovies.length === 0) return;
+        else {
+          const result = initialMovies.map(
+            (card) =>
+              savedMovies?.find(({ movieId }) => movieId === card.movieId) ||
+              card
+          );
+          if (result) {
+            const shortMovies = result.filter((card) => card.duration <= 40);
+            isChecked ? setMoviesCards(shortMovies) : setMoviesCards(result);
+          }
+        }
+      })
+      .catch((err) => console.error(err));
+    const shortMovies = initialMovies.filter((card) => card.duration <= 40);
     isChecked ? setMoviesCards(shortMovies) : setMoviesCards(initialMovies);
   }, [isChecked]);
 
   useEffect(() => {
-    filterMoviesByDuration();
+    filterMoviesCardsByDuration();
     localStorage.setItem('isChecked', JSON.stringify(isChecked));
-  }, [filterMoviesByDuration, isChecked]);
+  }, [filterMoviesCardsByDuration, isChecked]);
 
   useEffect(() => {
     const initialKeyWord = JSON.parse(localStorage.getItem('keyWord')) || '';
@@ -93,7 +109,7 @@ const App = () => {
 
   // Отправка формы
 
-  const onSearch = (inputText) => {
+  const handleSearch = (inputText) => {
     if (!searchInputValue) {
       setSearchInputValue(searhInputErrorText);
       return;
@@ -102,46 +118,68 @@ const App = () => {
       const allMovies = JSON.parse(localStorage.getItem('allMovies'));
       if (!allMovies) {
         MoviesApi.getMovies()
-          .then((movies) => {
-            localStorage.setItem('allMovies', JSON.stringify(movies));
-            filterMoviesByKeyWord(inputText, movies);
-            filterMoviesByDuration();
+          .then((cards) => {
+            cards.forEach((card) => {
+              const BASE_URL = 'https://api.nomoreparties.co';
+              const image = `${BASE_URL}${card.image.url}`;
+              card.image = image;
+              card.thumbnail = image;
+              card.trailer = card.trailerLink;
+              delete card.trailerLink;
+              card.movieId = card.id;
+              delete card.id;
+              delete card.created_at;
+              delete card.updated_at;
+            });
+            localStorage.setItem('allMovies', JSON.stringify(cards));
+            filterMoviesCardByKeyWord(inputText, cards);
+            filterMoviesCardsByDuration();
           })
           .catch((err) => console.error(err));
       } else {
-        filterMoviesByKeyWord(inputText, allMovies);
-        filterMoviesByDuration();
+        filterMoviesCardByKeyWord(inputText, allMovies);
+        filterMoviesCardsByDuration();
       }
     }
   };
 
+  // Сохранение и удаление карточек
+
+  const { handleCardLike } = useCardHandlers(setMoviesCards, moviesCards);
+
   //рендер карточек
 
-  const deleteMovie = (movie) => {
-    setMoviesCards(moviesCards.filter((c) => c._id !== movie._id));
-  };
+  const [savedCards, setSavedCards] = useState([]);
 
-  const cardListMovies = moviesCards.map((movie) => (
-    <MoviesCard movie={movie} key={movie.id} />
-  ));
+  useEffect(() => {
+    MainApi.getMoviesByOwnerId()
+      .then((res) => setSavedCards(res))
+      .catch((err) => console.error(err));
+  }, [moviesCards]);
 
-  const cardListSavedMovies = moviesCards
-    .filter((movie) => movie.owner === currentUser._id)
-    .map((movie) => (
+  const arrayForRender = Array.from(
+    location.pathname === '/movies' ? moviesCards : savedCards
+  );
+
+  const cardListMovies = arrayForRender.map((card) => {
+    const isLiked = card.owner ? card.owner === currentUser._id : false;
+    return (
       <MoviesCard
-        movie={movie}
-        key={movie._id}
-        inSavedList={true}
-        deleteMovie={deleteMovie}
+        card={card}
+        key={card.movieId}
+        onCardLike={handleCardLike}
+        isLiked={isLiked}
+        // onCardClick={handleCardClick}
       />
-    ));
+    );
+  });
 
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path="/" element={<LevelWrap loggedIn={loggedIn} />}>
-            <Route path="/" element={<Main />} />
+          <Route path="/*" element={<LevelWrap loggedIn={loggedIn} />}>
+            <Route index element={<Main />} />
             <Route
               path="movies"
               element={
@@ -149,7 +187,7 @@ const App = () => {
                   loggedIn={loggedIn}
                   element={Movies}
                   cardList={cardListMovies}
-                  onSearch={onSearch}
+                  onSearch={handleSearch}
                   handleChange={handleChange}
                   handleClickOnSearchInput={handleClickOnSearchInput}
                   searchInputValue={searchInputValue}
@@ -164,7 +202,7 @@ const App = () => {
                 <ProtectedRoute
                   loggedIn={loggedIn}
                   element={SavedMovies}
-                  cardList={cardListSavedMovies}
+                  cardList={cardListMovies}
                 />
               }
             />

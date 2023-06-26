@@ -14,11 +14,9 @@ export const useAuthorize = () => {
     try {
       setMessageText('');
       const data = await MainApi.register({ name, email, password });
-      // console.log(data);
 
       if (data.message) {
         setMessageText(data.message);
-        // console.log(messageText);
         throw new Error(data.message);
       }
       if (data._id) {
@@ -53,7 +51,6 @@ export const useAuthorize = () => {
     try {
       setMessageText('');
       const data = await MainApi.updateProfile(values);
-      // console.log(data);
 
       if (data.message) {
         setMessageText(data.message);

@@ -16,6 +16,8 @@ const makeRequest = (url, method, body) => {
   return fetch(`${BASE_URL}${url}`, config).then((res) => res.json());
 };
 
+// Users
+
 export const register = ({ name, email, password }) => {
   return makeRequest('/signup', 'POST', { name, email, password });
 };
@@ -34,4 +36,18 @@ export const updateProfile = ({ name, email }) => {
 
 export const logOut = () => {
   return makeRequest('/signout', 'POST');
+};
+
+// Cards
+
+export const getMoviesByOwnerId = () => {
+  return makeRequest('/movies', 'GET');
+};
+
+export const likeSetting = (card) => {
+  return makeRequest('/movies', 'POST', card);
+};
+
+export const likeRemoving = (card) => {
+  return makeRequest(`/movies/${card._id}`, 'DELETE');
 };
