@@ -11,8 +11,11 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
+import Preloader from '../Preloader/Preloader';
 import { useAuthorize } from '../../hooks/useAuthorize';
 import { useSearchAndRenderMovies } from '../../hooks/useSearchAndRenderMovies';
+
+import { useRenderCards } from '../../utils/forMoviesList';
 
 const App = () => {
   // регистрация авторизация
@@ -24,10 +27,16 @@ const App = () => {
     handleLogOut,
     currentUser,
     loggedIn,
-    // loading,
+    loading,
+    setLoading,
     messageText,
     setMessageText,
   } = useAuthorize();
+
+  //
+  const { handleCardSave, handleCardDelete, savedCards, setSavedCards } =
+    useRenderCards(setLoading, currentUser);
+  //
 
   useEffect(() => {
     getCurrentUser();
@@ -43,7 +52,9 @@ const App = () => {
     searchInputValue,
   } = useSearchAndRenderMovies(currentUser);
 
-  return (
+  return loading ? (
+    <Preloader />
+  ) : (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>

@@ -101,6 +101,7 @@ export const useAuthorize = () => {
     currentUser,
     loggedIn,
     loading,
+    setLoading,
     messageText,
     setMessageText,
   };
