@@ -8,11 +8,11 @@ export const useRenderCards = (setLoading, currentUser) => {
   const initialChecked = JSON.parse(localStorage.getItem('isChecked')) || false;
   const initialCheckedInSaved =
     JSON.parse(localStorage.getItem('isCheckedInSaved')) || false;
-  const initialMovies = JSON.parse(localStorage.getItem('moviesCards')) || [];  
+  const initialMovies = JSON.parse(localStorage.getItem('moviesCards')) || [];
   const initialKeyWord = JSON.parse(localStorage.getItem('keyWord')) || '';
   const initialKeyWordInSaved =
     JSON.parse(localStorage.getItem('keyWordInSaved')) || '';
-  const shortMovies = initialMovies.filter((card) => card.duration <= 40);  
+  const shortMovies = initialMovies.filter((card) => card.duration <= 40);
   const searhInputErrorText = 'Нужно ввести ключевое слово';
 
   const [savedCards, setSavedCards] = useState([]);
@@ -20,10 +20,14 @@ export const useRenderCards = (setLoading, currentUser) => {
   const [cardForRender, setCardForRender] = useState([]);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [isChecked, setIsChecked] = useState(initialChecked);
-  const [isCheckedInSaved, setIsCheckedInSaved] = useState(initialCheckedInSaved);
-  
+  const [isCheckedInSaved, setIsCheckedInSaved] = useState(
+    initialCheckedInSaved
+  );
+
   const initialSavedMovies = savedCards;
-  const shortSavedMovies = initialSavedMovies.filter((card) => card.duration <= 40);
+  const shortSavedMovies = initialSavedMovies.filter(
+    (card) => card.duration <= 40
+  );
 
   //Функции для запросов к Апи и сохранения данных
 
@@ -133,7 +137,9 @@ export const useRenderCards = (setLoading, currentUser) => {
 
   const filterSavedCardsByDuration = () => {
     localStorage.setItem('isCheckedInSaved', JSON.stringify(isChecked));
-    isCheckedInSaved ? setSavedCards(shortSavedMovies) : setSavedCards(initialSavedMovies);
+    isCheckedInSaved
+      ? setSavedCards(shortSavedMovies)
+      : setSavedCards(initialSavedMovies);
   };
 
   // Установка значения инпута
@@ -159,6 +165,11 @@ export const useRenderCards = (setLoading, currentUser) => {
   const toogleClick = () => {
     setIsChecked(!isChecked);
   };
+
+  useEffect(() => {
+    filterCardsByDuration();
+    localStorage.setItem('isChecked', JSON.stringify(isChecked));
+  }, [isChecked]);
 
   // Сабмит формы
 

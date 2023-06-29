@@ -1,17 +1,35 @@
 import './SearchForm.css';
+import { useState, useEffect } from 'react';
 import Toggle from '../Toggle/Toggle';
 
-const SearchForm = ({
-  onSearch,
-  handleChange,
-  handleClick,
-  searchInputValue,
-  isChecked,
-  toogleClick,
-}) => {
+const SearchForm = ({ onSearch, isChecked, toogleClick }) => {
+  const [searchInputValue, setSearchInputValue] = useState('');
+
+  const initialKeyWord = JSON.parse(localStorage.getItem('keyWord')) || '';
+  const searhInputErrorText = 'Нужно ввести ключевое слово';
+
+  const handleChange = (evt) => {
+    setSearchInputValue(evt.target.value);
+  };
+
+  const handleClick = () => {
+    if (searchInputValue === searhInputErrorText) {
+      setSearchInputValue('');
+    }
+  };
+
+  useEffect(() => {
+    setSearchInputValue(initialKeyWord);
+  }, [initialKeyWord]);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onSearch(searchInputValue);
+    if (!searchInputValue) {
+      setSearchInputValue(searhInputErrorText);
+      return;
+    } else {
+      onSearch(searchInputValue);
+    }
   };
 
   return (

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useCallback } from 'react';
+// import { useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useCardHandlers } from '../hooks/useCardHandlers';
 import * as MainApi from '../utils/MainApi';
@@ -10,13 +10,18 @@ export const useSearchAndRenderMovies = (currentUser) => {
   const location = useLocation();
   const initialChecked = JSON.parse(localStorage.getItem('isChecked')) || false;
   const initialMovies = JSON.parse(localStorage.getItem('moviesCards')) || [];
+  // const savedCards = JSON.parse(localStorage.getItem('savedCards')) || [];
+  const [savedCards, setSavedCards] = useState([]);
+
   const initialKeyWord = JSON.parse(localStorage.getItem('keyWord')) || '';
   const allMovies = JSON.parse(localStorage.getItem('allMovies'));
-  const shortMovies = initialMovies.filter((card) => card.duration <= 40);
+
+  const [moviesCards, setMoviesCards] = useState(initialMovies || []);
+
+  // const shortMovies = moviesCards.filter((card) => card.duration <= 40);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [isChecked, setIsChecked] = useState(initialChecked);
-  const [moviesCards, setMoviesCards] = useState([]);
-  const [savedCards, setSavedCards] = useState([]);
+
   const arrayForRender = Array.from(
     location.pathname === '/movies' ? moviesCards : savedCards
   );
@@ -48,10 +53,20 @@ export const useSearchAndRenderMovies = (currentUser) => {
   useEffect(() => {
     MainApi.getMoviesByOwnerId()
       .then((res) => {
+        // localStorage.setItem('savedCards', JSON.stringify(res));
         setSavedCards(res);
       })
       .catch((err) => console.error(err));
   }, [moviesCards]);
+
+  useEffect(() => {
+    setMoviesCards((cards) =>
+      cards.map(
+        (card) =>
+          savedCards.find(({ movieId }) => movieId === card.movieId) || card
+      )
+    );
+  }, [savedCards]);
 
   useEffect(() => {
     setSearchInputValue(initialKeyWord);
@@ -72,28 +87,8 @@ export const useSearchAndRenderMovies = (currentUser) => {
   };
 
   const filterMoviesCardsByDuration = () => {
-    MainApi.getMoviesByOwnerId()
-      .then((savedMovies) => {
-        if (!savedMovies.length === 0) return;
-        else {
-          const collatedCards = initialMovies.map(
-            (card) =>
-              savedMovies?.find(({ movieId }) => movieId === card.movieId) ||
-              card
-          );
-          if (collatedCards) {
-            const shortMovies = collatedCards.filter(
-              (card) => card.duration <= 40
-            );
-            isChecked
-              ? setMoviesCards(shortMovies)
-              : setMoviesCards(collatedCards);
-          }
-        }
-      })
-      .catch((err) => console.error(err));
-
-    isChecked ? setMoviesCards(shortMovies) : setMoviesCards(initialMovies);
+    const shortMovies = moviesCards.filter((card) => card.duration <= 40);
+    isChecked ? setMoviesCards(shortMovies) : setMoviesCards();
   };
 
   useEffect(() => {
@@ -109,7 +104,6 @@ export const useSearchAndRenderMovies = (currentUser) => {
     const filteredMoviesCards = allMovies.filter((card) =>
       card.nameRU.toLowerCase().includes(keyWord.toLowerCase())
     );
-    console.log(moviesCards);
     localStorage.setItem('moviesCards', JSON.stringify(filteredMoviesCards));
     setMoviesCards(filteredMoviesCards);
   };

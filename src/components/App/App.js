@@ -13,9 +13,9 @@ import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import Preloader from '../Preloader/Preloader';
 import { useAuthorize } from '../../hooks/useAuthorize';
-import { useSearchAndRenderMovies } from '../../hooks/useSearchAndRenderMovies';
+// import { useSearchAndRenderMovies } from '../../hooks/useSearchAndRenderMovies';
 
-import { useRenderCards } from '../../utils/forMoviesList';
+// import { useRenderCards } from '../../utils/forMoviesList';
 
 const App = () => {
   // регистрация авторизация
@@ -28,29 +28,29 @@ const App = () => {
     currentUser,
     loggedIn,
     loading,
-    setLoading,
+    // setLoading,
     messageText,
     setMessageText,
   } = useAuthorize();
 
   //
-  const { handleCardSave, handleCardDelete, savedCards, setSavedCards } =
-    useRenderCards(setLoading, currentUser);
+  // const { handleCardSave, handleCardDelete, savedCards, setSavedCards } =
+  //   useRenderCards(setLoading, currentUser);
   //
 
   useEffect(() => {
     getCurrentUser();
   }, [getCurrentUser, loggedIn]);
 
-  const {
-    handleChangeSearchInput,
-    handleClickOnSearchInput,
-    toogleClick,
-    handleSearch,
-    cardListMovies,
-    isChecked,
-    searchInputValue,
-  } = useSearchAndRenderMovies(currentUser);
+  // const {
+  //   handleChangeSearchInput,
+  //   handleClickOnSearchInput,
+  //   toogleClick,
+  //   handleSearch,
+  //   cardListMovies,
+  //   isChecked,
+  //   searchInputValue,
+  // } = useSearchAndRenderMovies(currentUser);
 
   return loading ? (
     <Preloader />
@@ -66,13 +66,13 @@ const App = () => {
                 <ProtectedRoute
                   loggedIn={loggedIn}
                   element={Movies}
-                  cardList={cardListMovies}
-                  onSearch={handleSearch}
-                  handleChange={handleChangeSearchInput}
-                  handleClickOnSearchInput={handleClickOnSearchInput}
-                  searchInputValue={searchInputValue}
-                  isChecked={isChecked}
-                  toogleClick={toogleClick}
+                  // cardList={cardListMovies}
+                  // onSearch={handleSearch}
+                  // handleChange={handleChangeSearchInput}
+                  // handleClickOnSearchInput={handleClickOnSearchInput}
+                  // searchInputValue={searchInputValue}
+                  // isChecked={isChecked}
+                  // toogleClick={toogleClick}
                 />
               }
             />
@@ -82,7 +82,7 @@ const App = () => {
                 <ProtectedRoute
                   loggedIn={loggedIn}
                   element={SavedMovies}
-                  cardList={cardListMovies}
+                  // cardList={cardListMovies}
                 />
               }
             />

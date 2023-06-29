@@ -1,11 +1,11 @@
 import * as MainApi from '../utils/MainApi';
 
-export const useCardHandlers = (setMoviesCards, moviesCards) => {
+export const useCardHandlers = (setCardForRender) => {
   const handleCardLike = (card, isLiked) => {
     if (!isLiked) {
       MainApi.likeSetting(card)
         .then((newCard) => {
-          setMoviesCards((state) =>
+          setCardForRender((state) =>
             state.map((c) => {
               if (c.movieId === card.movieId) {
                 return newCard;
@@ -17,7 +17,7 @@ export const useCardHandlers = (setMoviesCards, moviesCards) => {
     } else {
       MainApi.likeRemoving(card)
         .then(() => {
-          setMoviesCards((state) =>
+          setCardForRender((state) =>
             state.map((c) => {
               if (c.movieId === card.movieId) {
                 delete c.owner;
@@ -30,9 +30,6 @@ export const useCardHandlers = (setMoviesCards, moviesCards) => {
         .catch((err) => console.error(err));
     }
   };
-  // const handleCardDelete = (card) => {
-  //   setMoviesCards(moviesCards.filter((c) => c._id !== card._id));
-  // };
 
   return { handleCardLike };
 };
