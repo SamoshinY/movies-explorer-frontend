@@ -5,15 +5,7 @@ import MoreButton from '../MoreButton/MoreButton';
 import Preloader from '../Preloader/Preloader';
 import { useSearchCards } from '../../hooks/useSearchCards';
 
-const Movies = ({
-  loading,
-  cardList,
-  count,
-  chunkSize,
-  handleShowMoreCards,
-  setCardsForRender,
-  cardsForRender,
-}) => {
+const Movies = ({ loading }) => {
   const {
     toogleClick,
     handleChangeSearchInput,
@@ -21,7 +13,12 @@ const Movies = ({
     handleSearch,
     isChecked,
     searchInputValue,
-  } = useSearchCards(setCardsForRender);
+    cardList,
+    cardsForRender,
+    handleShowMoreCards,
+    count,
+    chunkSize,
+  } = useSearchCards();
 
   return loading ? (
     <Preloader />

@@ -3,7 +3,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { useSearchCards } from '../../hooks/useSearchCards';
 
-const SavedMovies = ({ loading, cardList, setCardsForRender }) => {
+const SavedMovies = ({ loading }) => {
   const {
     toogleClick,
     handleChangeSearchInput,
@@ -11,7 +11,8 @@ const SavedMovies = ({ loading, cardList, setCardsForRender }) => {
     handleSearch,
     isChecked,
     searchInputValue,
-  } = useSearchCards(setCardsForRender);
+    cardList,
+  } = useSearchCards();
 
   const notFoundText = 'не найдено';
 

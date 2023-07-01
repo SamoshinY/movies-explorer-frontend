@@ -14,10 +14,6 @@ export const usePagination = (cardsForRender) => {
   }, [cardsForRender, chunkSize]);
 
   useEffect(() => {
-    localStorage.setItem('cardsToShow', JSON.stringify(cardsToShow));
-  }, [cardsToShow]);
-
-  useEffect(() => {
     getChunkSize();
     window.addEventListener('resize', getChunkSize);
     return () => window.removeEventListener('resize', getChunkSize);
