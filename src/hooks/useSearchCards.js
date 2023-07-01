@@ -103,8 +103,6 @@ export const useSearchCards = () => {
     setSearchInputValue(initialKeyWord);
   }, [initialKeyWord]);
 
-  // Фильтрация по ключевому слову (сабмит)
-
   const filteringCard = (cards, keyWord, setter) => {
     const filteredMoviesCards = cards.filter((card) =>
       card.nameRU.toLowerCase().includes(keyWord.toLowerCase())
