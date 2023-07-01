@@ -59,14 +59,16 @@ export const useSearchAndRenderMovies = (currentUser) => {
       .catch((err) => console.error(err));
   }, [moviesCards]);
 
-  useEffect(() => {
-    setMoviesCards((cards) =>
-      cards.map(
-        (card) =>
-          savedCards.find(({ movieId }) => movieId === card.movieId) || card
-      )
-    );
-  }, [savedCards]);
+  // useEffect(() => {
+  //   if (savedCards.length) {
+  //     setInitialCards((cards) =>
+  //       cards.map(
+  //         (card) =>
+  //           savedCards.find(({ movieId }) => movieId === card.movieId) || card
+  //       )
+  //     );
+  //   }
+  // }, [savedCards]);
 
   useEffect(() => {
     setSearchInputValue(initialKeyWord);

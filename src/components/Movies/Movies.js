@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useContext } from 'react';
+import { useCallback } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
@@ -10,6 +11,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import * as MainApi from '../../utils/MainApi';
 import * as MoviesApi from '../../utils/MoviesApi';
 import { useCardHandlers } from '../../hooks/useCardHandlers';
+import { usePagination } from '../../hooks/usePagination';
 
 const Movies = ({ loading }) => {
   const currentUser = useContext(CurrentUserContext);
@@ -19,14 +21,11 @@ const Movies = ({ loading }) => {
   const [isChecked, setIsChecked] = useState(initialChecked);
   const [initialCards, setInitialCards] = useState(initialMovies);
   const [savedCards, setSavedCards] = useState([]);
-  const [cardForRender, setCardForRender] = useState([]);
-  // const { handleCardLike } = useCardHandlers(setCardForRender);
-  const [cardsToShow, setCardsToShow] = useState([]);
-  const { handleCardLike } = useCardHandlers(setCardsToShow);
+  const [cardsForRender, setCardsForRender] = useState([]);
 
   //Получение и запись массива фильмов
 
-  const getAllCards = async () => {
+  const getAllCards = useCallback(async () => {
     if (!allMovies || !allMovies.length) {
       try {
         const data = await MoviesApi.getMovies();
@@ -54,11 +53,11 @@ const Movies = ({ loading }) => {
         // setLoading(false);
       }
     }
-  };
+  }, [allMovies]);
 
   useEffect(() => {
     getAllCards();
-  }, []);
+  }, [getAllCards]);
 
   // Получение массива сохраненных фильмов
 
@@ -69,19 +68,6 @@ const Movies = ({ loading }) => {
       })
       .catch((err) => console.error(err));
   }, []);
-
-  // Сопоставление массивов и замена карточек с совпадением по ID
-
-  useEffect(() => {
-    if (savedCards.length) {
-      setInitialCards((cards) =>
-        cards.map(
-          (card) =>
-            savedCards.find(({ movieId }) => movieId === card.movieId) || card
-        )
-      );
-    }
-  }, [savedCards]);
 
   // Управление состоянием переключателя
 
@@ -124,75 +110,33 @@ const Movies = ({ loading }) => {
     }
   };
 
-  //Рендер
+  // Фильтрация по длительности
 
   useEffect(() => {
     isChecked
-      ? setCardForRender(initialCards.filter((card) => card.duration <= 40))
-      : setCardForRender(initialCards);
+      ? setCardsForRender(initialCards.filter((card) => card.duration <= 40))
+      : setCardsForRender(initialCards);
     localStorage.setItem('isChecked', JSON.stringify(isChecked));
   }, [isChecked, initialCards]);
 
-  //Пагинация
+  //Рендер
 
-  const [chunkSize, setChunkSize] = useState(0);
-  const [cardsPerPage, setCardsPerPage] = useState(0);
-  const [next, setNext] = useState(0);
-  const [count, setCount] = useState(0);
+  const { handleShowMoreCards, cardsToShow, setCardsToShow, count, chunkSize } =
+    usePagination(cardsForRender);
 
-  useEffect(() => {
-    setCardsToShow(cardForRender.slice(0, chunkSize));
-    setNext(chunkSize);
-    setCount(chunkSize);
-  }, [cardForRender, chunkSize]);
-
-  useEffect(() => {
-    getChunkSize();
-    window.addEventListener('resize', getChunkSize);
-    return () => window.removeEventListener('resize', getChunkSize);
-  }, []);
-
-  const getChunkSize = () => {
-    let chunkSize;
-    let cardsPerPage;
-    const width = window.innerWidth;
-    switch (true) {
-      case width > 1080:
-        chunkSize = 4;
-        cardsPerPage = 16;
-        break;
-      case width > 830 && width <= 1080:
-        chunkSize = 3;
-        cardsPerPage = 12;
-        break;
-      case width > 520 && width <= 830:
-        chunkSize = 2;
-        cardsPerPage = 8;
-        break;
-      default:
-        chunkSize = 2;
-        cardsPerPage = 5;
-    }
-    setChunkSize(chunkSize);
-    setCardsPerPage(cardsPerPage);
-  };
-
-  console.log(chunkSize, next, count);
-
-  const getCardsToShow = (start, end) => {
-    const slicedCards = cardForRender.slice(start, end);
-    const currentCardsArray = [...cardsToShow, ...slicedCards];
-    setCount(count + slicedCards.length);
-    setCardsToShow(currentCardsArray.slice(cardsPerPage * -1));
-  };
-
-  const handleShowMoreCards = () => {
-    getCardsToShow(next, next + chunkSize);
-    setNext(next + chunkSize);
-  };
+  const { handleCardLike } = useCardHandlers(setCardsToShow);
 
   const cardList = cardsToShow.map((card) => {
-    const isLiked = card.owner ? card.owner === currentUser._id : false;
+    if (savedCards.length) {
+      const savedCard = savedCards?.find(
+        ({ movieId }) => movieId === card.movieId
+      );
+      card = savedCard ? savedCard : card;
+    }
+
+    const isLiked = card.owner === currentUser._id ? true : false;
+    // console.log(isLiked);
+
     return (
       <MoviesCard
         card={card}
@@ -218,8 +162,8 @@ const Movies = ({ loading }) => {
         searchInputValue={searchInputValue}
       />
       <MoviesCardList cardList={cardList} />
-      {cardForRender.length > count
-        ? cardForRender.length > chunkSize && (
+      {cardsForRender.length > count
+        ? cardsForRender.length > chunkSize && (
             <MoreButton handleShowMoreCards={handleShowMoreCards} />
           )
         : null}
