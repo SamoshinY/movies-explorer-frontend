@@ -1,5 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -13,9 +14,10 @@ import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import Preloader from '../Preloader/Preloader';
 import { useAuthorize } from '../../hooks/useAuthorize';
-// import { useSearchAndRenderMovies } from '../../hooks/useSearchAndRenderMovies';
-
-// import { useRenderCards } from '../../utils/forMoviesList';
+import * as MainApi from '../../utils/MainApi';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import { usePagination } from '../../hooks/usePagination';
+import { useLocation } from 'react-router-dom';
 
 const App = () => {
   // регистрация авторизация
@@ -33,24 +35,64 @@ const App = () => {
     setMessageText,
   } = useAuthorize();
 
-  //
-  // const { handleCardSave, handleCardDelete, savedCards, setSavedCards } =
-  //   useRenderCards(setLoading, currentUser);
-  //
-
   useEffect(() => {
     getCurrentUser();
   }, [getCurrentUser, loggedIn]);
 
-  // const {
-  //   handleChangeSearchInput,
-  //   handleClickOnSearchInput,
-  //   toogleClick,
-  //   handleSearch,
-  //   cardListMovies,
-  //   isChecked,
-  //   searchInputValue,
-  // } = useSearchAndRenderMovies(currentUser);
+  //Cards
+
+  const [savedCards, setSavedCards] = useState([]);
+  const [cardsForRender, setCardsForRender] = useState([]);
+  const { handleShowMoreCards, cardsToShow, count, chunkSize } =
+    usePagination(cardsForRender);
+
+  useEffect(() => {
+    MainApi.getMoviesByOwnerId()
+      .then((res) => {
+        if (!res.message) {
+          setSavedCards(res);
+        }
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleCardLike = (card, isLiked) => {
+    if (!isLiked) {
+      MainApi.likeSetting(card)
+        .then((card) => setSavedCards([...savedCards, card]))
+        .catch((err) => console.error(err));
+    } else {
+      const savedCard = savedCards.length
+        ? savedCards?.find(({ movieId }) => movieId === card.movieId)
+        : null;
+      MainApi.likeRemoving(savedCard)
+        .then((data) =>
+          setSavedCards((state) => state.filter((c) => c._id !== savedCard._id))
+        )
+        .catch((err) => console.error(err));
+    }
+  };
+
+  //Render
+  const location = useLocation();
+  // const moviesPage = location.pathname === '/movies';
+  const moviesCardList =
+    location.pathname === '/movies' ? cardsToShow : savedCards;
+
+  const cardList = moviesCardList.map((card) => {
+    const isLiked = savedCards.length
+      ? savedCards?.find(({ movieId }) => movieId === card.movieId)
+      : false;
+
+    return (
+      <MoviesCard
+        card={card}
+        key={card.movieId}
+        onCardLike={handleCardLike}
+        isLiked={isLiked}
+      />
+    );
+  });
 
   return loading ? (
     <Preloader />
@@ -66,13 +108,12 @@ const App = () => {
                 <ProtectedRoute
                   loggedIn={loggedIn}
                   element={Movies}
-                  // cardList={cardListMovies}
-                  // onSearch={handleSearch}
-                  // handleChange={handleChangeSearchInput}
-                  // handleClickOnSearchInput={handleClickOnSearchInput}
-                  // searchInputValue={searchInputValue}
-                  // isChecked={isChecked}
-                  // toogleClick={toogleClick}
+                  cardList={cardList}
+                  count={count}
+                  chunkSize={chunkSize}
+                  handleShowMoreCards={handleShowMoreCards}
+                  cardsForRender={cardsForRender}
+                  setCardsForRender={setCardsForRender}
                 />
               }
             />
@@ -82,7 +123,8 @@ const App = () => {
                 <ProtectedRoute
                   loggedIn={loggedIn}
                   element={SavedMovies}
-                  // cardList={cardListMovies}
+                  cardList={cardList}
+                  setCardsForRender={setCardsForRender}
                 />
               }
             />
@@ -100,7 +142,6 @@ const App = () => {
               }
             />
           </Route>
-
           <Route
             path="/signin"
             element={
