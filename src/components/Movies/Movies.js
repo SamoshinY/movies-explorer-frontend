@@ -2,10 +2,9 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoreButton from '../MoreButton/MoreButton';
-import Preloader from '../Preloader/Preloader';
 import { useSearchCards } from '../../hooks/useSearchCards';
 
-const Movies = ({ loading }) => {
+const Movies = () => {
   const {
     toogleClick,
     handleChangeSearchInput,
@@ -18,11 +17,11 @@ const Movies = ({ loading }) => {
     handleShowMoreCards,
     count,
     chunkSize,
+    loading,
+    messageText,
   } = useSearchCards();
 
-  return loading ? (
-    <Preloader />
-  ) : (
+  return (
     <main className="movies" aria-label='Страница "Фильмы"'>
       <div className="movies__empty-block"></div>
       <SearchForm
@@ -33,7 +32,11 @@ const Movies = ({ loading }) => {
         handleClick={handleClickSearchInput}
         searchInputValue={searchInputValue}
       />
-      <MoviesCardList cardList={cardList} />
+      <MoviesCardList
+        cardList={cardList}
+        loading={loading}
+        messageText={messageText}
+      />
       {cardsForRender.length > count
         ? cardsForRender.length > chunkSize && (
             <MoreButton handleShowMoreCards={handleShowMoreCards} />

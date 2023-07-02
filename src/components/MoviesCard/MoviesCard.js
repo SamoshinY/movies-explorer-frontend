@@ -1,17 +1,12 @@
 import './MoviesCard.css';
 import { useLocation } from 'react-router-dom';
+import { toHoursAndMinutes } from '../../utils/utils';
 
 const MoviesCard = ({ card, onCardLike, isLiked }) => {
   const location = useLocation();
 
   const handleCardLike = () => {
     onCardLike(card, isLiked);
-  };
-
-  const toHoursAndMinutes = (totalMinutes) => {
-    const minutes = totalMinutes % 60;
-    const hours = Math.floor(totalMinutes / 60);
-    return `${hours}ч${minutes}м`;
   };
 
   return (

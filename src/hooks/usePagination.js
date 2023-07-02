@@ -1,4 +1,17 @@
 import { useState, useEffect } from 'react';
+import {
+  WIDTH_S,
+  WIDTH_M,
+  WIDTH_L,
+  chunkSize_S,
+  chunkSize_M,
+  chunkSize_L,
+  chunkSize_XL,
+  cardsPerPage_S,
+  cardsPerPage_M,
+  cardsPerPage_L,
+  cardsPerPage_XL,
+} from '../utils/constants';
 
 export const usePagination = (cardsForRender) => {
   const [chunkSize, setChunkSize] = useState(0);
@@ -24,21 +37,21 @@ export const usePagination = (cardsForRender) => {
     let cardsPerPage;
     const width = window.innerWidth;
     switch (true) {
-      case width > 1080:
-        chunkSize = 4;
-        cardsPerPage = 16;
+      case width > WIDTH_L:
+        chunkSize = chunkSize_XL;
+        cardsPerPage = cardsPerPage_XL;
         break;
-      case width > 830 && width <= 1080:
-        chunkSize = 3;
-        cardsPerPage = 12;
+      case width > WIDTH_M && width <= WIDTH_L:
+        chunkSize = chunkSize_L;
+        cardsPerPage = cardsPerPage_L;
         break;
-      case width > 520 && width <= 830:
-        chunkSize = 2;
-        cardsPerPage = 8;
+      case width > WIDTH_S && width <= WIDTH_M:
+        chunkSize = chunkSize_M;
+        cardsPerPage = cardsPerPage_M;
         break;
       default:
-        chunkSize = 2;
-        cardsPerPage = 5;
+        chunkSize = chunkSize_S;
+        cardsPerPage = cardsPerPage_S;
     }
     setChunkSize(chunkSize);
     setCardsPerPage(cardsPerPage);

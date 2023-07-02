@@ -24,7 +24,6 @@ const App = () => {
     currentUser,
     loggedIn,
     loading,
-    // setLoading,
     messageText,
     setMessageText,
   } = useAuthorize();

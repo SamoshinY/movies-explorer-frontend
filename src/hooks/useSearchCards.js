@@ -4,6 +4,12 @@ import { useLocation } from 'react-router-dom';
 import { usePagination } from '../hooks/usePagination';
 import * as MainApi from '../utils/MainApi';
 import MoviesCard from '../components/MoviesCard/MoviesCard';
+import {
+  searhInputErrorText,
+  errorText,
+  BASE_URL_SHORT,
+  notFoundMessage,
+} from '../utils/constants';
 
 export const useSearchCards = () => {
   const location = useLocation();
@@ -20,14 +26,16 @@ export const useSearchCards = () => {
   const [initialCards, setInitialCards] = useState(initialMovies);
   const [isChecked, setIsChecked] = useState(initialChecked);
   const [searchInputValue, setSearchInputValue] = useState('');
-  const searhInputErrorText = 'Нужно ввести ключевое слово';
   const [savedCards, setSavedCards] = useState([]);
   const [savedCardsToRender, setSavedCardsToRender] = useState(initialMovies);
   const [cardsForRender, setCardsForRender] = useState([]);
   const { handleShowMoreCards, cardsToShow, count, chunkSize } =
     usePagination(cardsForRender);
+  const [loading, setLoading] = useState(true);
+  const [messageText, setMessageText] = useState('');
 
   useEffect(() => {
+    setLoading(true);
     MainApi.getMoviesByOwnerId()
       .then((res) => {
         if (!res.message) {
@@ -35,7 +43,11 @@ export const useSearchCards = () => {
           setSavedCardsToRender(res);
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setMessageText(errorText);
+      })
+      .finally(setLoading(false));
   }, []);
 
   const handleCardLike = (card, isLiked) => {
@@ -58,11 +70,11 @@ export const useSearchCards = () => {
   const getAllCards = useCallback(async () => {
     if (!allMovies || !allMovies.length) {
       try {
+        setLoading(true);
         const data = await MoviesApi.getMovies();
         if (data) {
           const cards = data.map((card) => {
-            const BASE_URL = 'https://api.nomoreparties.co';
-            const image = `${BASE_URL}${card.image.url}`;
+            const image = `${BASE_URL_SHORT}${card.image.url}`;
             card.image = image;
             card.thumbnail = image;
             card.trailer = card.trailerLink;
@@ -74,13 +86,13 @@ export const useSearchCards = () => {
             return card;
           });
           localStorage.setItem('allMovies', JSON.stringify(cards));
-          // throw new Error(data.message);
         }
         return data;
       } catch (err) {
         console.error(err);
+        setMessageText(errorText);
       } finally {
-        // setLoading(false);
+        setLoading(false);
       }
     }
   }, [allMovies]);
@@ -109,6 +121,9 @@ export const useSearchCards = () => {
     );
     localStorage.setItem(cardsStorage, JSON.stringify(filteredMoviesCards));
     setter(filteredMoviesCards);
+    if (!filteredMoviesCards.length) {
+      setMessageText(notFoundMessage);
+    }
   };
 
   const handleSearch = async (keyWord) => {
@@ -159,6 +174,10 @@ export const useSearchCards = () => {
     );
   });
 
+  useEffect(() => {
+    !cardList.length ? setMessageText(notFoundMessage) : setMessageText('');
+  }, [cardList.length]);
+
   return {
     toogleClick,
     handleChangeSearchInput,
@@ -172,5 +191,8 @@ export const useSearchCards = () => {
     handleShowMoreCards,
     count,
     chunkSize,
+    loading,
+    messageText,
+    setMessageText,
   };
 };

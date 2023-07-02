@@ -1,4 +1,5 @@
 import './InputInProfile.css';
+import { namePattern, passwordPattern } from '../../utils/constants';
 
 const InputInProfile = ({
   inputName,
@@ -10,9 +11,6 @@ const InputInProfile = ({
   maxLength,
   placeholder,
 }) => {
-  const namePattern = '^[A-Za-zА-Яа-яЁё\\-\\s]+$';
-  const passwordPattern = '[a-zA-Z0-9]{4,}';
-
   const getCurrentPattern = () => {
     if (inputName === 'name') return namePattern;
     if (inputName === 'password') return passwordPattern;

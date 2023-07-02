@@ -1,8 +1,4 @@
-// const BASE_URL = 'https://samoshin-back.nomoredomains.monster/api';
-const BASE_URL = 'http://localhost:3000/api';
-const headers = { 'Content-Type': 'application/json' };
-
-export { BASE_URL, headers };
+import { headers, BASE_URL_MAIN } from '../utils/constants';
 
 const makeRequest = (url, method, body) => {
   const config = {
@@ -13,7 +9,7 @@ const makeRequest = (url, method, body) => {
   if (body) {
     config.body = JSON.stringify(body);
   }
-  return fetch(`${BASE_URL}${url}`, config).then((res) => res.json());
+  return fetch(`${BASE_URL_MAIN}${url}`, config).then((res) => res.json());
 };
 
 // Users

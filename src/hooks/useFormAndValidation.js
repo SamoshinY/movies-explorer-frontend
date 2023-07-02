@@ -1,5 +1,10 @@
 import { useState, useCallback } from 'react';
 import isEmail from 'validator/lib/isEmail';
+import {
+  nameValidationText,
+  emailValidationText,
+  passwordValidationText,
+} from '../utils/constants';
 
 export function useFormAndValidation() {
   const [values, setValues] = useState({});
@@ -11,19 +16,13 @@ export function useFormAndValidation() {
 
     switch (true) {
       case name === 'name' && evt.target.validity.patternMismatch:
-        evt.target.setCustomValidity(
-          'это поле содержит только латиницу, кириллицу, пробел или дефис'
-        );
+        evt.target.setCustomValidity(nameValidationText);
         break;
       case name === 'email' && !isEmail(value):
-        evt.target.setCustomValidity(
-          'введите адрес электронной почты в правильном формате'
-        );
+        evt.target.setCustomValidity(emailValidationText);
         break;
       case name === 'password' && evt.target.validity.patternMismatch:
-        evt.target.setCustomValidity(
-          'это поле содержит только латиницу и цифры, минимум 4 символа'
-        );
+        evt.target.setCustomValidity(passwordValidationText);
         break;
       case !evt.target.validity.patternMismatch:
         evt.target.setCustomValidity('');
