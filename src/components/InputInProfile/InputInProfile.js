@@ -10,6 +10,14 @@ const InputInProfile = ({
   maxLength,
   placeholder,
 }) => {
+  const namePattern = '^[A-Za-zА-Яа-яЁё\\-\\s]+$';
+  const passwordPattern = '[a-zA-Z0-9]{4,}';
+
+  const getCurrentPattern = () => {
+    if (inputName === 'name') return namePattern;
+    if (inputName === 'password') return passwordPattern;
+  };
+
   return (
     <div className="input-profile">
       <div className="input-profile__wrap">
@@ -17,6 +25,7 @@ const InputInProfile = ({
         <input
           id={`${inputName}-input`}
           type={`${inputName === 'name' ? 'text' : 'email'}`}
+          pattern={getCurrentPattern()}
           name={`${inputName}`}
           placeholder={placeholder}
           className={`input-profile__input input-profile__input_text_${inputName}" ${
