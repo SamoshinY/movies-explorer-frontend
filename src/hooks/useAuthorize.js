@@ -86,6 +86,7 @@ export const useAuthorize = () => {
       await MainApi.logOut();
       setLoggedIn(false);
       setCurrentUser({});
+      localStorage.clear();
       navigate('/', { replace: true });
     } catch (err) {
       console.error(err);

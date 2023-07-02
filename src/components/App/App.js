@@ -39,7 +39,7 @@ const App = () => {
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path="/*" element={<LevelWrap loggedIn={loggedIn} />}>
+          <Route path="/" element={<LevelWrap loggedIn={loggedIn} />}>
             <Route index element={<Main />} />
             <Route
               path="movies"
@@ -85,7 +85,7 @@ const App = () => {
               />
             }
           />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </CurrentUserContext.Provider>
     </div>

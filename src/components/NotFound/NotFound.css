@@ -62,6 +62,15 @@
   font-weight: 400;
   color: #4285f4;
   text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: 0.3s opacity;
+}
+
+.not-found__back-link:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 520px) {
