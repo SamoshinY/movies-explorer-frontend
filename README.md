@@ -2,6 +2,8 @@
 
 Ссылка на пул реквест: https://github.com/SamoshinY/movies-explorer-frontend/compare/main...level-3
 
+Ссылка на проект: https://samoshin-diplom-front.nomoredomains.monster/
+
 # Проект: Movies
 
 ### Описание
