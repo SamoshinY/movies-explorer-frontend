@@ -146,15 +146,35 @@ export const useSearchCards = () => {
   };
 
   useEffect(() => {
-    moviesPage
-      ? isChecked
-        ? setCardsForRender(initialCards.filter((card) => card.duration <= 40))
-        : setCardsForRender(initialCards)
-      : isChecked
-      ? setSavedCardsToRender(savedCards.filter((card) => card.duration <= 40))
-      : setSavedCardsToRender(savedCards);
+    if (moviesPage) {
+      if (isChecked) {
+        setCardsForRender(initialCards.filter((card) => card.duration <= 40));
+        if (!cardsForRender.length) {
+          setMessageText(notFoundMessage);
+        }
+      } else {
+        setCardsForRender(initialCards);
+      }
+    } else {
+      if (isChecked) {
+        setSavedCardsToRender(savedCards.filter((card) => card.duration <= 40));
+        if (!savedCardsToRender.length) {
+          setMessageText(notFoundMessage);
+        }
+      } else {
+        setSavedCardsToRender(savedCards);
+      }
+    }
     localStorage.setItem(switchPosition, JSON.stringify(isChecked));
-  }, [isChecked, initialCards, switchPosition, moviesPage, savedCards]);
+  }, [
+    isChecked,
+    initialCards,
+    switchPosition,
+    moviesPage,
+    savedCards,
+    cardsForRender,
+    savedCardsToRender,
+  ]);
 
   const moviesCardList =
     location.pathname === '/movies' ? cardsToShow : savedCardsToRender;
@@ -173,10 +193,6 @@ export const useSearchCards = () => {
       />
     );
   });
-
-  useEffect(() => {
-    !cardList.length ? setMessageText(notFoundMessage) : setMessageText('');
-  }, [cardList.length]);
 
   return {
     toogleClick,

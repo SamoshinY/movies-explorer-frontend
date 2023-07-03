@@ -53,3 +53,10 @@
   font-weight: 500;
   color: #ee3465;
 }
+
+@media screen and (max-width: 520px) {
+  .movies-card-list__message {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}

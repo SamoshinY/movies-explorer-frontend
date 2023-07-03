@@ -2,7 +2,6 @@ import './MoviesCardList.css';
 import Preloader from '../Preloader/Preloader';
 
 const MoviesCardList = ({ cardList, loading, messageText }) => {
-  console.log(messageText);
   return (
     <div className="movies-card-list">
       {loading && <Preloader />}
