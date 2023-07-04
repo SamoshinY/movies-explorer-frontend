@@ -9,6 +9,7 @@ import {
   errorText,
   BASE_URL_SHORT,
   notFoundMessage,
+  SHORT_DURATION_LIMIT,
 } from '../utils/constants';
 
 export const useSearchCards = () => {
@@ -17,17 +18,13 @@ export const useSearchCards = () => {
   const inputValue = moviesPage ? 'keyWord' : 'keyWordOnSaved';
   const switchPosition = moviesPage ? 'isChecked' : 'isCheckedOnSaved';
   const cardsStorage = moviesPage ? 'moviesCards' : 'savedMoviesCards';
-
   const allMovies = JSON.parse(localStorage.getItem('allMovies'));
   const initialMovies = JSON.parse(localStorage.getItem(cardsStorage)) || [];
-  const initialSavedMovies =
-    JSON.parse(localStorage.getItem(cardsStorage)) || [];
   const initialChecked =
     JSON.parse(localStorage.getItem(switchPosition)) || false;
   const initialKeyWord = JSON.parse(localStorage.getItem(inputValue)) || '';
   const [initialCards, setInitialCards] = useState(initialMovies);
-  const [initialSavedCards, setInitialSavedCards] =
-    useState(initialSavedMovies);
+  const [initialSavedCards, setInitialSavedCards] = useState(initialMovies);
   const [isChecked, setIsChecked] = useState(initialChecked);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [savedCards, setSavedCards] = useState([]);
@@ -42,10 +39,8 @@ export const useSearchCards = () => {
     setLoading(true);
     MainApi.getMoviesByOwnerId()
       .then((res) => {
-        if (!res.message) {
-          setSavedCards(res);
-          setSavedCardsToRender(res);
-        }
+        setSavedCards(res);
+        setInitialSavedCards(res);
       })
       .catch((err) => {
         console.error(err);
@@ -57,7 +52,6 @@ export const useSearchCards = () => {
   const handleCardLike = (card, isLiked) => {
     if (!isLiked) {
       MainApi.likeSetting(card)
-        // .then((card) => setInitialSavedCards([...savedCards, card]))
         .then((card) => setSavedCards([...savedCards, card]))
         .catch((err) => console.error(err));
     } else {
@@ -66,9 +60,6 @@ export const useSearchCards = () => {
         : null;
       MainApi.likeRemoving(savedCard)
         .then((data) =>
-          // setInitialSavedCards((state) =>
-          //   state.filter((c) => c._id !== savedCard._id)
-          // )
           setSavedCards((state) => state.filter((c) => c._id !== savedCard._id))
         )
         .catch((err) => console.error(err));
@@ -135,10 +126,6 @@ export const useSearchCards = () => {
   };
 
   const handleSearch = async (keyWord) => {
-    // if (!searchInputValue) {
-    //   setSearchInputValue(searhInputErrorText);
-    //   return;
-    // }
     if (moviesPage) {
       if (!searchInputValue) {
         setSearchInputValue(searhInputErrorText);
@@ -151,7 +138,7 @@ export const useSearchCards = () => {
         filteringCard(allMovies, keyWord, setInitialCards);
       }
     } else {
-      filteringCard(savedCards, keyWord, setInitialSavedCards);
+      filteringCard(initialSavedCards, keyWord, setSavedCards);
     }
 
     localStorage.setItem(inputValue, JSON.stringify(keyWord));
@@ -160,7 +147,9 @@ export const useSearchCards = () => {
   useEffect(() => {
     if (moviesPage) {
       if (isChecked) {
-        setCardsForRender(initialCards.filter((card) => card.duration <= 40));
+        setCardsForRender(
+          initialCards.filter((card) => card.duration <= SHORT_DURATION_LIMIT)
+        );
         if (!cardsForRender.length) {
           setMessageText(notFoundMessage);
         }
@@ -170,15 +159,13 @@ export const useSearchCards = () => {
     } else {
       if (isChecked) {
         setSavedCardsToRender(
-          savedCards.filter((card) => card.duration <= 40)
-          // initialSavedCards.filter((card) => card.duration <= 40)
+          savedCards.filter((card) => card.duration <= SHORT_DURATION_LIMIT)
         );
         if (!savedCardsToRender.length) {
           setMessageText(notFoundMessage);
         }
       } else {
         setSavedCardsToRender(savedCards);
-        // setSavedCardsToRender(initialSavedCards);
       }
     }
     localStorage.setItem(switchPosition, JSON.stringify(isChecked));
@@ -188,9 +175,8 @@ export const useSearchCards = () => {
     switchPosition,
     moviesPage,
     savedCards,
-    cardsForRender,
-    initialSavedCards,
-    savedCardsToRender,
+    cardsForRender.length,
+    savedCardsToRender.length,
   ]);
 
   const moviesCardList =

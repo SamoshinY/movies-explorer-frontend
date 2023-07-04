@@ -32,6 +32,8 @@ const cardsPerPage_M = 8;
 const cardsPerPage_L = 12;
 const cardsPerPage_XL = 16;
 
+const SHORT_DURATION_LIMIT = 40;
+
 export {
   namePattern,
   passwordPattern,
@@ -56,4 +58,5 @@ export {
   searhInputErrorText,
   errorText,
   notFoundMessage,
+  SHORT_DURATION_LIMIT,
 };
