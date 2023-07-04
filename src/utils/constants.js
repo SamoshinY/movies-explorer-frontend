@@ -4,8 +4,8 @@ const passwordPattern = '[a-zA-Z0-9]{4,}';
 const headers = { 'Content-Type': 'application/json' };
 const BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 const BASE_URL_SHORT = 'https://api.nomoreparties.co';
-// const BASE_URL_MAIN = 'http://localhost:3000/api';
-const BASE_URL_MAIN = 'https://samoshin-back.nomoredomains.monster/api';
+const BASE_URL_MAIN = 'http://localhost:3000/api';
+// const BASE_URL_MAIN = 'https://samoshin-back.nomoredomains.monster/api';
 
 const nameValidationText =
   'это поле содержит только латиницу, кириллицу, пробел или дефис';

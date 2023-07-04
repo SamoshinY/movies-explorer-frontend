@@ -9,7 +9,6 @@ const InputInProfile = ({
   errors,
   minLength,
   maxLength,
-  placeholder,
 }) => {
   const getCurrentPattern = () => {
     if (inputName === 'name') return namePattern;
@@ -25,7 +24,6 @@ const InputInProfile = ({
           type={`${inputName === 'name' ? 'text' : 'email'}`}
           pattern={getCurrentPattern()}
           name={`${inputName}`}
-          placeholder={placeholder}
           className={`input-profile__input input-profile__input_text_${inputName}" ${
             errors[inputName] && 'input-profile__input_type_error'
           }`}

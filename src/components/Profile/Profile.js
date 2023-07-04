@@ -8,8 +8,15 @@ import InputInProfile from '../InputInProfile/InputInProfile';
 
 const Profile = ({ onEdit, onLogOut, messageText, setMessageText }) => {
   const currentUser = useContext(CurrentUserContext);
-  const { values, isValid, resetForm, setIsValid, handleChange, errors } =
-    useFormAndValidation();
+  const {
+    values,
+    isValid,
+    resetForm,
+    setIsValid,
+    handleChange,
+    errors,
+    setValues,
+  } = useFormAndValidation();
 
   const isDifferent =
     values.name !== currentUser.name || values.email !== currentUser.email;
@@ -26,8 +33,12 @@ const Profile = ({ onEdit, onLogOut, messageText, setMessageText }) => {
 
   useEffect(() => {
     resetForm();
+    setValues({
+      name: currentUser.name,
+      email: currentUser.email,
+    });
     setIsValid(false);
-  }, [resetForm, setIsValid]);
+  }, [resetForm, setIsValid, setValues, currentUser]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -48,7 +59,6 @@ const Profile = ({ onEdit, onLogOut, messageText, setMessageText }) => {
               errors={errors}
               minLength={2}
               maxLength={40}
-              placeholder={currentUser.name || ''}
             />
             <div className="profile__line"></div>
             <InputInProfile
@@ -59,7 +69,6 @@ const Profile = ({ onEdit, onLogOut, messageText, setMessageText }) => {
               errors={errors}
               minLength={4}
               maxLength={40}
-              placeholder={currentUser.email || ''}
             />
           </fieldset>
           <div className="profile__wrapper">
@@ -94,9 +103,9 @@ const Profile = ({ onEdit, onLogOut, messageText, setMessageText }) => {
         {!messageText && (
           <button
             className={`profile__edit-button ${
-              !isValid && 'profile__edit-button_disabled'
+              (!isValid || !isDifferent) && 'profile__edit-button_disabled'
             }`}
-            disabled={!isValid}
+            disabled={!isValid || !isDifferent}
             type="button"
             onClick={handleEditClick}
           >

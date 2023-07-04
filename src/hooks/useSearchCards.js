@@ -20,10 +20,14 @@ export const useSearchCards = () => {
 
   const allMovies = JSON.parse(localStorage.getItem('allMovies'));
   const initialMovies = JSON.parse(localStorage.getItem(cardsStorage)) || [];
+  const initialSavedMovies =
+    JSON.parse(localStorage.getItem(cardsStorage)) || [];
   const initialChecked =
     JSON.parse(localStorage.getItem(switchPosition)) || false;
   const initialKeyWord = JSON.parse(localStorage.getItem(inputValue)) || '';
   const [initialCards, setInitialCards] = useState(initialMovies);
+  const [initialSavedCards, setInitialSavedCards] =
+    useState(initialSavedMovies);
   const [isChecked, setIsChecked] = useState(initialChecked);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [savedCards, setSavedCards] = useState([]);
@@ -53,6 +57,7 @@ export const useSearchCards = () => {
   const handleCardLike = (card, isLiked) => {
     if (!isLiked) {
       MainApi.likeSetting(card)
+        // .then((card) => setInitialSavedCards([...savedCards, card]))
         .then((card) => setSavedCards([...savedCards, card]))
         .catch((err) => console.error(err));
     } else {
@@ -61,6 +66,9 @@ export const useSearchCards = () => {
         : null;
       MainApi.likeRemoving(savedCard)
         .then((data) =>
+          // setInitialSavedCards((state) =>
+          //   state.filter((c) => c._id !== savedCard._id)
+          // )
           setSavedCards((state) => state.filter((c) => c._id !== savedCard._id))
         )
         .catch((err) => console.error(err));
@@ -127,22 +135,26 @@ export const useSearchCards = () => {
   };
 
   const handleSearch = async (keyWord) => {
-    if (!searchInputValue) {
-      setSearchInputValue(searhInputErrorText);
-      return;
-    } else {
-      localStorage.setItem(inputValue, JSON.stringify(keyWord));
-      if (moviesPage) {
-        if (!allMovies) {
-          const allMovies = await getAllCards();
-          filteringCard(allMovies, keyWord, setInitialCards);
-        } else {
-          filteringCard(allMovies, keyWord, setInitialCards);
-        }
-      } else {
-        filteringCard(savedCards, keyWord, setSavedCardsToRender);
+    // if (!searchInputValue) {
+    //   setSearchInputValue(searhInputErrorText);
+    //   return;
+    // }
+    if (moviesPage) {
+      if (!searchInputValue) {
+        setSearchInputValue(searhInputErrorText);
+        return;
       }
+      if (!allMovies) {
+        const allMovies = await getAllCards();
+        filteringCard(allMovies, keyWord, setInitialCards);
+      } else {
+        filteringCard(allMovies, keyWord, setInitialCards);
+      }
+    } else {
+      filteringCard(savedCards, keyWord, setInitialSavedCards);
     }
+
+    localStorage.setItem(inputValue, JSON.stringify(keyWord));
   };
 
   useEffect(() => {
@@ -157,12 +169,16 @@ export const useSearchCards = () => {
       }
     } else {
       if (isChecked) {
-        setSavedCardsToRender(savedCards.filter((card) => card.duration <= 40));
+        setSavedCardsToRender(
+          savedCards.filter((card) => card.duration <= 40)
+          // initialSavedCards.filter((card) => card.duration <= 40)
+        );
         if (!savedCardsToRender.length) {
           setMessageText(notFoundMessage);
         }
       } else {
         setSavedCardsToRender(savedCards);
+        // setSavedCardsToRender(initialSavedCards);
       }
     }
     localStorage.setItem(switchPosition, JSON.stringify(isChecked));
@@ -173,6 +189,7 @@ export const useSearchCards = () => {
     moviesPage,
     savedCards,
     cardsForRender,
+    initialSavedCards,
     savedCardsToRender,
   ]);
 

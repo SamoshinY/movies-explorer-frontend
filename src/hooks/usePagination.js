@@ -21,10 +21,10 @@ export const usePagination = (cardsForRender) => {
   const [cardsToShow, setCardsToShow] = useState([]);
 
   useEffect(() => {
-    setCardsToShow(cardsForRender.slice(0, chunkSize));
-    setNext(chunkSize);
-    setCount(chunkSize);
-  }, [cardsForRender, chunkSize]);
+    setCardsToShow(cardsForRender.slice(0, cardsPerPage));
+    setNext(cardsPerPage);
+    setCount(cardsPerPage);
+  }, [cardsForRender, chunkSize, cardsPerPage]);
 
   useEffect(() => {
     getChunkSize();
@@ -61,7 +61,7 @@ export const usePagination = (cardsForRender) => {
     const slicedCards = cardsForRender.slice(start, end);
     const currentCardsArray = [...cardsToShow, ...slicedCards];
     setCount(count + slicedCards.length);
-    setCardsToShow(currentCardsArray.slice(cardsPerPage * -1));
+    setCardsToShow(currentCardsArray);
   };
 
   const handleShowMoreCards = () => {
