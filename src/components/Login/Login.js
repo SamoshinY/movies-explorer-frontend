@@ -2,7 +2,7 @@ import './Login.css';
 import Auth from '../Auth/Auth';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ onLogin, messageText, setMessageText, loggedIn }) => {
+const Login = ({ onLogin, messageText, setMessageText, loggedIn, loading }) => {
   const navigate = useNavigate();
   if (loggedIn) {
     navigate('/movies', { replace: true });
@@ -18,6 +18,7 @@ const Login = ({ onLogin, messageText, setMessageText, loggedIn }) => {
         onAuthorize={onLogin}
         messageText={messageText}
         setMessageText={setMessageText}
+        loading={loading}
       />
     </main>
   );

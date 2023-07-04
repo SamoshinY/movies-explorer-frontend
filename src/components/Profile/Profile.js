@@ -6,7 +6,13 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import InputInProfile from '../InputInProfile/InputInProfile';
 
-const Profile = ({ onEdit, onLogOut, messageText, setMessageText }) => {
+const Profile = ({
+  onEdit,
+  onLogOut,
+  messageText,
+  setMessageText,
+  loading,
+}) => {
   const currentUser = useContext(CurrentUserContext);
   const {
     values,
@@ -50,7 +56,7 @@ const Profile = ({ onEdit, onLogOut, messageText, setMessageText }) => {
       <p className="profile__greeting">Привет, {currentUser.name}!</p>
       <div className="profile__wrap">
         <form className="profile__form" onSubmit={handleSubmit}>
-          <fieldset className="profile__fieldset">
+          <fieldset className="profile__fieldset" disabled={loading}>
             <InputInProfile
               inputName={'name'}
               labelCaption={'Имя'}
@@ -92,7 +98,9 @@ const Profile = ({ onEdit, onLogOut, messageText, setMessageText }) => {
           `}
                 type="submit"
                 disabled={
-                  messageText !== 'Сохранить изменения?' || !isDifferent
+                  messageText !== 'Сохранить изменения?' ||
+                  !isDifferent ||
+                  loading
                 }
               >
                 Сохранить

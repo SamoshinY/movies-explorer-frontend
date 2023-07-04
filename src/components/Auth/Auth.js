@@ -16,6 +16,7 @@ const Auth = ({
   onAuthorize,
   messageText,
   setMessageText,
+  loading,
 }) => {
   const { values, isValid, resetForm, setIsValid, handleChange, errors } =
     useFormAndValidation();
@@ -46,8 +47,8 @@ const Auth = ({
       >
         <Logo />
         <p className="auth__greeting">{greeting}</p>
-        <form className="auth__form" onSubmit={handleSubmit}>
-          <fieldset className="auth__fieldset">
+        <form className="auth__form" onSubmit={handleSubmit} disabled={loading}>
+          <fieldset className="auth__fieldset" disabled={loading}>
             {children}
             <InputInAuth
               inputName={'email'}
@@ -79,7 +80,7 @@ const Auth = ({
               className={`auth__submit-button ${
                 !isValid && 'auth__submit-button_disabled'
               }`}
-              disabled={!isValid}
+              disabled={!isValid || loading}
             >
               {textButton}
             </button>

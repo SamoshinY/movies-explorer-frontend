@@ -60,6 +60,7 @@ const App = () => {
                   onLogOut={handleLogOut}
                   messageText={messageText}
                   setMessageText={setMessageText}
+                  loading={loading}
                 />
               }
             />
@@ -72,6 +73,7 @@ const App = () => {
                 messageText={messageText}
                 setMessageText={setMessageText}
                 loggedIn={loggedIn}
+                loading={loading}
               />
             }
           />
@@ -83,6 +85,7 @@ const App = () => {
                 messageText={messageText}
                 setMessageText={setMessageText}
                 loggedIn={loggedIn}
+                loading={loading}
               />
             }
           />

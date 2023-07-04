@@ -25,6 +25,7 @@ const SavedMovies = () => {
         handleChange={handleChangeSearchInput}
         handleClick={handleClickSearchInput}
         searchInputValue={searchInputValue}
+        loading={loading}
       />
       <div className="saved-movies__empty-block-upper"></div>
       <MoviesCardList

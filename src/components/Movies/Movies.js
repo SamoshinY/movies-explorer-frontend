@@ -31,6 +31,7 @@ const Movies = () => {
         handleChange={handleChangeSearchInput}
         handleClick={handleClickSearchInput}
         searchInputValue={searchInputValue}
+        loading={loading}
       />
       <MoviesCardList
         cardList={cardList}

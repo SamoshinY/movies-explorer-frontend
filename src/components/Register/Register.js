@@ -4,7 +4,13 @@ import InputInAuth from '../InputInAuth/InputInAuth';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import { useNavigate } from 'react-router-dom';
 
-const Register = ({ onRegister, messageText, setMessageText, loggedIn }) => {
+const Register = ({
+  onRegister,
+  messageText,
+  setMessageText,
+  loggedIn,
+  loading,
+}) => {
   const navigate = useNavigate();
   if (loggedIn) {
     navigate('/movies', { replace: true });
@@ -22,6 +28,7 @@ const Register = ({ onRegister, messageText, setMessageText, loggedIn }) => {
         onAuthorize={onRegister}
         messageText={messageText}
         setMessageText={setMessageText}
+        loading={loading}
       >
         <InputInAuth
           inputName={'name'}

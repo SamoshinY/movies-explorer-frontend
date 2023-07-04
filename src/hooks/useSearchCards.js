@@ -49,6 +49,10 @@ export const useSearchCards = () => {
       .finally(setLoading(false));
   }, []);
 
+  useEffect(() => {
+    setInitialSavedCards();
+  }, []);
+
   const handleCardLike = (card, isLiked) => {
     if (!isLiked) {
       MainApi.likeSetting(card)

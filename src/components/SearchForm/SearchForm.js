@@ -8,6 +8,7 @@ const SearchForm = ({
   handleChange,
   handleClick,
   searchInputValue,
+  loading,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -26,8 +27,13 @@ const SearchForm = ({
             onChange={handleChange}
             value={searchInputValue}
             onClick={handleClick}
+            disabled={loading}
           ></input>
-          <button className="search-form__find-button" type="submit"></button>
+          <button
+            className="search-form__find-button"
+            type="submit"
+            disabled={loading}
+          ></button>
         </div>
         <Toggle isChecked={isChecked} toogleClick={toogleClick} />
       </form>
