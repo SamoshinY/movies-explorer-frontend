@@ -1,7 +1,12 @@
 import './Login.css';
 import Auth from '../Auth/Auth';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ onLogin, messageText, setMessageText }) => {
+const Login = ({ onLogin, messageText, setMessageText, loggedIn }) => {
+  const navigate = useNavigate();
+  if (loggedIn) {
+    navigate('/movies', { replace: true });
+  }
   return (
     <main className="login">
       <Auth

@@ -2,8 +2,13 @@ import './Register.css';
 import Auth from '../Auth/Auth';
 import InputInAuth from '../InputInAuth/InputInAuth';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import { useNavigate } from 'react-router-dom';
 
-const Register = ({ onRegister, messageText, setMessageText }) => {
+const Register = ({ onRegister, messageText, setMessageText, loggedIn }) => {
+  const navigate = useNavigate();
+  if (loggedIn) {
+    navigate('/movies', { replace: true });
+  }
   const { values, handleChange, errors } = useFormAndValidation();
   return (
     <main className="register">

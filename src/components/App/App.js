@@ -71,6 +71,7 @@ const App = () => {
                 onLogin={handleLogin}
                 messageText={messageText}
                 setMessageText={setMessageText}
+                loggedIn={loggedIn}
               />
             }
           />
@@ -81,6 +82,7 @@ const App = () => {
                 onRegister={handleRegister}
                 messageText={messageText}
                 setMessageText={setMessageText}
+                loggedIn={loggedIn}
               />
             }
           />
