@@ -1,6 +1,6 @@
 Ссылка на макет: https://disk.yandex.ru/d/olEawGBO_18K8w
 
-Ссылка на пул реквест: https://github.com/SamoshinY/movies-explorer-frontend/compare/main...level-3
+Ссылка на пул реквест: https://github.com/SamoshinY/movies-explorer-frontend/pull/2
 
 Ссылка на проект: https://samoshin-diplom-front.nomoredomains.monster/
 
