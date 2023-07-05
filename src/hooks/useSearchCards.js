@@ -39,8 +39,12 @@ export const useSearchCards = () => {
     setLoading(true);
     MainApi.getMoviesByOwnerId()
       .then((res) => {
-        setSavedCards(res);
-        setInitialSavedCards(res);
+        if (res.message) {
+          setSavedCards([]);
+        } else {
+          setSavedCards(res);
+          setInitialSavedCards(res);
+        }
       })
       .catch((err) => {
         console.error(err);

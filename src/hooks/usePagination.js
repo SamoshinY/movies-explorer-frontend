@@ -3,14 +3,14 @@ import {
   WIDTH_S,
   WIDTH_M,
   WIDTH_L,
-  chunkSize_S,
-  chunkSize_M,
-  chunkSize_L,
-  chunkSize_XL,
-  cardsPerPage_S,
-  cardsPerPage_M,
-  cardsPerPage_L,
-  cardsPerPage_XL,
+  CHUNK_SIZE_S,
+  CHUNK_SIZE_M,
+  CHUNK_SIZE_L,
+  CHUNK_SIZE_XL,
+  CARDS_PER_PAGE_S,
+  CARDS_PER_PAGE_M,
+  CARDS_PER_PAGE_L,
+  CARDS_PER_PAGE_XL,
 } from '../utils/constants';
 
 export const usePagination = (cardsForRender) => {
@@ -27,31 +27,31 @@ export const usePagination = (cardsForRender) => {
   }, [cardsForRender, chunkSize, cardsPerPage]);
 
   useEffect(() => {
-    getChunkSize();
-    window.addEventListener('resize', getChunkSize);
-    return () => window.removeEventListener('resize', getChunkSize);
+    getCHUNK_SIZE();
+    window.addEventListener('resize', getCHUNK_SIZE);
+    return () => window.removeEventListener('resize', getCHUNK_SIZE);
   }, []);
 
-  const getChunkSize = () => {
+  const getCHUNK_SIZE = () => {
     let chunkSize;
     let cardsPerPage;
     const width = window.innerWidth;
     switch (true) {
       case width > WIDTH_L:
-        chunkSize = chunkSize_XL;
-        cardsPerPage = cardsPerPage_XL;
+        chunkSize = CHUNK_SIZE_XL;
+        cardsPerPage = CARDS_PER_PAGE_XL;
         break;
       case width > WIDTH_M && width <= WIDTH_L:
-        chunkSize = chunkSize_L;
-        cardsPerPage = cardsPerPage_L;
+        chunkSize = CHUNK_SIZE_L;
+        cardsPerPage = CARDS_PER_PAGE_L;
         break;
       case width > WIDTH_S && width <= WIDTH_M:
-        chunkSize = chunkSize_M;
-        cardsPerPage = cardsPerPage_M;
+        chunkSize = CHUNK_SIZE_M;
+        cardsPerPage = CARDS_PER_PAGE_M;
         break;
       default:
-        chunkSize = chunkSize_S;
-        cardsPerPage = cardsPerPage_S;
+        chunkSize = CHUNK_SIZE_S;
+        cardsPerPage = CARDS_PER_PAGE_S;
     }
     setChunkSize(chunkSize);
     setCardsPerPage(cardsPerPage);
@@ -69,5 +69,11 @@ export const usePagination = (cardsForRender) => {
     setNext(next + chunkSize);
   };
 
-  return { handleShowMoreCards, cardsToShow, setCardsToShow, count, chunkSize };
+  return {
+    handleShowMoreCards,
+    cardsToShow,
+    setCardsToShow,
+    count,
+    chunkSize,
+  };
 };

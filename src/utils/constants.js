@@ -4,8 +4,7 @@ const passwordPattern = '[a-zA-Z0-9]{4,}';
 const headers = { 'Content-Type': 'application/json' };
 const BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 const BASE_URL_SHORT = 'https://api.nomoreparties.co';
-const BASE_URL_MAIN = 'http://localhost:3000/api';
-// const BASE_URL_MAIN = 'https://samoshin-back.nomoredomains.monster/api';
+const BASE_URL_MAIN = 'https://samoshin-back.nomoredomains.monster/api';
 
 const nameValidationText =
   'это поле содержит только латиницу, кириллицу, пробел или дефис';
@@ -23,14 +22,14 @@ const notFoundMessage = 'Ничего не найдено';
 const WIDTH_S = 520;
 const WIDTH_M = 830;
 const WIDTH_L = 1080;
-const chunkSize_S = 2;
-const chunkSize_M = 2;
-const chunkSize_L = 3;
-const chunkSize_XL = 4;
-const cardsPerPage_S = 5;
-const cardsPerPage_M = 8;
-const cardsPerPage_L = 12;
-const cardsPerPage_XL = 16;
+const CHUNK_SIZE_S = 2;
+const CHUNK_SIZE_M = 2;
+const CHUNK_SIZE_L = 3;
+const CHUNK_SIZE_XL = 4;
+const CARDS_PER_PAGE_S = 5;
+const CARDS_PER_PAGE_M = 8;
+const CARDS_PER_PAGE_L = 12;
+const CARDS_PER_PAGE_XL = 16;
 
 const SHORT_DURATION_LIMIT = 40;
 
@@ -47,14 +46,14 @@ export {
   WIDTH_S,
   WIDTH_M,
   WIDTH_L,
-  chunkSize_S,
-  chunkSize_M,
-  chunkSize_L,
-  chunkSize_XL,
-  cardsPerPage_S,
-  cardsPerPage_M,
-  cardsPerPage_L,
-  cardsPerPage_XL,
+  CHUNK_SIZE_S,
+  CHUNK_SIZE_M,
+  CHUNK_SIZE_L,
+  CHUNK_SIZE_XL,
+  CARDS_PER_PAGE_S,
+  CARDS_PER_PAGE_M,
+  CARDS_PER_PAGE_L,
+  CARDS_PER_PAGE_XL,
   searhInputErrorText,
   errorText,
   notFoundMessage,
