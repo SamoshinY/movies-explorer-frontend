@@ -24,11 +24,11 @@ export const useSearchCards = () => {
     JSON.parse(localStorage.getItem(switchPosition)) || false;
   const initialKeyWord = JSON.parse(localStorage.getItem(inputValue)) || '';
   const [initialCards, setInitialCards] = useState(initialMovies);
-  const [initialSavedCards, setInitialSavedCards] = useState(initialMovies);
+  const [initialSavedCards, setInitialSavedCards] = useState([]);
   const [isChecked, setIsChecked] = useState(initialChecked);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [savedCards, setSavedCards] = useState([]);
-  const [savedCardsToRender, setSavedCardsToRender] = useState(initialMovies);
+  const [savedCardsToRender, setSavedCardsToRender] = useState([]);
   const [cardsForRender, setCardsForRender] = useState([]);
   const { handleShowMoreCards, cardsToShow, count, chunkSize } =
     usePagination(cardsForRender);
@@ -47,10 +47,6 @@ export const useSearchCards = () => {
         setMessageText(errorText);
       })
       .finally(setLoading(false));
-  }, []);
-
-  useEffect(() => {
-    setInitialSavedCards();
   }, []);
 
   const handleCardLike = (card, isLiked) => {
@@ -118,16 +114,19 @@ export const useSearchCards = () => {
     setSearchInputValue(initialKeyWord);
   }, [initialKeyWord]);
 
-  const filteringCard = (cards, keyWord, setter) => {
-    const filteredMoviesCards = cards.filter((card) =>
-      card.nameRU.toLowerCase().includes(keyWord.toLowerCase())
-    );
-    localStorage.setItem(cardsStorage, JSON.stringify(filteredMoviesCards));
-    setter(filteredMoviesCards);
-    if (!filteredMoviesCards.length) {
-      setMessageText(notFoundMessage);
-    }
-  };
+  const filteringCard = useCallback(
+    (cards, keyWord, setter) => {
+      const filteredMoviesCards = cards.filter((card) =>
+        card.nameRU.toLowerCase().includes(keyWord.toLowerCase())
+      );
+      localStorage.setItem(cardsStorage, JSON.stringify(filteredMoviesCards));
+      setter(filteredMoviesCards);
+      if (!filteredMoviesCards.length) {
+        setMessageText(notFoundMessage);
+      }
+    },
+    [cardsStorage]
+  );
 
   const handleSearch = async (keyWord) => {
     if (moviesPage) {
@@ -144,9 +143,15 @@ export const useSearchCards = () => {
     } else {
       filteringCard(initialSavedCards, keyWord, setSavedCards);
     }
-
     localStorage.setItem(inputValue, JSON.stringify(keyWord));
   };
+
+  useEffect(() => {
+    if (!moviesPage) {
+      if (initialKeyWord)
+        filteringCard(initialSavedCards, initialKeyWord, setSavedCards);
+    }
+  }, [moviesPage, filteringCard, initialKeyWord, initialSavedCards]);
 
   useEffect(() => {
     if (moviesPage) {

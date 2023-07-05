@@ -48,15 +48,15 @@
 .movies-card-list__message {
   text-align: center;
   margin: auto;
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 20px;
+  line-height: 30px;
   font-weight: 500;
   color: #ee3465;
 }
 
 @media screen and (max-width: 520px) {
   .movies-card-list__message {
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 15px;
+    line-height: 20px;
   }
 }
