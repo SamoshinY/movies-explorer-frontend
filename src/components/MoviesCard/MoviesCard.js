@@ -1,38 +1,41 @@
 import './MoviesCard.css';
-import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { toHoursAndMinutes } from '../../utils/utils';
 
-const MoviesCard = ({ movie, inSavedList, deleteMovie }) => {
-  const [isSaved, setIsSaved] = useState(false);
+const MoviesCard = ({ card, onCardLike, isLiked }) => {
+  const location = useLocation();
 
-  const toggleSaved = () => {
-    setIsSaved(!isSaved);
+  const handleCardLike = () => {
+    onCardLike(card, isLiked);
   };
-
-  const handleDeleteMovie = () => {
-    deleteMovie(movie);
-    console.log(movie._id);
-  };
-
-  const movieButtonClassName = !inSavedList
-    ? `movies-card__save ${isSaved && 'movies-card__save_active'}`
-    : 'movies-card__delete';
 
   return (
     <article className="movies-card" aria-label="Карточка фильма">
-      <img
-        className="movies-card__image"
-        src={movie.image}
-        alt={movie.nameRU}
-      />
+      <a
+        className="movies-card__link"
+        target="_blank"
+        rel="noreferrer"
+        href={card.trailer}
+      >
+        <img
+          className="movies-card__image"
+          src={card.image}
+          alt={card.nameRU}
+        />
+      </a>
       <div className="movies-card__wrap">
-        <div className="movies-card__wrapper">
-          <p className="movies-card__title">{movie.nameRU}</p>
-          <p className="movies-card__duration">{movie.duration}</p>
-        </div>
+        <p className="movies-card__title">{card.nameRU}</p>
         <button
-          className={movieButtonClassName}
-          onClick={!inSavedList ? toggleSaved : handleDeleteMovie}
+          className={
+            location.pathname !== '/saved-movies'
+              ? `movies-card__save ${isLiked && 'movies-card__save_active'}`
+              : 'movies-card__delete'
+          }
+          onClick={handleCardLike}
         ></button>
+        <p className="movies-card__duration">
+          {toHoursAndMinutes(card.duration)}
+        </p>
       </div>
     </article>
   );

@@ -1,6 +1,8 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import LevelWrap from '../LevelWrap/LevelWrap';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -8,50 +10,88 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
-import movies from '../../utils/movies';
-import MoviesCard from '../MoviesCard/MoviesCard';
-import currentUser from '../../utils/user';
 import NotFound from '../NotFound/NotFound';
+import Preloader from '../Preloader/Preloader';
+import { useAuthorize } from '../../hooks/useAuthorize';
 
 const App = () => {
-  const [moviesCards, setMoviesCards] = useState(movies);
+  const {
+    getCurrentUser,
+    handleLogin,
+    handleRegister,
+    handleEdit,
+    handleLogOut,
+    currentUser,
+    loggedIn,
+    loading,
+    messageText,
+    setMessageText,
+  } = useAuthorize();
 
-  const deleteMovie = (movie) => {
-    setMoviesCards(moviesCards.filter((c) => c._id !== movie._id));
-  };
+  useEffect(() => {
+    getCurrentUser();
+  }, [getCurrentUser, loggedIn]);
 
-  const cardListMovies = moviesCards.map((movie) => (
-    <MoviesCard movie={movie} key={movie._id} />
-  ));
-
-  const cardListSavedMovies = moviesCards
-    .filter((movie) => movie.owner === currentUser._id)
-    .map((movie) => (
-      <MoviesCard
-        movie={movie}
-        key={movie._id}
-        inSavedList={true}
-        deleteMovie={deleteMovie}
-      />
-    ));
-
-  return (
+  return loading ? (
+    <Preloader />
+  ) : (
     <div className="app">
-      <Routes>
-        <Route path="/" element={<LevelWrap />}>
-          <Route path="" element={<Main />} />
-          <Route path="movies" element={<Movies cardList={cardListMovies} />} />
+      <CurrentUserContext.Provider value={currentUser}>
+        <Routes>
+          <Route path="/" element={<LevelWrap loggedIn={loggedIn} />}>
+            <Route index element={<Main />} />
+            <Route
+              path="movies"
+              element={<ProtectedRoute loggedIn={loggedIn} element={Movies} />}
+            />
+            <Route
+              path="saved-movies"
+              element={
+                <ProtectedRoute loggedIn={loggedIn} element={SavedMovies} />
+              }
+            />
+            <Route
+              path="profile"
+              element={
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  element={Profile}
+                  onEdit={handleEdit}
+                  onLogOut={handleLogOut}
+                  messageText={messageText}
+                  setMessageText={setMessageText}
+                  loading={loading}
+                />
+              }
+            />
+          </Route>
           <Route
-            path="saved-movies"
-            element={<SavedMovies cardList={cardListSavedMovies} />}
+            path="/signin"
+            element={
+              <Login
+                onLogin={handleLogin}
+                messageText={messageText}
+                setMessageText={setMessageText}
+                loggedIn={loggedIn}
+                loading={loading}
+              />
+            }
           />
-          <Route path="profile" element={<Profile errorMessage={''} />} />
-        </Route>
-
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route
+            path="/signup"
+            element={
+              <Register
+                onRegister={handleRegister}
+                messageText={messageText}
+                setMessageText={setMessageText}
+                loggedIn={loggedIn}
+                loading={loading}
+              />
+            }
+          />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </CurrentUserContext.Provider>
     </div>
   );
 };

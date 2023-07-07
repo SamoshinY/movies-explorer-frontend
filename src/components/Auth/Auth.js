@@ -12,10 +12,22 @@ const Auth = ({
   textAuth,
   textLink,
   link,
+  name,
   onAuthorize,
+  messageText,
+  setMessageText,
+  loading,
 }) => {
   const { values, isValid, resetForm, setIsValid, handleChange, errors } =
     useFormAndValidation();
+
+  if (name) {
+    values.name = name.name;
+  }
+
+  useEffect(() => {
+    setMessageText('');
+  }, [setMessageText, values]);
 
   useEffect(() => {
     resetForm();
@@ -35,8 +47,8 @@ const Auth = ({
       >
         <Logo />
         <p className="auth__greeting">{greeting}</p>
-        <form className="auth__form" onSubmit={handleSubmit}>
-          <fieldset className="auth__fieldset">
+        <form className="auth__form" onSubmit={handleSubmit} disabled={loading}>
+          <fieldset className="auth__fieldset" disabled={loading}>
             {children}
             <InputInAuth
               inputName={'email'}
@@ -61,15 +73,18 @@ const Auth = ({
               required
             />
           </fieldset>
-          <button
-            type="submit"
-            className={`auth__submit-button ${
-              !isValid && 'auth__submit-button_disabled'
-            }`}
-            disabled={!isValid}
-          >
-            {textButton}
-          </button>
+          <div className="auth__wrap">
+            <span className="auth__error-text">{messageText}</span>
+            <button
+              type="submit"
+              className={`auth__submit-button ${
+                !isValid && 'auth__submit-button_disabled'
+              }`}
+              disabled={!isValid || loading}
+            >
+              {textButton}
+            </button>
+          </div>
         </form>
         <div className="auth__auth-text">
           {textAuth}

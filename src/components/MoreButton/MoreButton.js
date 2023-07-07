@@ -1,7 +1,11 @@
 import './MoreButton.css';
 
-const MoreButton = () => {
-  return <button className="more-button">Ещё</button>;
+const MoreButton = ({ handleShowMoreCards }) => {
+  return (
+    <button className="more-button" type="button" onClick={handleShowMoreCards}>
+      Ещё
+    </button>
+  );
 };
 
 export default MoreButton;

@@ -1,10 +1,22 @@
 import './MoviesCardList.css';
+import Preloader from '../Preloader/Preloader';
 
-const MoviesCardList = ({ cardList }) => {
+const MoviesCardList = ({ cardList, loading, messageText }) => {
   return (
-    <section className="movies-card-list" aria-label="Карточки фильмов">
-      {cardList}
-    </section>
+    <div className="movies-card-list">
+      {loading && <Preloader />}
+      {!loading && (
+        <section
+          className="movies-card-list__content"
+          aria-label="Карточки фильмов"
+        >
+          {cardList}
+        </section>
+      )}
+      {!loading && !cardList.length && (
+        <span className="movies-card-list__message">{messageText}</span>
+      )}
+    </div>
   );
 };
 

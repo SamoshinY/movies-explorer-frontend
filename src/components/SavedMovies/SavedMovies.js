@@ -1,13 +1,38 @@
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import { useSearchCards } from '../../hooks/useSearchCards';
 
-const SavedMovies = ({ cardList }) => {
+const SavedMovies = () => {
+  const {
+    toogleClick,
+    handleChangeSearchInput,
+    handleClickSearchInput,
+    handleSearch,
+    isChecked,
+    searchInputValue,
+    cardList,
+    loading,
+    messageText,
+  } = useSearchCards();
+
   return (
     <main className="saved-movies" aria-label='Страница "Сохраненные фильмы"'>
-      <SearchForm />
+      <SearchForm
+        onSearch={handleSearch}
+        isChecked={isChecked}
+        toogleClick={toogleClick}
+        handleChange={handleChangeSearchInput}
+        handleClick={handleClickSearchInput}
+        searchInputValue={searchInputValue}
+        loading={loading}
+      />
       <div className="saved-movies__empty-block-upper"></div>
-      <MoviesCardList cardList={cardList} />
+      <MoviesCardList
+        cardList={cardList}
+        loading={loading}
+        messageText={messageText}
+      />
       <div className="saved-movies__empty-block"></div>
     </main>
   );

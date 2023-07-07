@@ -214,6 +214,10 @@
   margin: 175px auto 20px;
 }
 
+.profile__resultText_successful {
+  color: #3ddc84;
+}
+
 @media screen and (max-width: 830px) {
   .profile__resultText {
     margin-top: 165px;
